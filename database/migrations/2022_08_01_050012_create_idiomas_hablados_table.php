@@ -14,17 +14,17 @@ return new class extends Migration {
     {
         Schema::create('idiomas_hablados', function (Blueprint $table) {
             $table->id();
+            $table->string('idioma', 20);
             $table->boolean('es_lengua_materna')->default(false);
-            $table->tinyInteger('lectura_id'); // -127 ~ 127
-            $table->tinyInteger('escritura_id');
-            $table->tinyInteger('conversacion_id');
+            $table->tinyInteger('nivel_conversacion_id'); // -127 ~ 127
+            $table->tinyInteger('nivel_escritura_id');
+            $table->tinyInteger('nivel_lectura_id');
             $table->foreignId('institucion_id')->constrained('instituciones')
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->string('idioma', 20);
         });
     }
 

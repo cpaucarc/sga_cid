@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -17,11 +16,11 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('fecha_fin')->nullable();
+            $table->tinyInteger('grado_academico_id'); // -127 ~ 127
             $table->foreignId('institucion_id')->constrained('instituciones')
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
-            $table->tinyInteger('grado_academico_id'); // -127 ~ 127
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

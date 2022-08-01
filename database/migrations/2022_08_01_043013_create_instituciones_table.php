@@ -14,17 +14,17 @@ return new class extends Migration {
     {
         Schema::create('instituciones', function (Blueprint $table) {
             $table->id();
-            $table->string('ruc', 11);
+            $table->string('ruc', 11)->nullable();
             $table->string('nombre');
-            $table->string('direccion');
+            $table->string('direccion')->nullable();
+            $table->tinyInteger('institucion_ambito_id'); // -127 ~ 127
+            $table->tinyInteger('institucion_tipo_id');
             $table->foreignId('pais_id')->nullable()->constrained('paises')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained('users')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-            $table->tinyInteger('ambito_id'); // -127 ~ 127
-            $table->tinyInteger('tipo_institucion_id');
         });
     }
 

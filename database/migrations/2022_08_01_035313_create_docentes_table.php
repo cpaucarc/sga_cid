@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -16,12 +15,12 @@ return new class extends Migration
         Schema::create('docentes', function (Blueprint $table) {
             $table->id();
             $table->boolean('esta_activo')->default(true);
+            $table->tinyInteger('docente_categoria_id'); // -127 ~ 127
+            $table->tinyInteger('docente_condicion_id');
+            $table->tinyInteger('docente_dedicacion_id');
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->tinyInteger('condicion_id'); // -127 ~ 127
-            $table->tinyInteger('dedicacion_id');
-            $table->tinyInteger('categoria_id');
         });
     }
 

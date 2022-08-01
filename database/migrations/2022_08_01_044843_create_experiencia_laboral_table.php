@@ -16,15 +16,15 @@ return new class extends Migration {
             $table->id();
             $table->string('cargo');
             $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('fecha_fin')->nullable();
             $table->boolean('trabaja_actualmente')->default(false);
             $table->text('descripcion')->nullable();
-            $table->foreignId('persona_id')->constrained('personas')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->foreignId('institucion_id')->constrained('instituciones')
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
+            $table->foreignId('persona_id')->constrained('personas')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 
