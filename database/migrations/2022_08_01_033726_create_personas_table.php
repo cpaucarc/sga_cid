@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('celular', 11);
             $table->string('correo', 100);
             $table->date('fecha_nacimiento');
-            $table->foreignId('distrito_id')->constrained('distritos')
+            $table->foreignId('distrito_id')->nullable()->constrained('distritos')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
             $table->smallInteger('sexo_id');
