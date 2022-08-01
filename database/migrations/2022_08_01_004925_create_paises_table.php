@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('paises', function (Blueprint $table) {
             $table->id();
-            $table->string('abrev', 5);
+            $table->string('abrev', 3);
             $table->string('nombre', 60);
         });
     }
