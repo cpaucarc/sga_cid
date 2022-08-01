@@ -16,12 +16,12 @@ return new class extends Migration {
             $table->id();
             $table->string('codigo', 8);
             $table->string('requisito', 8);
-            $table->decimal('precio_mensual',6,2);
+            $table->decimal('precio_mensual', 6, 2);
             $table->tinyInteger('duracion_meses'); // -127 ~ 127
+            $table->tinyInteger('idioma_nivel_id');
             $table->foreignId('idioma_id')->constrained('idiomas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->tinyInteger('nivel_id');
             $table->foreignId('modalidad_id')->constrained('modalidades')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

@@ -16,12 +16,12 @@ return new class extends Migration {
             $table->id();
             $table->string('codigo', 25);
             $table->tinyInteger('tipo_estudiante_id'); // -127 ~ 127
-            $table->foreignId('persona_id')->constrained('personas')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->foreignId('idioma_id')->nullable()->constrained('idiomas')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
+            $table->foreignId('persona_id')->constrained('personas')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 
