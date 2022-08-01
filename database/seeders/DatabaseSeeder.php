@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
 
         // Nivel 1
         $this->call(AulaSeeder::class);
-        $this->call(CursoSeeder::class);
-        $this->call(DepartamentoSeeder::class);
         $this->call(IdiomaDictableSeeder::class);
-        $this->call(IdiomaDictableRequisitoSeeder::class);
+        $this->call(DepartamentoSeeder::class);
+
 
         // Nivel 2
-
+        $this->call(CursoSeeder::class);
+        $this->call(IdiomaDictableRequisitoSeeder::class);
         $this->call(ProvinciaSeeder::class);
 
         // Nivel 3
