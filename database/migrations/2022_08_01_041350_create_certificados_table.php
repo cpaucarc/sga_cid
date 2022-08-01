@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->date('fecha_emision');
             $table->string('num_registro', 25);
-            $table->mediumInteger('horas');
+            $table->smallInteger('horas'); // -32768 ~ 32767
             $table->foreignId('estudiante_id')->nullable()->constrained('estudiantes')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();

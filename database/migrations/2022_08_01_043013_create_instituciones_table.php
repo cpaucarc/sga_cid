@@ -23,8 +23,8 @@ return new class extends Migration {
             $table->foreignId('user_id')->nullable()->constrained('users')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-            $table->smallInteger('ambito_id');
-            $table->smallInteger('tipo_institucion_id');
+            $table->tinyInteger('ambito_id'); // -127 ~ 127
+            $table->tinyInteger('tipo_institucion_id');
         });
     }
 
