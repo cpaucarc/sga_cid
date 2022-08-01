@@ -21,7 +21,7 @@ class RequisitoSeeder extends Seeder
             ],
             [
                 'nombre' => 'FUT',
-                'descripcion'=>null,
+                'descripcion'=>'Formato unico de tramite (fut)',
             ],
             [
                 'nombre' => 'Copia simple de DNI',
