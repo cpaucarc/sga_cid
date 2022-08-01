@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('codigo', 8);
             $table->string('requisito', 8);
-            $table->smallInteger('aforo_maximo');
+            $table->tinyInteger('aforo_maximo'); // -127 ~ 127
             $table->foreignId('idioma_dictable_id')->constrained('idiomas_dictables')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

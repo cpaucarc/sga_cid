@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('idioma_dictable_requisitos', function (Blueprint $table) {
             $table->id();
-            $table->boolean('esta_activo')->default(false);
+            $table->boolean('esta_activo')->default(true);
             $table->foreignId('requisito_id')->constrained('requisitos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
