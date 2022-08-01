@@ -84,12 +84,21 @@ class Constants
     public static function idioma_niveles()
     {
         return collect([
-            collect(['id' => 1, 'nombre' => 'A1', 'nivel' => 'Básico']),
-            collect(['id' => 2, 'nombre' => 'A2', 'nivel' => 'Básico']),
-            collect(['id' => 3, 'nombre' => 'B1', 'nivel' => 'Intermedio']),
-            collect(['id' => 4, 'nombre' => 'B2', 'nivel' => 'Intermedio']),
-            collect(['id' => 5, 'nombre' => 'C1', 'nivel' => 'Avanzado']),
-            collect(['id' => 6, 'nombre' => 'C2', 'nivel' => 'Avanzado']),
+            collect(['id' => 1, 'nombre' => 'Básico']),
+            collect(['id' => 2, 'nombre' => 'Intermedio']),
+            collect(['id' => 3, 'nombre' => 'Avanzado'])
+        ]);
+    }
+
+    public static function idioma_subniveles()
+    {
+        return collect([
+            collect(['id' => 1, 'nombre' => 'A1', 'idioma_nivel_id' => 1]),
+            collect(['id' => 2, 'nombre' => 'A2', 'idioma_nivel_id' => 1]),
+            collect(['id' => 3, 'nombre' => 'B1', 'idioma_nivel_id' => 2]),
+            collect(['id' => 4, 'nombre' => 'B2', 'idioma_nivel_id' => 2]),
+            collect(['id' => 5, 'nombre' => 'C1', 'idioma_nivel_id' => 3]),
+            collect(['id' => 6, 'nombre' => 'C2', 'idioma_nivel_id' => 3])
         ]);
     }
 
