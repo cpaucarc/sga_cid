@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->foreignId('grupo_id')->constrained('grupos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->decimal('nota');
+            $table->decimal('nota',4,2);
             $table->foreignId('componente_id')->constrained('componentes')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
