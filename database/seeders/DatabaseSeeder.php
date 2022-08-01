@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Modalidad;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +21,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Nivel 0
+        $this->call(AmbienteSeeder::class);
+        $this->call(IdiomaSeeder::class);
+        $this->call(ModalidadSeeder::class);
+        $this->call(RequisitoSeeder::class);
+
+        // Nivel 1
+        $this->call(AulaSeeder::class);
+        $this->call(IdiomaDictableSeeder::class);
+        $this->call(CursoSeeder::class);
+        $this->call(IdiomaDictableRequisitoSeeder::class);
+
     }
 }

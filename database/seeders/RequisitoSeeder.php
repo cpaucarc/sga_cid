@@ -21,9 +21,11 @@ class RequisitoSeeder extends Seeder
             ],
             [
                 'nombre' => 'FUT',
+                'descripcion'=>null,
             ],
             [
                 'nombre' => 'Copia simple de DNI',
+                'descripcion'=>null,
             ],
             [
                 'nombre' => 'Comprobante de pago (Cerficado de Estudio)',
