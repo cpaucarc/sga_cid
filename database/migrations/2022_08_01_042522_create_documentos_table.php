@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre');
             $table->string('ruta');
-            $table->string('peso');
+            $table->mediumInteger('peso'); // -8388608 ~ 8388607
             $table->foreignId('user_id')->nullable()->constrained('users')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
