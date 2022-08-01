@@ -15,8 +15,8 @@ return new class extends Migration {
         Schema::create('idiomas_dictables', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 15);
-            $table->string('requisito', 15);
-            $table->decimal('precio_mensual',6,2);
+            $table->string('requisito', 15)->nullable();
+            $table->decimal('precio_mensual', 6, 2);
             $table->tinyInteger('duracion_meses'); // -127 ~ 127
             $table->tinyInteger('idioma_nivel_id');
             $table->foreignId('idioma_id')->constrained('idiomas')

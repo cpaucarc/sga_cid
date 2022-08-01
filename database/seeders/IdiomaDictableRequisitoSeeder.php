@@ -14,6 +14,60 @@ class IdiomaDictableRequisitoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $idioma_requisitos = [
+            //Idioma Ingles - Básico
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 2, // FUT
+                'idioma_dictable_id' => 1, // A1
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 3, // Copia simple de DNI
+                'idioma_dictable_id' => 1, // A1
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 4, // Comprobante de pago (Cerficado de Estudio)
+                'idioma_dictable_id' => 1, // A1
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 5, // Copia de Constancia de Notas (autenticada)
+                'idioma_dictable_id' => 1, // A1
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 6, // Fotografía (tamaño carné)
+                'idioma_dictable_id' => 1, // A1
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 2, // FUT
+                'idioma_dictable_id' => 2, // A2
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 3, // Copia simple de DNI
+                'idioma_dictable_id' => 2, // A2
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 4, // Comprobante de pago (Cerficado de Estudio)
+                'idioma_dictable_id' => 2, // A2
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 5, // Copia de Constancia de Notas (autenticada)
+                'idioma_dictable_id' => 2, // A2
+            ],
+            [
+                'esta_activo' => 1,
+                'requisito_id' => 6, // Fotografía (tamaño carné)
+                'idioma_dictable_id' => 2, // A2
+            ],
+        ];
+
+        \App\Models\IdiomaDictableRequisito::insert($idioma_requisitos);
     }
 }
