@@ -18,17 +18,17 @@ return new class extends Migration {
             $table->date('fecha_pago');
             $table->decimal('monto_pagado');
             $table->decimal('monto_establecido');
-            $table->smallInteger('tipo_estudiante_id');
+            $table->tinyInteger('tipo_estudiante_id'); // -127 ~ 127
             $table->boolean('esta_revisado')->default(false);
             $table->boolean('esta_validado')->default(false);
-            $table->smallInteger('pago_lugar_id');
+            $table->tinyInteger('pago_lugar_id');
             $table->foreignId('matriculado_id')->constrained('matriculados')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->foreignId('documento_id')->constrained('documentos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->text('observacion');
+            $table->text('observacion')->nullable();
             $table->date('fecha_revision');
             $table->date('fecha_validacion');
         });
