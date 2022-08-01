@@ -28,7 +28,7 @@ class RequisitoSeeder extends Seeder
                 'descripcion'=>null,
             ],
             [
-                'nombre' => 'Comprobante de pago (Cerficado de Estudio)',
+                'nombre' => 'Comprobante de pago (Cerficado de Estudios)',
                 'descripcion' => 'Básico (S/.40.00) - Intermedio (S/.50.00) - Avanzado (S/.60.00)',
             ],
             [
