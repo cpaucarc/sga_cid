@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('tema');
             $table->date('fecha_clase');
-            $table->text('observacion');
+            $table->text('observacion')->nullable();
             $table->foreignId('grupo_id')->constrained('grupos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

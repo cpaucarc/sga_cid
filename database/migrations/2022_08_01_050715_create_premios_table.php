@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('premios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->text('descripcion');
-            $table->string('web_referencia');
+            $table->text('descripcion')->nullable();
+            $table->string('web_referencia')->nullable();
             $table->date('fecha_premiacion');
             $table->foreignId('institucion_id')->constrained('instituciones')
                 ->restrictOnUpdate()

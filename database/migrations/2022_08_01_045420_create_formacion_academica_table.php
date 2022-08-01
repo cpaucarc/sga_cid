@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('institucion_id')->constrained('instituciones')
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
-            $table->smallInteger('grado_academico_id');
+            $table->tinyInteger('grado_academico_id'); // -127 ~ 127
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

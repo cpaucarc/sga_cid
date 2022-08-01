@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->boolean('trabaja_actualmente')->default(false);
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

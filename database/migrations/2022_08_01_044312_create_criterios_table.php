@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('varible', 5);
             $table->text('descripcion');
-            $table->tinyInteger('peso');
+            $table->tinyInteger('peso'); // -127 ~ 127
             $table->date('fecha');
             $table->foreignId('grupo_id')->constrained('grupos')
                 ->cascadeOnUpdate()

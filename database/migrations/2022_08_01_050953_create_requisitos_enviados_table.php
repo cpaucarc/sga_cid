@@ -14,8 +14,8 @@ return new class extends Migration {
     {
         Schema::create('requisitos_enviados', function (Blueprint $table) {
             $table->id();
-            $table->text('descripcion');
-            $table->smallInteger('estado_id');
+            $table->text('descripcion')->nullable();
+            $table->tinyInteger('estado_id'); // -127 ~ 127
             $table->foreignId('requisito_curso_id')->constrained('idioma_dictable_requisitos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

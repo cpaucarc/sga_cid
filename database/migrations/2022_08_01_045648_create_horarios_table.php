@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->time('hora_inicio');
             $table->time('hora_fin');
-            $table->tinyInteger('minutos');
-            $table->smallInteger('dia_id');
+            $table->smallInteger('minutos'); // 32768 ~ 32767
+            $table->tinyInteger('dia_id'); // -127 ~ 127
             $table->foreignId('aula_id')->nullable()->constrained('aulas')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();

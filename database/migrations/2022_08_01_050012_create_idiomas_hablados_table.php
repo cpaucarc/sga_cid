@@ -15,9 +15,9 @@ return new class extends Migration {
         Schema::create('idiomas_hablados', function (Blueprint $table) {
             $table->id();
             $table->boolean('es_lengua_materna')->default(false);
-            $table->smallInteger('lectura_id');
-            $table->smallInteger('escritura_id');
-            $table->smallInteger('conversacion_id');
+            $table->tinyInteger('lectura_id'); // -127 ~ 127
+            $table->tinyInteger('escritura_id');
+            $table->tinyInteger('conversacion_id');
             $table->foreignId('institucion_id')->constrained('instituciones')
                 ->restrictOnUpdate()
                 ->restrictOnDelete();

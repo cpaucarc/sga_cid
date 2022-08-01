@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre');
             $table->text('link');
-            $table->foreignId('user_id')->constrained('users')
+            $table->foreignId('user_id')->nullable()->constrained('users')
                 ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->nullOnDelete();
             $table->foreignId('grupo_id')->constrained('grupos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
