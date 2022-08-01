@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ambiente extends Model
 {
     use HasFactory;
+
+    public $table = 'ambientes';
+    public $fillable = ['nombre'];
 }

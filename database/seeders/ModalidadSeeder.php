@@ -14,6 +14,18 @@ class ModalidadSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $modalidades = [
+            [
+                'nombre' => 'Jóvenes/Adultos',
+            ],
+            [
+                'nombre' => 'Niños',
+            ],
+            [
+                'nombre' => 'Postgrado',
+            ],
+        ];
+
+        \App\Models\Modalidad::insert($modalidades);
     }
 }
