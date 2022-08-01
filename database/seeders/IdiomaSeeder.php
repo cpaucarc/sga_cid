@@ -17,27 +17,27 @@ class IdiomaSeeder extends Seeder
     {
         $idiomas = [
             [
-                'codigo' => substr(Str::uuid(), 0, 8),
+                'codigo' => 'ENG', //ISO 639-2
                 'nombre' => 'Ingles',
             ],
             [
-                'codigo' => substr(Str::uuid(), 0, 8),
+                'codigo' => 'FRA',
                 'nombre' => 'Francés',
             ],
             [
-                'codigo' => substr(Str::uuid(), 0, 8),
+                'codigo' => 'ITA',
                 'nombre' => 'Italiano',
             ],
             [
-                'codigo' => substr(Str::uuid(), 0, 8),
+                'codigo' => 'QUE',
                 'nombre' => 'Quechua',
             ],
             [
-                'codigo' => substr(Str::uuid(), 0, 8),
+                'codigo' => 'DEU',
                 'nombre' => 'Alemán',
             ],
             [
-                'codigo' => substr(Str::uuid(), 0, 8),
+                'codigo' => 'POR',
                 'nombre' => 'Portugués',
             ],
         ];
