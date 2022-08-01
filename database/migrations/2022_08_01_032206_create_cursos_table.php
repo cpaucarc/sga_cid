@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 15);
-            $table->string('requisito', 15);
+            $table->string('requisito', 15)->nullable();
             $table->tinyInteger('aforo_maximo'); // -127 ~ 127
             $table->foreignId('idioma_dictable_id')->constrained('idiomas_dictables')
                 ->cascadeOnUpdate()
