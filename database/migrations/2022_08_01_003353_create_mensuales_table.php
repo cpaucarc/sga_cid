@@ -18,8 +18,8 @@ return new class extends Migration {
             $table->date('fecha_fin_clases');
             $table->boolean('esta_activo')->default(false);
             $table->year('anio');
-            $table->smallInteger('clase_modalidad_id');
-            $table->smallInteger('mes_id');
+            $table->tinyInteger('clase_modalidad_id'); // -127 ~ 127
+            $table->tinyInteger('mes_id');
         });
     }
 
