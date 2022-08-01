@@ -22,7 +22,7 @@ class ModalidadSeeder extends Seeder
                 'nombre' => 'Niños',
             ],
             [
-                'nombre' => 'Postgrado',
+                'nombre' => 'Acelerado',
             ],
         ];
 
