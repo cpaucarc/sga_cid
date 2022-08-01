@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ModalidadSeeder::class);
         $this->call(PaisSeeder::class);
         $this->call(RequisitoSeeder::class);
+        $this->call(SolicitudTipoSeeder::class);
 
         // Nivel 1
         $this->call(AulaSeeder::class);
