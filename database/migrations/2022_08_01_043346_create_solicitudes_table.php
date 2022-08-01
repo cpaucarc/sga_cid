@@ -22,6 +22,9 @@ return new class extends Migration {
             $table->foreignId('idioma_dictable_id')->constrained('idiomas_dictables')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            $table->foreignId('solicitud_tipo_id')->constrained('solicitud_tipos')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }
