@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->foreignId('distrito_id')->nullable()->constrained('distritos')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-            $table->smallInteger('sexo_id');
+            $table->tinyInteger('sexo_id'); // -127 ~ 127
             $table->timestamps();
         });
     }
