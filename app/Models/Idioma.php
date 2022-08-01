@@ -10,5 +10,6 @@ class Idioma extends Model
     use HasFactory;
 
     public $table = 'idiomas';
+    public $timestamps = false;
     public $fillable = ['codigo', 'nombre'];
 }
