@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->smallInteger('condicion_id');
-            $table->smallInteger('dedicacion_id');
-            $table->smallInteger('categoria_id');
+            $table->tinyInteger('condicion_id'); // -127 ~ 127
+            $table->tinyInteger('dedicacion_id');
+            $table->tinyInteger('categoria_id');
         });
     }
 

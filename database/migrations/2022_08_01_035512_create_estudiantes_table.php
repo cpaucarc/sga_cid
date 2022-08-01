@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 25);
-            $table->smallInteger('tipo_estudiante_id');
+            $table->tinyInteger('tipo_estudiante_id'); // -127 ~ 127
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

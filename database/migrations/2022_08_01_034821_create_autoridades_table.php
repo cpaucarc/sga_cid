@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('autoridades', function (Blueprint $table) {
             $table->id();
             $table->boolean('esta_activo')->default(true);
-            $table->smallInteger('cargo_id');
+            $table->tinyInteger('cargo_id'); // -127 ~ 127
             $table->foreignId('persona_id')->constrained('personas')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
