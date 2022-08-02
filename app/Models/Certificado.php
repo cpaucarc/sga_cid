@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Certificado extends Model
 {
     use HasFactory;
+
+    protected $table = 'certificados';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

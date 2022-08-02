@@ -9,7 +9,7 @@ class SolicitudTipo extends Model
 {
     use HasFactory;
 
-    public $table = 'solicitud_tipos';
+    protected $table = 'solicitud_tipos';
     public $timestamps = false;
-    public $fillable = ['nombre', 'descripcion'];
+    protected $guarded = ['id'];
 }

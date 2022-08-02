@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class IdiomaHablado extends Model
 {
     use HasFactory;
+
+    protected $table = 'idiomas_hablados';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

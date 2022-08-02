@@ -11,5 +11,5 @@ class Distrito extends Model
 
     protected $table = 'distritos';
     public $timestamps = false;
-    public $fillable = ['nombre', 'provincia_id'];
+    protected $guarded = ['id'];
 }

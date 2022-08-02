@@ -11,5 +11,5 @@ class Departamento extends Model
 
     protected $table = 'departamentos';
     public $timestamps = false;
-    public $fillable = ['nombre', 'pais_id'];
+    protected $guarded = ['id'];
 }

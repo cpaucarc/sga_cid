@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Pago extends Model
 {
     use HasFactory;
+
+    protected $table = 'pagos';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

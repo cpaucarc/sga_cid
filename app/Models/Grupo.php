@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Grupo extends Model
 {
     use HasFactory;
+
+    protected $table = 'grupos';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Prematricula extends Model
 {
     use HasFactory;
+
+    protected $table = 'prematriculas';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

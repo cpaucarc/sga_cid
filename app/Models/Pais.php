@@ -11,5 +11,5 @@ class Pais extends Model
 
     protected $table = 'paises';
     public $timestamps = false;
-    public $fillable = ['abrev', 'nombre'];
+    protected $guarded = ['id'];
 }

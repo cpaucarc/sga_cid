@@ -9,7 +9,7 @@ class Ambiente extends Model
 {
     use HasFactory;
 
-    public $table = 'ambientes';
+    protected $table = 'ambientes';
     public $timestamps = false;
-    public $fillable = ['nombre'];
+    protected $guarded = ['id'];
 }

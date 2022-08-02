@@ -9,7 +9,7 @@ class Requisito extends Model
 {
     use HasFactory;
 
-    public $table = 'requisitos';
+    protected $table = 'requisitos';
     public $timestamps = false;
-    public $fillable = ['nombre', 'descripcion'];
+    protected $guarded = ['id'];
 }

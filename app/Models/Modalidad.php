@@ -9,7 +9,7 @@ class Modalidad extends Model
 {
     use HasFactory;
 
-    public $table = 'modalidades';
+    protected $table = 'modalidades';
     public $timestamps = false;
-    public $fillable = ['nombre'];
+    protected $guarded = ['id'];
 }

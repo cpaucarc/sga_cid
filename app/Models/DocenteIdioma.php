@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DocenteIdioma extends Model
 {
     use HasFactory;
+
+    protected $table = 'docente_idiomas';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

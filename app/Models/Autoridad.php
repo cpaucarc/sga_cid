@@ -11,5 +11,5 @@ class Autoridad extends Model
 
     protected $table = 'autoridades';
     public $timestamps = false;
-    public $fillable = ['esta_activo', 'autoridad_cargo_id', 'persona_id'];
+    protected $guarded = ['id'];
 }

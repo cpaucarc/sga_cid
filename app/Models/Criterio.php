@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Criterio extends Model
 {
     use HasFactory;
+
+    protected $table = 'criterios';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }
