@@ -17,19 +17,19 @@ class RequisitoSeeder extends Seeder
         $requisitos = [
             [
                 'nombre' => 'Comprobante de pago (Constancia de Notas)',
-                'descripcion' => 'Básico (S/.15.00) - Intermedio (S/.15.00) - Avanzado (S/.15.00)',
+                'descripcion' => 'Básico (S/.15.00) - Intermedio (S/.15.00) - Avanzado (S/.15.00).',
             ],
             [
                 'nombre' => 'FUT',
-                'descripcion'=>'Formato unico de tramite (fut)',
+                'descripcion'=>'Formato unico de tramite (fut).',
             ],
             [
                 'nombre' => 'Copia simple de DNI',
-                'descripcion'=>null,
+                'descripcion'=>'La copia de DNI ambas caras en una sola hoja claras y nítidas.',
             ],
             [
                 'nombre' => 'Comprobante de pago (Cerficado de Estudios)',
-                'descripcion' => 'Básico (S/.40.00) - Intermedio (S/.50.00) - Avanzado (S/.60.00)',
+                'descripcion' => 'Básico (S/.40.00) - Intermedio (S/.50.00) - Avanzado (S/.60.00).',
             ],
             [
                 'nombre' => 'Copia de Constancia de Notas (autenticada)',

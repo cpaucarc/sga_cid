@@ -70,12 +70,12 @@ class AulaSeeder extends Seeder
             ],
             //Aulas del Centro Preuniversitario de la UNASAM
             [
-                'nombre' => 'Aula-CID',
+                'nombre' => 'CPU',
                 'ambiente_id' => 2,
             ],
             //Aulas del Colegio de Ciencias Aplicadas de la UNASAM
             [
-                'nombre' => 'Aula-CID',
+                'nombre' => 'COCIAP',
                 'ambiente_id' => 3,
             ],
         ];

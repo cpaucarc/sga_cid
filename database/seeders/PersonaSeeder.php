@@ -42,6 +42,18 @@ class PersonaSeeder extends Seeder
             ],
             [
                 'codigo' => substr(Str::uuid(), 0, 13),
+                'dni' => '31676590',
+                'apellido_paterno' => 'ORTIZ',
+                'apellido_materno' => 'GOMEZ',
+                'nombres' => 'FLOYD MAIK',
+                'celular' => '987983456',
+                'correo' => 'ogomezf@unasam.edu.pe',
+                'fecha_nacimiento' => '1995-06-20',
+                'sexo_id' => 2,
+                'distrito_id' => 85, // Huaraz
+            ],
+            [
+                'codigo' => substr(Str::uuid(), 0, 13),
                 'dni' => '31676536',
                 'apellido_paterno' => 'NIVIN',
                 'apellido_materno' => 'VARGAS',
