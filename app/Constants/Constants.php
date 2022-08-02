@@ -12,6 +12,22 @@ class Constants
         ]);
     }
 
+    public static function ciclos()
+    {
+        return collect([
+            collect(['id' => 1, 'nombre' => 'I']),
+            collect(['id' => 2, 'nombre' => 'II']),
+            collect(['id' => 3, 'nombre' => 'III']),
+            collect(['id' => 4, 'nombre' => 'IV']),
+            collect(['id' => 5, 'nombre' => 'V']),
+            collect(['id' => 6, 'nombre' => 'VI']),
+            collect(['id' => 7, 'nombre' => 'VII']),
+            collect(['id' => 8, 'nombre' => 'VIII']),
+            collect(['id' => 9, 'nombre' => 'IX']),
+            collect(['id' => 10, 'nombre' => 'X']),
+        ]);
+    }
+
     public static function clase_modalidades()
     {
         return collect([
