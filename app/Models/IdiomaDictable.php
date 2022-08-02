@@ -12,4 +12,9 @@ class IdiomaDictable extends Model
     protected $table = 'idiomas_dictables';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function idioma()
+    {
+        return $this->belongsTo(Idioma::class);
+    }
 }
