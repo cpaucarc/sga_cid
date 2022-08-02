@@ -9,7 +9,7 @@ class Idioma extends Model
 {
     use HasFactory;
 
-    public $table = 'idiomas';
+    protected $table = 'idiomas';
     public $timestamps = false;
-    public $fillable = ['codigo', 'nombre'];
+    protected $guarded = ['id'];
 }

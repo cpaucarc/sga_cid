@@ -9,7 +9,7 @@ class Curso extends Model
 {
     use HasFactory;
 
-    public $table = 'cursos';
+    protected $table = 'cursos';
     public $timestamps = false;
-    public $fillable = ['codigo','ciclo', 'requisito','aforo_maximo','idioma_dictable_id'];
+    protected $guarded = ['id'];
 }

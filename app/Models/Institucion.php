@@ -9,7 +9,7 @@ class Institucion extends Model
 {
     use HasFactory;
 
-    public $table = 'instituciones';
+    protected $table = 'instituciones';
     public $timestamps = false;
-    public $fillable = ['ruc', 'nombre', 'direccion', 'institucion_ambito_id', 'institucion_tipo_id','pais_id','user_id'];
+    protected $guarded = ['id'];
 }

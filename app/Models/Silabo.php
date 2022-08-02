@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Silabo extends Model
 {
     use HasFactory;
+
+    protected $table = 'silabos';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

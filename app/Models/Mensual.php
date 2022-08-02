@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mensual extends Model
 {
     use HasFactory;
+
+    protected $table = 'mensuales';
+    public $timestamps = false;
+    protected $guarded = ['id'];
 }

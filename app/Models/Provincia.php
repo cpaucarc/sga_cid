@@ -11,5 +11,5 @@ class Provincia extends Model
 
     protected $table = 'provincias';
     public $timestamps = false;
-    public $fillable = ['nombre', 'departamento_id'];
+    protected $guarded = ['id'];
 }
