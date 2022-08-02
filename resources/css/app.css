@@ -4,3 +4,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* Tamaños de iconos */
+    .icon-4 {
+        @apply w-4 h-4 flex-shrink-0;
+    }
+
+    .icon-5 {
+        @apply w-5 h-5 flex-shrink-0;
+    }
+
+    .icon-6 {
+        @apply w-6 h-6 flex-shrink-0;
+    }
+
+    .icon-8 {
+        @apply w-8 h-8 flex-shrink-0;
+    }
+
+    .icon-12 {
+        @apply w-12 h-12 flex-shrink-0 ;
+    }
+
+
+    /* Transiciones */
+    .soft-transition {
+        @apply transition ease-in-out duration-300;
+    }
+
+
+    /* Botones */
+    .btn {
+        @apply px-3 py-1.5 inline-flex items-center font-semibold whitespace-nowrap soft-transition rounded-md text-sm tracking-wide border;
+    }
+
+
+    /* Inputs */
+    .input {
+        @apply px-2 py-1.5 text-sm rounded-md;
+    }
+
+    .input-none {
+        @apply appearance-none border-none bg-transparent ring-0 focus:border-none focus:ring-0;
+    }
+}
+
