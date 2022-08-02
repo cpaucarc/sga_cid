@@ -25,8 +25,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     })->name('dashboard');
 
 
-    Route::prefix('curso')->controller(CursoController::class)->group(function () {
-        Route::get('/', 'index')->name('curso.index');
+    Route::prefix('idiomas')->controller(CursoController::class)->group(function () {
+        Route::get('dictables', 'index')->name('curso.index');
+        Route::get('cursos/{id?}', 'cursos')->name('curso.cursos');
     });
 
 });

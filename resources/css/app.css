@@ -36,7 +36,28 @@
 
     /* Botones */
     .btn {
-        @apply px-3 py-1.5 inline-flex items-center font-semibold whitespace-nowrap soft-transition rounded-md text-sm tracking-wide border;
+        @apply px-3 py-1.5 inline-flex items-center font-semibold whitespace-nowrap soft-transition rounded-md text-sm border;
+    }
+
+    /* Los estilos btn-state- debe usarse con los botones/links tipo secondary */
+    .btn-state-danger {
+        @apply bg-rose-100 hover:bg-rose-200 text-rose-600 hover:text-rose-800 border-rose-100 hover:border-rose-200;
+    }
+
+    .btn-state-success {
+        @apply bg-green-100 hover:bg-green-200 text-green-600 hover:text-green-800 border-green-100 hover:border-green-200;
+    }
+
+    .btn-state-warning {
+        @apply bg-amber-100 hover:bg-amber-200 text-amber-600 hover:text-amber-800 border-amber-100 hover:border-amber-200;
+    }
+
+    .btn-state-default {
+        @apply bg-blue-100 hover:bg-blue-200 text-blue-600 hover:text-blue-800 border-blue-100 hover:border-blue-200;
+    }
+
+    .btn-state-transparent {
+        @apply bg-transparent text-blue-600 hover:text-blue-800 border-transparent;
     }
 
 
@@ -47,6 +68,10 @@
 
     .input-none {
         @apply appearance-none border-none bg-transparent ring-0 focus:border-none focus:ring-0;
+    }
+
+    .select {
+        @apply pl-2 pr-8 py-1.5 text-sm rounded-md soft-transition bg-slate-50 border border-slate-300 text-slate-700 focus:text-slate-900 focus:bg-white focus:border-blue-600 focus:ring-blue-600;
     }
 }
 

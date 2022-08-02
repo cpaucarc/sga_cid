@@ -6,8 +6,10 @@
             <x-app.curso.curso-sidebar/>
         @endslot
 
-        <livewire:curso.lista-idiomas-dictables/>
+            Cursos ->|{{ $id }}|<-
+        <livewire:curso.lista-cursos :id="$id" />
 
     </x-sidebar.grid>
 
 </x-app-layout>
+

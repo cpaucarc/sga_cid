@@ -10,4 +10,9 @@ class CursoController extends Controller
     {
         return view('curso.index');
     }
+
+    public function cursos($id = null)
+    {
+        return view('curso.cursos', compact('id'));
+    }
 }

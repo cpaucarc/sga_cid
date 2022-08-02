@@ -17,4 +17,14 @@ class IdiomaDictable extends Model
     {
         return $this->belongsTo(Idioma::class);
     }
+
+    public function modalidad()
+    {
+        return $this->belongsTo(Modalidad::class);
+    }
+
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class);
+    }
 }
