@@ -7,7 +7,7 @@ class Constants
     public static function autoridad_cargos()
     {
         return collect([
-            collect(['id' => 1, 'nombre' => 'Director del CID']),
+            collect(['id' => 1, 'nombre' => 'Director del Centro de Idiomas']),
             collect(['id' => 2, 'nombre' => 'Vicerrector Académico']),
         ]);
     }

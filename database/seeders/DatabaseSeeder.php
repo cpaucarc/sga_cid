@@ -40,7 +40,12 @@ class DatabaseSeeder extends Seeder
         $this->call(DistritoSeeder::class);
 
         // Nivel 4
+        $this->call(PersonaSeeder::class);
+
         // Nivel 5
+        $this->call(AutoridadSeeder::class);
+        $this->call(UserSeeder::class);
+
         // Nivel 6
         // Nivel 7
         // Nivel 8
