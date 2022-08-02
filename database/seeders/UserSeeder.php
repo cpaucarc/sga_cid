@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
 
         /* User Administrador */
         User::create([
-            'name' => 'Administrador',
+            'name' => 'FLOYD GOMEZ',
             'username' => 'admin',
             'email' => 'prueba@mail.com',
             'email_verified_at' => now(),
@@ -29,6 +29,17 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'esta_activo' => 1,
             'persona_id' => 3,
+        ]);
+        /* User Secretaria */
+        User::create([
+            'name' => 'LAURA VARGAS',
+            'username' => 'secretaria',
+            'email' => 'secretaria@mail.com',
+            'email_verified_at' => now(),
+            'password' => $password,
+            'remember_token' => Str::random(10),
+            'esta_activo' => 1,
+            'persona_id' => 4,
         ]);
     }
 }

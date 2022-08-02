@@ -15,90 +15,218 @@ class CursoSeeder extends Seeder
      */
     public function run()
     {
-        // Ingles
-        $uuidA1_ENGI = substr(Str::uuid(), 0, 8);
-        $uuidA1_ENGII = substr(Str::uuid(), 0, 8);
-        $uuidA1_ENGIII = substr(Str::uuid(), 0, 8);
-        $uuidA1_ENGIV = substr(Str::uuid(), 0, 8);
-        $uuidA1_ENGV = substr(Str::uuid(), 0, 8);
-        $uuidA2_ENGVI = substr(Str::uuid(), 0, 8);
-        $uuidA2_ENGVII = substr(Str::uuid(), 0, 8);
-        $uuidA2_ENGVIII = substr(Str::uuid(), 0, 8);
-        $uuidA2_ENGIX = substr(Str::uuid(), 0, 8);
-        $uuidA2_ENGX = substr(Str::uuid(), 0, 8);
+        // Ingles - Básico
+        $uuid_ingles_jovenes_basico_I=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_II=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_III=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_IV=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_V=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_VI=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_VII=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_VIII=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_IX=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_basico_X=substr(Str::uuid(), 0, 8);
+        // Ingles - Intermedio
+        $uuid_ingles_jovenes_intermedio_I=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_II=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_III=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_IV=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_V=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_VI=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_VII=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_VIII=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_IX=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_intermedio_X=substr(Str::uuid(), 0, 8);
+        // Ingles - Avanzado
+        $uuid_ingles_jovenes_avanzado_I=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_avanzado_II=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_avanzado_III=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_avanzado_IV=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_avanzado_V=substr(Str::uuid(), 0, 8);
+        $uuid_ingles_jovenes_avanzado_VI=substr(Str::uuid(), 0, 8);
 
         $cursos = [
-            //Idioma Ingles - Básico
             [
-                'codigo' => $uuidA1_ENGI,
+                'codigo' => $uuid_ingles_jovenes_basico_I,
                 'requisito' => null,
                 'ciclo' => 'I',
                 'aforo_maximo' => 25,
-                'idioma_dictable_id' => 1, // ENG-A1, 'nivel' => 'Básico'
+                'idioma_dictable_id' => 1, // Ingles - Jóvenes - Básico
             ],
             [
-                'codigo' => $uuidA1_ENGII,
-                'requisito' => $uuidA1_ENGI,
+                'codigo' => $uuid_ingles_jovenes_basico_II,
+                'requisito' => $uuid_ingles_jovenes_basico_I,
                 'ciclo' => 'II',
-                'aforo_maximo' => 20,
-                'idioma_dictable_id' => 1, // ENG-A1, 'nivel' => 'Básico'
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA1_ENGIII,
-                'requisito' => $uuidA1_ENGII,
+                'codigo' => $uuid_ingles_jovenes_basico_III,
+                'requisito' => $uuid_ingles_jovenes_basico_II,
                 'ciclo' => 'III',
                 'aforo_maximo' => 25,
-                'idioma_dictable_id' => 1, // ENG-A1, 'nivel' => 'Básico'
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA1_ENGIV,
-                'requisito' => $uuidA1_ENGIII,
+                'codigo' => $uuid_ingles_jovenes_basico_IV,
+                'requisito' => $uuid_ingles_jovenes_basico_III,
                 'ciclo' => 'IV',
                 'aforo_maximo' => 25,
-                'idioma_dictable_id' => 1, // ENG-A1, 'nivel' => 'Básico'
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA1_ENGV,
-                'requisito' => $uuidA1_ENGIV,
+                'codigo' => $uuid_ingles_jovenes_basico_V,
+                'requisito' => $uuid_ingles_jovenes_basico_IV,
                 'ciclo' => 'V',
                 'aforo_maximo' => 25,
-                'idioma_dictable_id' => 1, // ENG-A1, 'nivel' => 'Básico'
+                'idioma_dictable_id' => 1,
             ],
-            // A2, 'nivel' => 'Básico'
             [
-                'codigo' => $uuidA2_ENGVI,
-                'requisito' => $uuidA1_ENGV,
+                'codigo' => $uuid_ingles_jovenes_basico_VI,
+                'requisito' => $uuid_ingles_jovenes_basico_V,
                 'ciclo' => 'VI',
-                'aforo_maximo' => 20,
-                'idioma_dictable_id' => 2, // ENG-A2, 'nivel' => 'Básico'
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA2_ENGVII,
-                'requisito' => $uuidA2_ENGVI,
+                'codigo' => $uuid_ingles_jovenes_basico_VII,
+                'requisito' => $uuid_ingles_jovenes_basico_VI,
                 'ciclo' => 'VII',
-                'aforo_maximo' => 20,
-                'idioma_dictable_id' => 2, // ENG-A2, 'nivel' => 'Básico'
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA2_ENGVIII,
-                'requisito' => $uuidA2_ENGVII,
+                'codigo' => $uuid_ingles_jovenes_basico_VIII,
+                'requisito' => $uuid_ingles_jovenes_basico_VII,
                 'ciclo' => 'VIII',
-                'aforo_maximo' => 20,
-                'idioma_dictable_id' => 2, // ENG-A2, 'nivel' => 'Básico'
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA2_ENGIX,
-                'requisito' => $uuidA2_ENGVIII,
+                'codigo' => $uuid_ingles_jovenes_basico_IX,
+                'requisito' => $uuid_ingles_jovenes_basico_VIII,
                 'ciclo' => 'IX',
-                'aforo_maximo' => 20,
-                'idioma_dictable_id' => 2, // ENG-A2, 'nivel' => 'Básico'
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 1,
             ],
             [
-                'codigo' => $uuidA2_ENGX,
-                'requisito' => $uuidA2_ENGIX,
+                'codigo' => $uuid_ingles_jovenes_basico_X,
+                'requisito' => $uuid_ingles_jovenes_basico_IX,
                 'ciclo' => 'X',
-                'aforo_maximo' => 20,
-                'idioma_dictable_id' => 2, // ENG-A2, 'nivel' => 'Básico'
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 1,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_I,
+                'requisito' => $uuid_ingles_jovenes_basico_X,
+                'ciclo' => 'I',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2, // Ingles - Jóvenes - Intermedio
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_II,
+                'requisito' => $uuid_ingles_jovenes_intermedio_I,
+                'ciclo' => 'II',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_III,
+                'requisito' => $uuid_ingles_jovenes_intermedio_II,
+                'ciclo' => 'III',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_IV,
+                'requisito' => $uuid_ingles_jovenes_intermedio_III,
+                'ciclo' => 'IV',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_V,
+                'requisito' => $uuid_ingles_jovenes_intermedio_IV,
+                'ciclo' => 'V',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_VI,
+                'requisito' => $uuid_ingles_jovenes_intermedio_V,
+                'ciclo' => 'VI',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_VII,
+                'requisito' => $uuid_ingles_jovenes_intermedio_VI,
+                'ciclo' => 'VII',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_VIII,
+                'requisito' => $uuid_ingles_jovenes_intermedio_VII,
+                'ciclo' => 'VIII',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_IX,
+                'requisito' => $uuid_ingles_jovenes_intermedio_VIII,
+                'ciclo' => 'IX',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_intermedio_X,
+                'requisito' => $uuid_ingles_jovenes_intermedio_IX,
+                'ciclo' => 'X',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 2,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_avanzado_I,
+                'requisito' => $uuid_ingles_jovenes_intermedio_X,
+                'ciclo' => 'I',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 3, // Ingles - Jóvenes - Avanzado
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_avanzado_II,
+                'requisito' => $uuid_ingles_jovenes_avanzado_I,
+                'ciclo' => 'II',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 3,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_avanzado_III,
+                'requisito' => $uuid_ingles_jovenes_avanzado_II,
+                'ciclo' => 'III',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 3,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_avanzado_IV,
+                'requisito' => $uuid_ingles_jovenes_avanzado_III,
+                'ciclo' => 'IV',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 3,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_avanzado_V,
+                'requisito' => $uuid_ingles_jovenes_avanzado_IV,
+                'ciclo' => 'V',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 3,
+            ],
+            [
+                'codigo' => $uuid_ingles_jovenes_avanzado_VI,
+                'requisito' => $uuid_ingles_jovenes_avanzado_V,
+                'ciclo' => 'VI',
+                'aforo_maximo' => 25,
+                'idioma_dictable_id' => 3,
             ],
         ];
 

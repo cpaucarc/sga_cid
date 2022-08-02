@@ -15,6 +15,7 @@ class IdiomaDictableSeeder extends Seeder
      */
     public function run()
     {
+        //Ingles
         $uuid_ingles_jovenes_basico = substr(Str::uuid(), 0, 8);
         $uuid_ingles_jovenes_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_ingles_jovenes_avanzado = substr(Str::uuid(), 0, 8);
@@ -24,6 +25,7 @@ class IdiomaDictableSeeder extends Seeder
         $uuid_ingles_acelerado_basico = substr(Str::uuid(), 0, 8);
         $uuid_ingles_acelerado_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_ingles_acelerado_avanzado = substr(Str::uuid(), 0, 8);
+        //Frances
         $uuid_frances_jovenes_basico = substr(Str::uuid(), 0, 8);
         $uuid_frances_jovenes_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_frances_jovenes_avanzado = substr(Str::uuid(), 0, 8);
@@ -33,6 +35,7 @@ class IdiomaDictableSeeder extends Seeder
         $uuid_frances_acelerado_basico = substr(Str::uuid(), 0, 8);
         $uuid_frances_acelerado_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_frances_acelerado_avanzado = substr(Str::uuid(), 0, 8);
+        //Italiano
         $uuid_italiano_jovenes_basico = substr(Str::uuid(), 0, 8);
         $uuid_italiano_jovenes_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_italiano_jovenes_avanzado = substr(Str::uuid(), 0, 8);
@@ -42,6 +45,7 @@ class IdiomaDictableSeeder extends Seeder
         $uuid_italiano_acelerado_basico = substr(Str::uuid(), 0, 8);
         $uuid_italiano_acelerado_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_italiano_acelerado_avanzado = substr(Str::uuid(), 0, 8);
+        //Quechua
         $uuid_quechua_jovenes_basico = substr(Str::uuid(), 0, 8);
         $uuid_quechua_jovenes_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_quechua_jovenes_avanzado = substr(Str::uuid(), 0, 8);
@@ -51,6 +55,7 @@ class IdiomaDictableSeeder extends Seeder
         $uuid_quechua_acelerado_basico = substr(Str::uuid(), 0, 8);
         $uuid_quechua_acelerado_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_quechua_acelerado_avanzado = substr(Str::uuid(), 0, 8);
+        //Alemán
         $uuid_aleman_jovenes_basico = substr(Str::uuid(), 0, 8);
         $uuid_aleman_jovenes_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_aleman_jovenes_avanzado = substr(Str::uuid(), 0, 8);
@@ -60,6 +65,7 @@ class IdiomaDictableSeeder extends Seeder
         $uuid_aleman_acelerado_basico = substr(Str::uuid(), 0, 8);
         $uuid_aleman_acelerado_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_aleman_acelerado_avanzado = substr(Str::uuid(), 0, 8);
+        //Portugues
         $uuid_portugues_jovenes_basico = substr(Str::uuid(), 0, 8);
         $uuid_portugues_jovenes_intermedio = substr(Str::uuid(), 0, 8);
         $uuid_portugues_jovenes_avanzado = substr(Str::uuid(), 0, 8);

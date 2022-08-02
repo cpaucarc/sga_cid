@@ -17,11 +17,11 @@ class SolicitudTipoSeeder extends Seeder
         $solicitud_tipos = [
             [
                 'nombre' => 'Constancia de Notas',
-                'descripcion' => null,
+                'descripcion' => 'Documento el cual sirve para acreditar su situación académica.',
             ],
             [
                 'nombre' => 'Certificado de Estudios',
-                'descripcion' => null,
+                'descripcion' => 'Documento oficial en el que las Instituciones Educativas declaran oficialmente que una persona ha acreditado un programa o plan de estudios determinado.',
             ],
         ];
 
