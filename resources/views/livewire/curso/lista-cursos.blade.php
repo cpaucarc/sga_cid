@@ -63,7 +63,7 @@
                     - {{ $modalidad->nombre }}
                 </x-table.column>
                 <x-table.column class="text-center"><b>{{ $ciclos[$curso->ciclo_id] }}</b></x-table.column>
-                <x-table.column>{{ $curso->aforo_maximo }} estudiantes</x-table.column>
+                <x-table.column>Max. {{ $curso->aforo_maximo }} estudiantes</x-table.column>
                 <x-table.column>
                     <x-jet-secondary-button wire:click="editarCurso({{ $curso }})" class="btn-state-transparent">
                         Editar
