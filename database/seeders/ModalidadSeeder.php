@@ -17,12 +17,15 @@ class ModalidadSeeder extends Seeder
         $modalidades = [
             [
                 'nombre' => 'Jóvenes/Adultos',
+                'duracion_meses' => 10,
             ],
             [
                 'nombre' => 'Niños',
+                'duracion_meses' => 10,
             ],
             [
                 'nombre' => 'Acelerado',
+                'duracion_meses' => 5,
             ],
         ];
 
