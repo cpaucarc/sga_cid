@@ -75,14 +75,7 @@
                 Cancelar
             </x-buttons.outline>
 
-            <x-jet-button
-                wire:click="guardarCurso"
-                wire:target="guardarCurso"
-                wire:loading.class="cursor-wait"
-                wire:loading.attr="disabled">
-                <span wire:loading.remove>Guardar</span>
-                <span wire:loading>Guardando...</span>
-            </x-jet-button>
+            <x-buttons.save target="guardarCurso"/>
         </x-slot>
     </x-jet-dialog-modal>
 
