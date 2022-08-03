@@ -40,6 +40,11 @@ class MostrarPrematricula extends Component
         return view('livewire.programacion.mostrar-prematricula');
     }
 
+    public function updatedFechaInicio()
+    {
+        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(5, 'day')->format('Y-m-d');
+    }
+
     public function crear()
     {
         $this->validate();

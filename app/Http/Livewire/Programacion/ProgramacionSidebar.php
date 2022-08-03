@@ -7,7 +7,6 @@ use App\Models\Matricula;
 use App\Models\Mensual;
 use App\Models\Prematricula;
 use App\Models\RangoPago;
-use Carbon\Carbon;
 use Livewire\Component;
 
 class ProgramacionSidebar extends Component

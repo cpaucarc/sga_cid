@@ -1,37 +1,38 @@
 <div class="space-y-4">
     @if($mensual)
         <div class="flex justify-between items-center">
-            <div class="btn-state-default px-2.5 py-0.5 rounded text-sm">Año: {{$anio_actual}}        </div>
+            <div class="btn-state-transparent px-2.5 py-0.5 rounded text-sm">
+                Año: {{$anio_actual}}
+            </div>
         </div>
         @if($prematricula)
-            <x-table.table>
-                @slot('head')
-                    <x-table.head>Inicio</x-table.head>
-                    <x-table.head>Fin</x-table.head>
-                @endslot
-                <x-table.row>
-                    <x-table.column>
-                        {{$prematricula->fecha_inicio->format('d')}}
+            <x-alerta>
+                La prematrícula comienza el
+                <span class="font-bold whitespace-nowrap">
+                    {{$prematricula->fecha_inicio->format('d')}}
                         de {{$meses[intval($prematricula->fecha_inicio->format('m'))]}}
-                    </x-table.column>
-                    <x-table.column>
-                        {{$prematricula->fecha_fin->format('d')}}
+                </span> y finaliza el
+                <span class="font-bold whitespace-nowrap">
+                   {{$prematricula->fecha_fin->format('d')}}
                         de {{$meses[intval($prematricula->fecha_fin->format('m'))]}}
-                    </x-table.column>
-                </x-table.row>
-            </x-table.table>
+                </span>.
+            </x-alerta>
         @else
-            <div class="space-y-4 px-4">
-                <p class="text-gray-600">Auno no programa ninguna fecha</p>
+            <div class="space-y-4">
+                <x-alerta>
+                    En este mes de <span
+                        class="font-bold whitespace-nowrap">{{$meses[intval($mensual->fecha_inicio_clases->format('m'))]}}</span>,
+                    aún no programa fechas de <span class="font-bold whitespace-nowrap">prematrícula</span>.
+                </x-alerta>
                 <div class="flex gap-x-6">
                     <div class="w-full">
-                        <x-jet-label for="fecha_inicio" value="Inicio de clases"/>
+                        <x-jet-label for="fecha_inicio" value="Inicio de prematrícula"/>
                         <x-jet-input type="date" class="mt-1 block w-full"
                                      wire:model="fecha_inicio" autocomplete="off"/>
                         <x-jet-input-error for="fecha_inicio"/>
                     </div>
                     <div class="w-full">
-                        <x-jet-label for="fecha_fin" value="Fin de clases"/>
+                        <x-jet-label for="fecha_fin" value="Fin de prematrícula"/>
                         <x-jet-input type="date" class="mt-1 block w-full"
                                      wire:model="fecha_fin" autocomplete="off"/>
                         <x-jet-input-error for="fecha_fin"/>
@@ -47,7 +48,13 @@
             </div>
         @endif
     @else
-        Sin fecha
+        <x-message-image>
+            <x-slot:title>Aún no agrega ningún mes</x-slot:title>
+            <x-slot:description>
+                Aquí se mostrará las fechas programadas para la prematrícula.
+            </x-slot:description>
+            {{--<x-slot:image>{{ asset('images/logo_cid.svg')  }}</x-slot:image>--}}
+        </x-message-image>
     @endif
 
     @push('js')

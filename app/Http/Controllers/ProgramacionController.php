@@ -20,8 +20,4 @@ class ProgramacionController extends Controller
     {
         return view('programacion.prematricula');
     }
-    public function crearPrematricula()
-    {
-        return view('programacion.formulario-crear-prematricula');
-    }
 }
