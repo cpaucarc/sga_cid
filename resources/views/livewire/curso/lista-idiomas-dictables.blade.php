@@ -33,15 +33,14 @@
             <x-table.head class="text-right">Precio Mensual</x-table.head>
             <x-table.head>Duración</x-table.head>
             <x-table.head class="text-center">Cursos</x-table.head>
-            <x-table.head>Action</x-table.head>
+            <x-table.head><span class="sr-only">Acciones</span></x-table.head>
         @endslot
 
         @foreach($idiomas_dictables as $idioma_dictable)
             <x-table.row>
                 <x-table.column class="uppercase">{{ $idioma_dictable->codigo }}</x-table.column>
                 <x-table.column class="uppercase">{{ $idioma_dictable->requisito ?? '---' }}</x-table.column>
-                <x-table.column>{{ $idioma_dictable->idioma_id }}
-                    - {{ $idiomas[$idioma_dictable->idioma_id] }}</x-table.column>
+                <x-table.column>{{ $idiomas[$idioma_dictable->idioma_id] }}</x-table.column>
                 <x-table.column>{{ $niveles[$idioma_dictable->idioma_nivel_id] }}</x-table.column>
                 <x-table.column>{{ $modalidades[$idioma_dictable->modalidad_id] }}</x-table.column>
                 <x-table.column class="text-right">S/. {{ $idioma_dictable->precio_mensual }}</x-table.column>

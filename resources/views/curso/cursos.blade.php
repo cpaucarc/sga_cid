@@ -6,7 +6,6 @@
             <x-app.curso.curso-sidebar/>
         @endslot
 
-            Cursos ->|{{ $id }}|<-
         <livewire:curso.lista-cursos :id="$id" />
 
     </x-sidebar.grid>
