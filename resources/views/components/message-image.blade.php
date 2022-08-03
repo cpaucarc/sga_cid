@@ -4,7 +4,7 @@
             <img class="w-2/5" src="{{ $image }}" alt="Imagen correspondiente">
         @endif
         @if(isset($title) or isset($description))
-            <div class="w-2/5 text-center">
+            <div class="w-3/5 text-center">
                 @if(isset($title))
                     <h2 class="font-bold text-zinc-600 leading-snug">
                         {{ $title }}
