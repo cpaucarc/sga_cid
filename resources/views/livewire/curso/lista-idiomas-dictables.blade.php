@@ -1,5 +1,7 @@
 <div class="space-y-4">
 
+    <x-titulo titulo="Idiomas Dictables"/>
+
     <div class="flex space-x-2 items-center justify-end">
         <x-forms.select wire:model="idioma">
             <option value="0">Todos los idiomas</option>
@@ -49,21 +51,24 @@
                 <x-table.column>
                     <x-links.secondary
                         class="{{ $idioma_dictable->cursos_count == 0 ? 'btn-state-danger' :
-                                 ($idioma_dictable->cursos_count < $idioma_dictable->duracion_meses ? 'btn-state-warning' : 'btn-state-transparent') }}"
+                                 ($idioma_dictable->cursos_count < $modalidades[$idioma_dictable->modalidad_id]['duracion_meses'] ? 'btn-state-warning' : 'btn-state-transparent') }}"
                         href="{{ route('curso.cursos', $idioma_dictable->id) }}">
                         {{ $idioma_dictable->cursos_count }} cursos
                     </x-links.secondary>
                 </x-table.column>
                 <x-table.column>
-                    <x-links.secondary href="#"
-                                       class="btn-state-transparent">
+                    <x-jet-secondary-button wire:click="editarDictable({{ $idioma_dictable }})"
+                                            class="btn-state-transparent">
                         Editar
-                    </x-links.secondary>
+                    </x-jet-secondary-button>
                 </x-table.column>
             </x-table.row>
         @endforeach
 
     </x-table.table>
 
+    <livewire:curso.agregar-idioma-dictable :niveles="$niveles"
+                                            :idiomas="$idiomas"
+                                            :modalidades="$modalidades"/>
 
 </div>

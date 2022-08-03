@@ -25,7 +25,7 @@
             <x-alerta>
                 Este idioma esta declarado con una duración de
                 <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses  }} meses</span>,
-                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses }} meses</span>,
+                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses }} cursos</span>,
                 sin embargo, actualmente tiene <span class="font-bold whitespace-nowrap">{{ count($cursos) }} cursos registrados.</span>
             </x-alerta>
 

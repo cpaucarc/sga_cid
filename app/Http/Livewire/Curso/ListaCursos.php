@@ -52,7 +52,7 @@ class ListaCursos extends Component
     public function generarCursosAutomaticamente($aforo = 25)
     {
         $modalidad = $this->dictable->modalidad_id;
-        $duracion_meses = $this->modalidades[$modalidad]['duracion_meses'];
+        $duracion_meses = $this->modalidad->duracion_meses;
         $id_inicial = $modalidad == 3 ? 10 : 0; // 3: Acelerado
 
         $cursos_generados = [];
