@@ -32,15 +32,15 @@ class CrearMensuales extends Component
         $this->mes = $this->meses[Carbon::parse($this->fecha_inicio)->month];
     }
 
+    public function render()
+    {
+        return view('livewire.programacion.crear-mensuales');
+    }
+
     public function updatedFechaInicio()
     {
         $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(31, 'day')->format('Y-m-d');
         $this->mes = $this->meses[Carbon::parse($this->fecha_inicio)->month];
-    }
-
-    public function render()
-    {
-        return view('livewire.programacion.crear-mensuales');
     }
 
     public function crear()

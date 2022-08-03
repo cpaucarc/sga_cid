@@ -5,13 +5,13 @@ namespace App\Http\Livewire\Programacion;
 use App\Constants\Constants;
 use App\Models\Mensual;
 use App\Models\Prematricula;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Livewire\Component;
 
-class MostrarPrematricula extends Component
+class CrearPrematricula extends Component
 {
-    public $meses, $anio_actual;
-    public $mensual, $prematricula;
+    public $fecha_inicio, $fecha_fin;
+    public $mensual;
 
     protected $rules = [
         'fecha_inicio' => 'required|date|before:fecha_fin',
@@ -20,9 +20,7 @@ class MostrarPrematricula extends Component
 
     public function mount()
     {
-        $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
-        $this->anio_actual = Carbon::now()->year;
-
+        $this->mensual = Mensual::where('esta_activo', true)->first();
         if ($this->mensual) {
             $this->fecha_inicio = $this->mensual->fecha_inicio_clases->format('Y-m-d');
         } else {
@@ -33,11 +31,7 @@ class MostrarPrematricula extends Component
 
     public function render()
     {
-        $this->mensual = Mensual::where('esta_activo', true)->first();
-        if ($this->mensual) {
-            $this->prematricula = Prematricula::where('mensual_id', $this->mensual->id)->first();
-        }
-        return view('livewire.programacion.mostrar-prematricula');
+        return view('livewire.programacion.crear-prematricula');
     }
 
     public function crear()
@@ -52,9 +46,7 @@ class MostrarPrematricula extends Component
             ]);
             $msg = 'Fecha de prematricula programado correctamente';
             $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
-//            return redirect()->route('programacion.prematricula');
-            $this->emitTo('programacion.programacion-sidebar', 'render');
-
+            return redirect()->route('programacion.prematricula');
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);
         }

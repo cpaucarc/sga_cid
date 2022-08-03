@@ -4,7 +4,7 @@
             <livewire:programacion.info-programacion/>
         @endslot
 
-        <livewire:programacion.crear-mensuales/>
+        <livewire:programacion.crear-prematricula/>
 
         @slot('sidebar')
             <livewire:programacion.programacion-sidebar/>
