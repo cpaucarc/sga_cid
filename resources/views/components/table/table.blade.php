@@ -7,7 +7,7 @@
         </thead>
     @endif
 
-    <tbody>
+    <tbody class="divide-y divide-slate-200/60 divide-dashed border-b border-slate-200">
     {{ $slot }}
     </tbody>
 </table>
