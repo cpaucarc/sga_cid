@@ -42,6 +42,7 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="{{ asset('js/alertas.js') }}"></script>
         @stack('js')
     </body>
 </html>

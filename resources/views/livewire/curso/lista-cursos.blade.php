@@ -31,7 +31,7 @@
 
             <div class="flex justify-center gap-x-4">
                 @if(count($cursos) == 0)
-                    <x-jet-secondary-button class="btn-state-danger">
+                    <x-jet-secondary-button onclick="crearAutomaticamente()" class="btn-state-danger">
                         Agregar cursos automaticamente
                     </x-jet-secondary-button>
                 @endif
@@ -72,5 +72,28 @@
         @endforeach
 
     </x-table.table>
+
+    @push('js')
+        <script>
+
+            async function crearAutomaticamente() {
+                const rsta = await Swal.fire({
+                    icon: 'question',
+                    text: '¿Quiere que se generen automaticamente los cursos?',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, generar',
+                    confirmButtonColor: '#3b82f6',
+                    cancelButtonColor: '#94a3b8',
+                })
+
+                console.log(rsta)
+
+                if (rsta.isConfirmed) {
+                    sweetToast('Saved!', 'question');
+                }
+            }
+        </script>
+    @endpush
 
 </div>
