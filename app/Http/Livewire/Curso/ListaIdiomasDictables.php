@@ -14,6 +14,8 @@ class ListaIdiomasDictables extends Component
     public $idiomas = null, $idioma = 1;
     public $modalidades = null, $modalidad = 0;
 
+    public $listeners = ['render'];
+
     public function mount()
     {
         $this->niveles = Constants::idioma_niveles()->pluck('nombre', 'id')->all();
@@ -55,5 +57,10 @@ class ListaIdiomasDictables extends Component
             return 'btn-state-warning';
         }
         return 'btn-state-default';
+    }
+
+    public function editarDictable(IdiomaDictable $dictable)
+    {
+        $this->emitTo('curso.agregar-idioma-dictable', 'abrirModalEditar', ['dictable' => $dictable]);
     }
 }
