@@ -10,4 +10,9 @@ class ProgramacionController extends Controller
     {
         return view('programacion.index');
     }
+
+    public function crearMensual()
+    {
+        return view('programacion.formulario-crear-mensuales');
+    }
 }

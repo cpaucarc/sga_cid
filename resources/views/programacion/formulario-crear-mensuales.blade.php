@@ -4,11 +4,10 @@
             <livewire:programacion.info-programacion/>
         @endslot
 
-        <livewire:programacion.lista-meses/>
+        <livewire:programacion.crear-mensuales/>
 
         @slot('sidebar')
             <x-app.programacion.programacion-sidebar/>
         @endslot
     </x-app.programacion.grid>
 </x-app-layout>
-

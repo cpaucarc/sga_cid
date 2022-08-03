@@ -33,6 +33,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::prefix('programacion')->controller(ProgramacionController::class)->group(function () {
         Route::get('mensual', 'index')->name('programacion.mensual.index');
+        Route::get('mensual/crear', 'crearMensual')->name('programacion.mensual.crear');
     });
 
 });
