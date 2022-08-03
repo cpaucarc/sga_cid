@@ -12,4 +12,6 @@ class Mensual extends Model
     protected $table = 'mensuales';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public $casts = ['fecha_inicio_clases' => 'date', 'fecha_fin_clases' => 'date'];
 }

@@ -12,4 +12,6 @@ class Matricula extends Model
     protected $table = 'matriculas';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public $casts = ['fecha_inicio' => 'date', 'fecha_fin' => 'date'];
 }
