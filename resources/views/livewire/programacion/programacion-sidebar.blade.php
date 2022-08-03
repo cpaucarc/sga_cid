@@ -13,15 +13,16 @@
                 @if($prematricula)
                     {{$prematricula->fecha_inicio->format('d')}}
                     de {{$meses[intval($prematricula->fecha_inicio->format('m'))]}} -
-                        {{$prematricula->fecha_fin->format('d')}}
-                        de {{$meses[intval($prematricula->fecha_fin->format('m'))]}}
+                    {{$prematricula->fecha_fin->format('d')}}
+                    de {{$meses[intval($prematricula->fecha_fin->format('m'))]}}
                 @else
                     Aun no hay fecha programadas
                 @endif
             @endslot
         </x-app.programacion.sidebar-link>
 
-        <x-app.programacion.sidebar-link href="{{ route('curso.index') }}" :active="request()->routeIs('curso.index')">
+        <x-app.programacion.sidebar-link href="{{ route('programacion.matricula') }}"
+                                         :active="request()->routeIs('programacion.matricula')">
             @slot('icon')
                 <svg class="ic" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path d="M12 14l9-5-9-5-9 5 9 5z"/>
@@ -33,20 +34,20 @@
             @endslot
             Matrícula
             @slot('fechas')
-                    @if($matricula)
-                        {{$matricula->fecha_inicio->format('d')}}
-                        de {{$meses[intval($matricula->fecha_inicio->format('m'))]}} -
-                        {{$matricula->fecha_fin->format('d')}}
-                        de {{$meses[intval($matricula->fecha_fin->format('m'))]}}
-                    @else
-                        Aun no hay fecha programadas
-                    @endif
+                @if($matricula)
+                    {{$matricula->fecha_inicio->format('d')}}
+                    de {{$meses[intval($matricula->fecha_inicio->format('m'))]}} -
+                    {{$matricula->fecha_fin->format('d')}}
+                    de {{$meses[intval($matricula->fecha_fin->format('m'))]}}
+                @else
+                    Aun no hay fecha programadas
+                @endif
             @endslot
         </x-app.programacion.sidebar-link>
     </x-sidebar.group>
 
     <x-sidebar.group class="pt-4">
-        <x-app.programacion.sidebar-link href="{{ route('curso.index') }}" :active="request()->routeIs('curso.index')">
+        <x-app.programacion.sidebar-link href="{{ route('programacion.pago') }}" :active="request()->routeIs('programacion.pago')">
             @slot('icon')
                 <svg class="icon-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -55,14 +56,14 @@
             @endslot
             Pagos
             @slot('fechas')
-                    @if($pago)
-                        {{$pago->fecha_inicio->format('d')}}
-                        de {{$meses[intval($pago->fecha_inicio_estudiante->format('m'))]}} -
-                        {{$pago->fecha_fin_pago->format('d')}}
-                        de {{$meses[intval($pago->fecha_fin_pago->format('m'))]}}
-                    @else
-                        Aun no hay fecha programadas
-                    @endif
+                @if($pagos)
+                    {{$pagos->fecha_inicio_pago->format('d')}}
+                    de {{$meses[intval($pagos->fecha_inicio_pago->format('m'))]}} -
+                    {{$pagos->fecha_fin_pago->format('d')}}
+                    de {{$meses[intval($pagos->fecha_fin_pago->format('m'))]}}
+                @else
+                    Aun no hay fecha programadas
+                @endif
             @endslot
         </x-app.programacion.sidebar-link>
     </x-sidebar.group>

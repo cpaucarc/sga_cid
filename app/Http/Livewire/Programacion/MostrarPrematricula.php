@@ -23,21 +23,25 @@ class MostrarPrematricula extends Component
         $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
         $this->anio_actual = Carbon::now()->year;
 
+        $this->mensual = Mensual::where('esta_activo', true)->first();
+
         if ($this->mensual) {
-            $this->fecha_inicio = $this->mensual->fecha_inicio_clases->format('Y-m-d');
-        } else {
-            $this->fecha_inicio = Carbon::now()->startOfMonth()->format('Y-m-d');
+            $this->fecha_inicio = $this->mensual->fecha_inicio_clases->sub(5, 'day')->format('Y-m-d');
+            $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(5, 'day')->format('Y-m-d');
         }
-        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(5, 'day')->format('Y-m-d');
     }
 
     public function render()
     {
-        $this->mensual = Mensual::where('esta_activo', true)->first();
         if ($this->mensual) {
             $this->prematricula = Prematricula::where('mensual_id', $this->mensual->id)->first();
         }
         return view('livewire.programacion.mostrar-prematricula');
+    }
+
+    public function updatedFechaInicio()
+    {
+        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(5, 'day')->format('Y-m-d');
     }
 
     public function crear()

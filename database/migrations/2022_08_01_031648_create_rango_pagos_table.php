@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('rango_pagos', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio_estudiante');
+            $table->date('fecha_inicio_pago');
             $table->date('fecha_fin_pago');
             $table->date('fecha_inicio_revision');
             $table->date('fecha_fin_revision');

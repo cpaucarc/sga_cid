@@ -5,16 +5,16 @@
                 Año: {{$anio_actual}}
             </div>
         </div>
-        @if($prematricula)
+        @if($matricula)
             <x-alerta>
-                La prematrícula comienza el
+                La matrícula comienza el
                 <span class="font-bold whitespace-nowrap">
-                    {{$prematricula->fecha_inicio->format('d')}}
-                        de {{$meses[intval($prematricula->fecha_inicio->format('m'))]}}
+                    {{$matricula->fecha_inicio->format('d')}}
+                        de {{$meses[intval($matricula->fecha_inicio->format('m'))]}}
                 </span> y finaliza el
                 <span class="font-bold whitespace-nowrap">
-                   {{$prematricula->fecha_fin->format('d')}}
-                        de {{$meses[intval($prematricula->fecha_fin->format('m'))]}}
+                   {{$matricula->fecha_fin->format('d')}}
+                        de {{$meses[intval($matricula->fecha_fin->format('m'))]}}
                 </span>.
             </x-alerta>
         @else
@@ -22,17 +22,17 @@
                 <x-alerta>
                     En este mes de <span
                         class="font-bold whitespace-nowrap">{{$meses[intval($mensual->fecha_inicio_clases->format('m'))]}}</span>,
-                    aún no programa fechas de <span class="font-bold whitespace-nowrap">prematrícula</span>.
+                    aún no programa fechas de <span class="font-bold whitespace-nowrap">matrícula</span>.
                 </x-alerta>
                 <div class="flex gap-x-6">
                     <div class="w-full">
-                        <x-jet-label for="fecha_inicio" value="Inicio de prematrícula"/>
+                        <x-jet-label for="fecha_inicio" value="Inicio de matrícula"/>
                         <x-jet-input type="date" class="mt-1 block w-full"
                                      wire:model="fecha_inicio" autocomplete="off"/>
                         <x-jet-input-error for="fecha_inicio"/>
                     </div>
                     <div class="w-full">
-                        <x-jet-label for="fecha_fin" value="Fin de prematrícula"/>
+                        <x-jet-label for="fecha_fin" value="Fin de matrícula"/>
                         <x-jet-input type="date" class="mt-1 block w-full"
                                      wire:model="fecha_fin" autocomplete="off"/>
                         <x-jet-input-error for="fecha_fin"/>
@@ -51,7 +51,7 @@
         <x-message-image>
             <x-slot:title>Aún no agrega ningún mes</x-slot:title>
             <x-slot:description>
-                Aquí se mostrará las fechas programadas para la prematrícula.
+                Aquí se mostrará las fechas programadas para la matrícula.
             </x-slot:description>
             {{--<x-slot:image>{{ asset('images/logo_cid.svg')  }}</x-slot:image>--}}
         </x-message-image>
