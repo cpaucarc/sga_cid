@@ -57,6 +57,7 @@ class CrearMensuales extends Component
                     'clase_modalidad_id' => $this->modalidad,
                     'mes_id' => Carbon::parse($this->fecha_inicio)->month
                 ]);
+                $msg = 'Creado con éxito.';
             } else {
                 $mensual->update([
                     'fecha_inicio_clases' => $this->fecha_inicio,
@@ -66,9 +67,9 @@ class CrearMensuales extends Component
                     'clase_modalidad_id' => $this->modalidad,
                     'mes_id' => Carbon::parse($this->fecha_inicio)->month
                 ]);
+                $msg = 'Actualizado con éxito.';
             }
-            $msg = 'Mes creado satisfactoriamente, ahora puede activar y programar eventos.';
-            $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
+            $this->emit('guardado', $msg);
             return redirect()->route('programacion.mensual.index');
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);

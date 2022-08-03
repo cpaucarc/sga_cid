@@ -77,11 +77,10 @@ class MostrarPago extends Component
                 'fecha_fin_validacion' => $this->fecha_fin_validacion,
                 'mensual_id' => $this->mensual->id
             ]);
-            $msg = 'Fecha de pagos programado correctamente';
-            $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
+            $msg = 'Programado correctamente.';
+            $this->emit('guardado', $msg);
             return redirect()->route('programacion.pago');
 //            $this->emitTo('programacion.programacion-sidebar', 'render');
-
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);
         }

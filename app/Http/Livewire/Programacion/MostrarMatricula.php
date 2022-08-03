@@ -48,17 +48,15 @@ class MostrarMatricula extends Component
     {
         $this->validate();
         try {
-
             Matricula::create([
                 'fecha_inicio' => $this->fecha_inicio,
                 'fecha_fin' => $this->fecha_fin,
                 'mensual_id' => $this->mensual->id
             ]);
-            $msg = 'Fecha de matricula programado correctamente';
-            $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
+            $msg = 'Programado correctamente.';
+            $this->emit('guardado', $msg);
             return redirect()->route('programacion.matricula');
 //            $this->emitTo('programacion.programacion-sidebar', 'render');
-
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);
         }
