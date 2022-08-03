@@ -44,7 +44,7 @@ class MostrarMatricula extends Component
         $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(5, 'day')->format('Y-m-d');
     }
 
-    public function crear()
+    public function crearMatricula()
     {
         $this->validate();
         try {
@@ -56,8 +56,8 @@ class MostrarMatricula extends Component
             ]);
             $msg = 'Fecha de matricula programado correctamente';
             $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
-//            return redirect()->route('programacion.prematricula');
-            $this->emitTo('programacion.programacion-sidebar', 'render');
+            return redirect()->route('programacion.matricula');
+//            $this->emitTo('programacion.programacion-sidebar', 'render');
 
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);

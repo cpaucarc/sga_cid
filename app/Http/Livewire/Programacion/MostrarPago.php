@@ -64,7 +64,7 @@ class MostrarPago extends Component
         $this->fecha_fin_validacion = Carbon::parse($this->fecha_inicio_validacion)->add(2, 'day')->format('Y-m-d');
     }
 
-    public function crear()
+    public function crearPagos()
     {
         $this->validate();
         try {
@@ -79,8 +79,8 @@ class MostrarPago extends Component
             ]);
             $msg = 'Fecha de pagos programado correctamente';
             $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
-//            return redirect()->route('programacion.prematricula');
-            $this->emitTo('programacion.programacion-sidebar', 'render');
+            return redirect()->route('programacion.pago');
+//            $this->emitTo('programacion.programacion-sidebar', 'render');
 
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);

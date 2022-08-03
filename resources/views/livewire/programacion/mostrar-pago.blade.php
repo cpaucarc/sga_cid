@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <x-jet-button wire:click="crear" wire:target="crear"
+                    <x-jet-button wire:click="crearPagos" wire:target="crearPagos"
                                   wire:loading.class="cursor-wait" wire:loading.attr="disabled">
                         {{ __('Crear') }}
                     </x-jet-button>
