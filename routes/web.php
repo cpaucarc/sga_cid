@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\ProgramacionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::prefix('idiomas')->controller(CursoController::class)->group(function () {
         Route::get('dictables', 'index')->name('curso.index');
         Route::get('cursos/{id?}', 'cursos')->name('curso.cursos');
+    });
+
+    Route::prefix('programacion')->controller(ProgramacionController::class)->group(function () {
+        Route::get('mensual', 'index')->name('programacion.mensual.index');
     });
 
 });
