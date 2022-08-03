@@ -4,10 +4,10 @@
             <livewire:programacion.info-programacion/>
         @endslot
 
-        <livewire:programacion.crear-mensuales/>
+        <livewire:programacion.mostrar-prematricula/>
 
         @slot('sidebar')
-                <livewire:programacion.programacion-sidebar/>
-            @endslot
+            <livewire:programacion.programacion-sidebar/>
+        @endslot
     </x-app.programacion.grid>
 </x-app-layout>

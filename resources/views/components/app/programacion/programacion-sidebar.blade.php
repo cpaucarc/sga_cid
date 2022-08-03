@@ -20,6 +20,9 @@
             </svg>
         @endslot
         Matrícula
+        @slot('fechas')
+            24 de agosto - 30 de agosto
+        @endslot
     </x-app.programacion.sidebar-link>
 </x-sidebar.group>
 

@@ -15,6 +15,10 @@
                 @endif
             </div>
         </div>
-        <p class="text-xs font-light text-gray-400 hover:text-gray-600 soft-transition">24 de agosto - 26 agosto</p>
+        <p class="text-xs font-light text-gray-400 hover:text-gray-600 soft-transition">
+            @if(isset($fechas))
+                {{ $fechas }}
+            @endif
+        </p>
     </a>
 </div>

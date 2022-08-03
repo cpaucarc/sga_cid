@@ -34,6 +34,7 @@ class ListaMeses extends Component
         Mensual::where('id', '<>', $mensual_id)->update(['esta_activo' => false]);
         Mensual::where('id', '=', $mensual_id)->update(['esta_activo' => true]);
         $this->emitTo('programacion.info-programacion', 'render');
+        $this->emitTo('programacion.programacion-sidebar', 'render');
     }
 
     public function mostrarInfo($mensual_id)

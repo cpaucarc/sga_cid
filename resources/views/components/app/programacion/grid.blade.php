@@ -6,8 +6,6 @@
         {{ $slot }}
     </div>
     <div class="col-span-3">
-        <div class="flex flex-col items-start gap-y-6 divide-slate-200 divide-y">
-            {{ $sidebar }}
-        </div>
+        {{ $sidebar }}
     </div>
 </div>

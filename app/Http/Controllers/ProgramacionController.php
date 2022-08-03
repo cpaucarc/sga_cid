@@ -15,4 +15,9 @@ class ProgramacionController extends Controller
     {
         return view('programacion.formulario-crear-mensuales');
     }
+
+    public function prematricula()
+    {
+        return view('programacion.prematricula');
+    }
 }
