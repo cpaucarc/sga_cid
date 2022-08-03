@@ -73,7 +73,7 @@
     }
 
     .select {
-        @apply pl-2 pr-8 py-1.5 text-sm rounded-md soft-transition bg-slate-50 border border-slate-300 text-slate-700 focus:text-slate-900 focus:bg-white focus:border-blue-600 focus:ring-blue-600;
+        @apply pl-2 pr-8 py-1.5 text-sm rounded-md soft-transition bg-white border border-slate-300 text-slate-700 focus:text-slate-900 focus:bg-white focus:border-blue-600 focus:ring-blue-600;
     }
 }
 
