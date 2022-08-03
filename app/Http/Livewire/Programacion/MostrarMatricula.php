@@ -3,15 +3,15 @@
 namespace App\Http\Livewire\Programacion;
 
 use App\Constants\Constants;
+use App\Models\Matricula;
 use App\Models\Mensual;
-use App\Models\Prematricula;
 use Carbon\Carbon;
 use Livewire\Component;
 
-class MostrarPrematricula extends Component
+class MostrarMatricula extends Component
 {
     public $meses, $anio_actual;
-    public $mensual, $prematricula;
+    public $mensual, $matricula;
 
     protected $rules = [
         'fecha_inicio' => 'required|date|before:fecha_fin',
@@ -26,7 +26,7 @@ class MostrarPrematricula extends Component
         $this->mensual = Mensual::where('esta_activo', true)->first();
 
         if ($this->mensual) {
-            $this->fecha_inicio = $this->mensual->fecha_inicio_clases->sub(5, 'day')->format('Y-m-d');
+            $this->fecha_inicio = $this->mensual->fecha_inicio_clases->format('Y-m-d');
             $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(5, 'day')->format('Y-m-d');
         }
     }
@@ -34,9 +34,9 @@ class MostrarPrematricula extends Component
     public function render()
     {
         if ($this->mensual) {
-            $this->prematricula = Prematricula::where('mensual_id', $this->mensual->id)->first();
+            $this->matricula = Matricula::where('mensual_id', $this->mensual->id)->first();
         }
-        return view('livewire.programacion.mostrar-prematricula');
+        return view('livewire.programacion.mostrar-matricula');
     }
 
     public function updatedFechaInicio()
@@ -49,12 +49,12 @@ class MostrarPrematricula extends Component
         $this->validate();
         try {
 
-            Prematricula::create([
+            Matricula::create([
                 'fecha_inicio' => $this->fecha_inicio,
                 'fecha_fin' => $this->fecha_fin,
                 'mensual_id' => $this->mensual->id
             ]);
-            $msg = 'Fecha de prematricula programado correctamente';
+            $msg = 'Fecha de matricula programado correctamente';
             $this->emit('guardado', ['titulo' => 'Programación', 'mensaje' => $msg]);
 //            return redirect()->route('programacion.prematricula');
             $this->emitTo('programacion.programacion-sidebar', 'render');

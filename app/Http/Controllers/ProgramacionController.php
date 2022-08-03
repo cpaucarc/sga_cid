@@ -20,4 +20,9 @@ class ProgramacionController extends Controller
     {
         return view('programacion.prematricula');
     }
+
+    public function matricula()
+    {
+        return view('programacion.matricula');
+    }
 }
