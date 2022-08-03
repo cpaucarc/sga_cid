@@ -25,7 +25,7 @@
             <x-alerta>
                 Este idioma esta declarado con una duración de
                 <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses  }} meses</span>,
-                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses }} meses</span>,
+                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses }} cursos</span>,
                 sin embargo, actualmente tiene <span class="font-bold whitespace-nowrap">{{ count($cursos) }} cursos registrados.</span>
             </x-alerta>
 
@@ -63,7 +63,7 @@
                     - {{ $modalidad->nombre }}
                 </x-table.column>
                 <x-table.column class="text-center"><b>{{ $ciclos[$curso->ciclo_id] }}</b></x-table.column>
-                <x-table.column>{{ $curso->aforo_maximo }} estudiantes</x-table.column>
+                <x-table.column>Max. {{ $curso->aforo_maximo }} estudiantes</x-table.column>
                 <x-table.column>
                     <x-jet-secondary-button wire:click="editarCurso({{ $curso }})" class="btn-state-transparent">
                         Editar
