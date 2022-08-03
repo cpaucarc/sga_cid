@@ -25,4 +25,9 @@ class ProgramacionController extends Controller
     {
         return view('programacion.matricula');
     }
+
+    public function pago()
+    {
+        return view('programacion.pago');
+    }
 }

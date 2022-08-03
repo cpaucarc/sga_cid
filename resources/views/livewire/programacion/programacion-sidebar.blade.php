@@ -47,7 +47,7 @@
     </x-sidebar.group>
 
     <x-sidebar.group class="pt-4">
-        <x-app.programacion.sidebar-link href="{{ route('curso.index') }}" :active="request()->routeIs('curso.index')">
+        <x-app.programacion.sidebar-link href="{{ route('programacion.pago') }}" :active="request()->routeIs('programacion.pago')">
             @slot('icon')
                 <svg class="icon-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -57,7 +57,7 @@
             Pagos
             @slot('fechas')
                 @if($pago)
-                    {{$pago->fecha_inicio->format('d')}}
+                    {{$pago->fecha_inicio_estudiante->format('d')}}
                     de {{$meses[intval($pago->fecha_inicio_estudiante->format('m'))]}} -
                     {{$pago->fecha_fin_pago->format('d')}}
                     de {{$meses[intval($pago->fecha_fin_pago->format('m'))]}}

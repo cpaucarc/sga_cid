@@ -36,6 +36,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('mensual/crear', 'crearMensual')->name('programacion.mensual.crear');
         Route::get('prematricula', 'prematricula')->name('programacion.prematricula');
         Route::get('matricula', 'matricula')->name('programacion.matricula');
+        Route::get('pago', 'pago')->name('programacion.pago');
     });
 
 });
