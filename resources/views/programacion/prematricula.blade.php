@@ -7,7 +7,7 @@
         <livewire:programacion.mostrar-prematricula/>
 
         @slot('sidebar')
-            <livewire:programacion.programacion-sidebar/>
+            <livewire:programacion.sidebar/>
         @endslot
     </x-app.programacion.grid>
 </x-app-layout>

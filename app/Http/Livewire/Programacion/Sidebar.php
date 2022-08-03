@@ -9,7 +9,7 @@ use App\Models\Prematricula;
 use App\Models\RangoPago;
 use Livewire\Component;
 
-class ProgramacionSidebar extends Component
+class Sidebar extends Component
 {
     public $meses;
     public $prematricula, $matricula, $pagos;
@@ -29,6 +29,6 @@ class ProgramacionSidebar extends Component
             $this->matricula = Matricula::where('mensual_id', $mensual->id)->first();
             $this->pagos = RangoPago::where('mensual_id', $mensual->id)->first();
         }
-        return view('livewire.programacion.programacion-sidebar');
+        return view('livewire.programacion.sidebar');
     }
 }
