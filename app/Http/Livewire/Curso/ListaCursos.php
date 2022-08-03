@@ -23,7 +23,13 @@ class ListaCursos extends Component
         $this->ciclos = Constants::ciclos()->pluck('nombre', 'id')->all();
         $this->niveles = Constants::idioma_niveles()->pluck('nombre', 'id')->all();
         $this->idiomas = Idioma::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
-        $this->modalidades = Modalidad::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
+
+        foreach (Modalidad::query()->orderBy('nombre')->get() as $mod) {
+            $this->modalidades[$mod->id] = [
+                'nombre' => $mod->nombre,
+                'duracion_meses' => $mod->duracion_meses
+            ];
+        }
 
         $this->dictable = IdiomaDictable::query()->find($id);
 

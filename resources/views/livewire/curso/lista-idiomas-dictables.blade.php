@@ -18,7 +18,7 @@
         <x-forms.select wire:model="modalidad">
             <option value="0">Todas las modalidades</option>
             @foreach($modalidades as $idm => $mdl)
-                <option value="{{ $idm }}">{{ $mdl }}</option>
+                <option value="{{ $idm }}">{{ $mdl['nombre'] }}</option>
             @endforeach
         </x-forms.select>
     </div>
@@ -27,9 +27,7 @@
         @slot('head')
             <x-table.head>Código</x-table.head>
             <x-table.head>Pre-requisito</x-table.head>
-            <x-table.head>Idioma</x-table.head>
-            <x-table.head>Nivel</x-table.head>
-            <x-table.head>Modalidad</x-table.head>
+            <x-table.head>Idioma - Nivel - Modalidad</x-table.head>
             <x-table.head class="text-right">Precio Mensual</x-table.head>
             <x-table.head>Duración</x-table.head>
             <x-table.head class="text-center">Cursos</x-table.head>
@@ -40,11 +38,14 @@
             <x-table.row>
                 <x-table.column class="uppercase">{{ $idioma_dictable->codigo }}</x-table.column>
                 <x-table.column class="uppercase">{{ $idioma_dictable->requisito ?? '---' }}</x-table.column>
-                <x-table.column>{{ $idiomas[$idioma_dictable->idioma_id] }}</x-table.column>
-                <x-table.column>{{ $niveles[$idioma_dictable->idioma_nivel_id] }}</x-table.column>
-                <x-table.column>{{ $modalidades[$idioma_dictable->modalidad_id] }}</x-table.column>
+                <x-table.column class="whitespace-nowrap">
+                    {{ $idiomas[$idioma_dictable->idioma_id] }} {{ $niveles[$idioma_dictable->idioma_nivel_id] }}
+                    - {{ $modalidades[$idioma_dictable->modalidad_id]['nombre'] }}
+                </x-table.column>
                 <x-table.column class="text-right">S/. {{ $idioma_dictable->precio_mensual }}</x-table.column>
-                <x-table.column>{{ $idioma_dictable->duracion_meses }} meses</x-table.column>
+                <x-table.column>
+                    {{ $modalidades[$idioma_dictable->modalidad_id]['duracion_meses'] }} meses
+                </x-table.column>
                 <x-table.column>
                     <x-links.secondary
                         class="{{ $idioma_dictable->cursos_count == 0 ? 'btn-state-danger' :

@@ -11,14 +11,20 @@ use Livewire\Component;
 class ListaIdiomasDictables extends Component
 {
     public $niveles = null, $nivel = 0;
-    public $idiomas = null, $idioma = 0;
+    public $idiomas = null, $idioma = 1;
     public $modalidades = null, $modalidad = 0;
 
     public function mount()
     {
         $this->niveles = Constants::idioma_niveles()->pluck('nombre', 'id')->all();
         $this->idiomas = Idioma::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
-        $this->modalidades = Modalidad::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
+
+        foreach (Modalidad::query()->orderBy('nombre')->get() as $mod) {
+            $this->modalidades[$mod->id] = [
+                'nombre' => $mod->nombre,
+                'duracion_meses' => $mod->duracion_meses
+            ];
+        }
     }
 
     public function render()

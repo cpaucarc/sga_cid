@@ -1,45 +1,48 @@
 <div class="space-y-6">
 
     <x-titulo
-        titulo="Idioma: {{ $idiomas[$dictable->idioma_id] }} {{ $niveles[$dictable->idioma_nivel_id] }} - {{ $modalidades[$dictable->modalidad_id] }}">
+        titulo="Idioma: {{ $idiomas[$dictable->idioma_id] }} {{ $niveles[$dictable->idioma_nivel_id] }} - {{ $modalidades[$dictable->modalidad_id]['nombre'] }}">
         @slot('subtitulo')
             <div class="rounded-md text-sm text-slate-700 flex flex-wrap gap-6 mt-2 relative">
                 @if(!is_null($requisito))
                     <a href="{{ route('curso.cursos', $requisito->id) }}"
                        class="text-blue-600 hover:text-blue-700 hover:underline soft-transition">
-                        <b>Pre-requisito:</b> {{ $idiomas[$requisito->idioma_id] . ' ' .  $niveles[$requisito->idioma_nivel_id] . ' - ' . $modalidades[$requisito->modalidad_id] }}
+                        <b>Pre-requisito:</b> {{ $idiomas[$requisito->idioma_id] . ' ' .  $niveles[$requisito->idioma_nivel_id] . ' - ' . $modalidades[$requisito->modalidad_id]['nombre'] }}
                     </a>
                 @else
                     <p><b>Pre-requisito:</b> Ninguno</p>
                 @endif
 
-                <p><b>Duracion:</b> {{ $dictable->duracion_meses }} meses</p>
+                <p><b>Duracion:</b> {{ $modalidades[$dictable->modalidad_id]['duracion_meses'] }} meses</p>
 
                 <p><b>Precio mensual:</b> S/. {{ $dictable->precio_mensual }}</p>
             </div>
         @endslot
     </x-titulo>
 
+    @if(count($cursos) != $modalidades[$dictable->modalidad_id]['duracion_meses'])
+        <div class="space-y-2">
+            <x-alerta>
+                Este idioma esta declarado con una duración de
+                <span class="font-bold whitespace-nowrap">{{ $modalidades[$dictable->modalidad_id]['duracion_meses']  }} meses</span>,
+                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $modalidades[$dictable->modalidad_id]['duracion_meses'] }} meses</span>,
+                sin embargo, actualmente tiene <span class="font-bold whitespace-nowrap">{{ count($cursos) }} cursos registrados.</span>
+            </x-alerta>
 
-    <div class="space-y-2">
-        <x-alerta>
-            Este idioma esta declarado con una duración de <b>{{ $dictable->duracion_meses }} meses</b>, por lo que
-            deberia de contar con <b>{{ $dictable->duracion_meses }} cursos</b>, sin
-            embargo, actualmente tiene <b>{{ count($cursos) }} cursos registrados.</b>
-        </x-alerta>
+            <div class="flex justify-center gap-x-4">
+                @if(count($cursos) == 0)
+                    <x-jet-secondary-button class="btn-state-danger">
+                        Agregar cursos automaticamente
+                    </x-jet-secondary-button>
+                @endif
 
-        <div class="flex justify-center gap-x-4">
-            <x-jet-secondary-button class="btn-state-danger">
-                Agregar cursos automaticamente
-            </x-jet-secondary-button>
-
-            <x-jet-secondary-button class="btn-state-default">
-                Agregar curso manualmente
-            </x-jet-secondary-button>
+                <x-jet-secondary-button class="btn-state-default">
+                    Agregar curso manualmente
+                </x-jet-secondary-button>
+            </div>
+            <br>
         </div>
-        <br>
-    </div>
-
+    @endif
 
     <x-table.table>
         @slot('head')
