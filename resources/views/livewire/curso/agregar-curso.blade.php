@@ -71,10 +71,6 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-buttons.outline>
-                Cancelar
-            </x-buttons.outline>
-
             <x-buttons.save target="guardarCurso"/>
         </x-slot>
     </x-jet-dialog-modal>

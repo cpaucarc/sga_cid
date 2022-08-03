@@ -56,10 +56,6 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-buttons.outline>
-                Cancelar
-            </x-buttons.outline>
-
             <x-buttons.save target="guardarDictable"/>
         </x-slot>
     </x-jet-dialog-modal>
