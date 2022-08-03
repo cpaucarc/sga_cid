@@ -1,0 +1,32 @@
+.colored-toast.swal2-icon-success {
+    background-color: #bef264 !important;
+}
+
+.colored-toast.swal2-icon-error {
+    background-color: #fda4af !important;
+}
+
+.colored-toast.swal2-icon-warning {
+    background-color: #fcd34d !important;
+}
+
+.colored-toast.swal2-icon-info {
+    background-color: #7dd3fc !important;
+}
+
+.colored-toast.swal2-icon-question {
+    background-color: #a5b4fc !important;
+}
+
+.colored-toast .swal2-title {
+    color: #0F172A;
+    line-height: 1.15;
+}
+
+.colored-toast .swal2-close {
+    color: #0F172A;
+}
+
+.colored-toast .swal2-html-container {
+    color: #0F172A;
+}
