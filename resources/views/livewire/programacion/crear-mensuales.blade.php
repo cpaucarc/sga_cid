@@ -1,5 +1,5 @@
 <div>
-    <div class="space-y-4 px-4">
+    <div class="space-y-4">
         <div class="flex gap-x-6">
             <div class="w-full">
                 <x-jet-label for="fecha_inicio" value="Inicio de clases"/>
@@ -27,8 +27,7 @@
             </div>
             <div class="w-full">
                 <x-jet-label for="mes" value="Mes"/>
-                <x-jet-input type="text" class="mt-1 block w-full" disabled
-                             wire:model="mes" autocomplete="off"/>
+                <x-jet-input type="text" class="mt-1 block w-full" disabled wire:model="mes" autocomplete="off"/>
                 <x-jet-input-error for="mes"/>
             </div>
         </div>

@@ -12,7 +12,6 @@ class CrearMensuales extends Component
     public $fecha_inicio, $fecha_fin;
     public $modalidades = null, $modalidad = 0;
     public $meses = null, $mes = null;
-    public $prueba;
 
     protected $rules = [
         'fecha_inicio' => 'required|date|before:fecha_fin',
@@ -23,7 +22,7 @@ class CrearMensuales extends Component
     public function mount()
     {
         $this->fecha_inicio = Carbon::now()->startOfMonth()->format('Y-m-d');
-        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(31, 'day')->format('Y-m-d');
+        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(30, 'day')->format('Y-m-d');
 
         $this->modalidades = Constants::clase_modalidades()->pluck('nombre', 'id')->all();
         $this->modalidad = Constants::clase_modalidades()->first()['id'];
@@ -39,7 +38,7 @@ class CrearMensuales extends Component
 
     public function updatedFechaInicio()
     {
-        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(31, 'day')->format('Y-m-d');
+        $this->fecha_fin = Carbon::parse($this->fecha_inicio)->add(30, 'day')->format('Y-m-d');
         $this->mes = $this->meses[Carbon::parse($this->fecha_inicio)->month];
     }
 
