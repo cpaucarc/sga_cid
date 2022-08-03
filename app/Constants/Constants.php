@@ -15,6 +15,7 @@ class Constants
     public static function ciclos()
     {
         return collect([
+            // Ciclo Normal
             collect(['id' => 1, 'nombre' => 'I']),
             collect(['id' => 2, 'nombre' => 'II']),
             collect(['id' => 3, 'nombre' => 'III']),
@@ -25,6 +26,12 @@ class Constants
             collect(['id' => 8, 'nombre' => 'VIII']),
             collect(['id' => 9, 'nombre' => 'IX']),
             collect(['id' => 10, 'nombre' => 'X']),
+            // Ciclo Acelerado
+            collect(['id' => 11, 'nombre' => 'I y II']),
+            collect(['id' => 12, 'nombre' => 'III y IV']),
+            collect(['id' => 13, 'nombre' => 'V y VI']),
+            collect(['id' => 14, 'nombre' => 'VII y VIII']),
+            collect(['id' => 15, 'nombre' => 'IX y X']),
         ]);
     }
 
