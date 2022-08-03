@@ -16,29 +16,23 @@ class ListaCursos extends Component
     public $dictable = null, $requisito = null;
     public $ciclos = null;
     public $niveles = null, $nivel = 0;
-    public $idiomas = null, $idioma = 1;
+    public $idioma_nombre = "";
     public $modalidades = null, $modalidad = 0;
 
-    public $listeners = ['generarCursosAutomaticamente'];
+    public $listeners = ['generarCursosAutomaticamente', 'render'];
 
     public function mount($id = 1)
     {
-        $this->ciclos = Constants::ciclos()->pluck('nombre', 'id')->all();
-        $this->niveles = Constants::idioma_niveles()->pluck('nombre', 'id')->all();
-        $this->idiomas = Idioma::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
-
-        foreach (Modalidad::query()->orderBy('nombre')->get() as $mod) {
-            $this->modalidades[$mod->id] = [
-                'nombre' => $mod->nombre,
-                'duracion_meses' => $mod->duracion_meses
-            ];
-        }
-
         $this->dictable = IdiomaDictable::query()->find($id);
-
         if (!is_null($this->dictable) && !is_null($this->dictable->requisito)) {
             $this->requisito = IdiomaDictable::query()->where('codigo', $this->dictable->requisito)->first();
         }
+
+        $this->ciclos = Constants::ciclos()->pluck('nombre', 'id')->all();
+        $this->niveles = Constants::idioma_niveles()->pluck('nombre', 'id')->all();
+        $this->idioma_nombre = Idioma::query()->find($this->dictable->idioma_id)->nombre;
+
+        $this->modalidad = Modalidad::query()->find($this->dictable->modalidad_id);
 
     }
 
@@ -91,6 +85,16 @@ class ListaCursos extends Component
         ]);
 
         $this->emit('guardado', count($cursos_generados) . ' cursos generados automaticamente.');
+    }
+
+    public function agregarCurso()
+    {
+        $this->emitTo('curso.agregar-curso', 'abrirModalNuevo');
+    }
+
+    public function editarCurso($c)
+    {
+        $this->emitTo('curso.agregar-curso', 'abrirModalEditar', ['curso' => $c]);
     }
 
 }
