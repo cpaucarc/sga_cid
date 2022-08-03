@@ -56,11 +56,11 @@
             @endslot
             Pagos
             @slot('fechas')
-                @if($pago)
-                    {{$pago->fecha_inicio_estudiante->format('d')}}
-                    de {{$meses[intval($pago->fecha_inicio_estudiante->format('m'))]}} -
-                    {{$pago->fecha_fin_pago->format('d')}}
-                    de {{$meses[intval($pago->fecha_fin_pago->format('m'))]}}
+                @if($pagos)
+                    {{$pagos->fecha_inicio_pago->format('d')}}
+                    de {{$meses[intval($pagos->fecha_inicio_pago->format('m'))]}} -
+                    {{$pagos->fecha_fin_pago->format('d')}}
+                    de {{$meses[intval($pagos->fecha_fin_pago->format('m'))]}}
                 @else
                     Aun no hay fecha programadas
                 @endif

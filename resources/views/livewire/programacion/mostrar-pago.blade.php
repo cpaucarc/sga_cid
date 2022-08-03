@@ -9,8 +9,8 @@
             <x-alerta>
                 La fecha de pagos comienza el
                 <span class="font-bold whitespace-nowrap">
-                    {{$pagos->fecha_inicio_estudiante->format('d')}}
-                        de {{$meses[intval($pagos->fecha_inicio_estudiante->format('m'))]}}
+                    {{$pagos->fecha_inicio_pago->format('d')}}
+                        de {{$meses[intval($pagos->fecha_inicio_pago->format('m'))]}}
                 </span> y finaliza el
                 <span class="font-bold whitespace-nowrap">
                    {{$pagos->fecha_fin_pago->format('d')}}

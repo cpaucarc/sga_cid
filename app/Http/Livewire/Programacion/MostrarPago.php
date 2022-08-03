@@ -69,7 +69,7 @@ class MostrarPago extends Component
         $this->validate();
         try {
             RangoPago::create([
-                'fecha_inicio_estudiante' => $this->fecha_inicio_pago,
+                'fecha_inicio_pago' => $this->fecha_inicio_pago,
                 'fecha_fin_pago' => $this->fecha_fin_pago,
                 'fecha_inicio_revision' => $this->fecha_inicio_revision,
                 'fecha_fin_revision' => $this->fecha_fin_revision,

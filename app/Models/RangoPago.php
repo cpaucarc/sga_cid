@@ -14,7 +14,7 @@ class RangoPago extends Model
     protected $guarded = ['id'];
 
     public $casts = [
-        'fecha_inicio_estudiante' => 'date',
+        'fecha_inicio_pago' => 'date',
         'fecha_fin_pago' => 'date',
         'fecha_inicio_revision' => 'date',
         'fecha_fin_revision' => 'date',
