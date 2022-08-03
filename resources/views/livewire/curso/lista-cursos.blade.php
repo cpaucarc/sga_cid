@@ -60,6 +60,7 @@
                 <x-table.column class="uppercase">{{ $curso->requisito ?? '---' }}</x-table.column>
                 <x-table.column>
                     <b>{{ $idiomas[$dictable->idioma_id] }}</b> - {{ $niveles[$dictable->idioma_nivel_id] }}
+                    - {{ $modalidades[$dictable->modalidad_id]['nombre'] }}
                 </x-table.column>
                 <x-table.column class="text-center"><b>{{ $ciclos[$curso->ciclo_id] }}</b></x-table.column>
                 <x-table.column>{{ $curso->aforo_maximo }} estudiantes</x-table.column>
@@ -75,6 +76,9 @@
 
     @push('js')
         <script>
+            Livewire.on('guardado', msg => {
+                sweetToast(msg, 'success');
+            });
 
             async function crearAutomaticamente() {
                 const rsta = await Swal.fire({
@@ -90,7 +94,7 @@
                 console.log(rsta)
 
                 if (rsta.isConfirmed) {
-                    sweetToast('Saved!', 'question');
+                    window.livewire.emit('generarCursosAutomaticamente');
                 }
             }
         </script>
