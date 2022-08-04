@@ -42,7 +42,14 @@
 
     @push('js')
         <script>
-
+            Livewire.on('guardado', msg => {
+                console.log('Guardado', msg)
+                sweetToast(msg, 'success');
+            });
+            Livewire.on('error', msg => {
+                console.log('Error', msg)
+                sweetToast(msg, 'error');
+            });
         </script>
     @endpush
 </div>
