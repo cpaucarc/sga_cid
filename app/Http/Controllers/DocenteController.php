@@ -15,4 +15,9 @@ class DocenteController extends Controller
     {
         return view('docente.formulario-registrar-docente');
     }
+
+    public function idiomas()
+    {
+        return view('docente.formulario-agregar-idioma');
+    }
 }
