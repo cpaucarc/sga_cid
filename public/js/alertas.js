@@ -20,3 +20,11 @@ function sweetToast(mensaje, icon = 'success') {
         title: `${mensaje}`
     })
 }
+
+function errorAlert(mensaje, titulo = null){
+    Swal.fire({
+        icon: 'error',
+        title: titulo,
+        html: mensaje
+    })
+}
