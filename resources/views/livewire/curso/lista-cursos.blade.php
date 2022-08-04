@@ -8,24 +8,25 @@
                     <a href="{{ route('curso.cursos', $requisito->id) }}"
                        class="text-blue-600 hover:text-blue-700 hover:underline soft-transition">
                         <b>Pre-requisito:</b> {{ $idioma_nombre . ' ' .  $niveles[$requisito->idioma_nivel_id] . ' - ' . $modalidad->nombre }}
+                        ({{ $requisito_cursos }} cursos)
                     </a>
                 @else
                     <p><b>Pre-requisito:</b> Ninguno</p>
                 @endif
 
-                <p><b>Duracion:</b> {{ $modalidad->duracion_meses }} meses</p>
+                <p><b>Duracion:</b> {{ $dictable->duracion_meses }} meses</p>
 
                 <p><b>Precio mensual:</b> S/. {{ $dictable->precio_mensual }}</p>
             </div>
         @endslot
     </x-titulo>
 
-    @if(count($cursos) != $modalidad->duracion_meses)
+    @if(count($cursos) != $dictable->duracion_meses)
         <div class="space-y-2">
             <x-alerta>
                 Este idioma esta declarado con una duración de
-                <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses  }} meses</span>,
-                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $modalidad->duracion_meses }} cursos</span>,
+                <span class="font-bold whitespace-nowrap">{{ $dictable->duracion_meses  }} meses</span>,
+                por lo que deberia de contar con <span class="font-bold whitespace-nowrap">{{ $dictable->duracion_meses }} cursos</span>,
                 sin embargo, actualmente tiene <span class="font-bold whitespace-nowrap">{{ count($cursos) }} cursos registrados.</span>
             </x-alerta>
 
@@ -83,6 +84,10 @@
         <script>
             Livewire.on('guardado', msg => {
                 sweetToast(msg, 'success');
+            });
+
+            Livewire.on('error', msg => {
+                errorAlert(msg);
             });
 
             async function crearAutomaticamente() {

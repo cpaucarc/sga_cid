@@ -20,7 +20,7 @@
         <x-forms.select wire:model="modalidad">
             <option value="0">Todas las modalidades</option>
             @foreach($modalidades as $idm => $mdl)
-                <option value="{{ $idm }}">{{ $mdl['nombre'] }}</option>
+                <option value="{{ $idm }}">{{ $mdl }}</option>
             @endforeach
         </x-forms.select>
     </div>
@@ -42,16 +42,16 @@
                 <x-table.column class="uppercase">{{ $idioma_dictable->requisito ?? '---' }}</x-table.column>
                 <x-table.column class="whitespace-nowrap">
                     {{ $idiomas[$idioma_dictable->idioma_id] }} {{ $niveles[$idioma_dictable->idioma_nivel_id] }}
-                    - {{ $modalidades[$idioma_dictable->modalidad_id]['nombre'] }}
+                    - {{ $modalidades[$idioma_dictable->modalidad_id] }}
                 </x-table.column>
                 <x-table.column class="text-right">S/. {{ $idioma_dictable->precio_mensual }}</x-table.column>
                 <x-table.column>
-                    {{ $modalidades[$idioma_dictable->modalidad_id]['duracion_meses'] }} meses
+                    {{ $idioma_dictable->duracion_meses }} meses
                 </x-table.column>
                 <x-table.column>
                     <x-links.secondary
                         class="{{ $idioma_dictable->cursos_count == 0 ? 'btn-state-danger' :
-                                 ($idioma_dictable->cursos_count < $modalidades[$idioma_dictable->modalidad_id]['duracion_meses'] ? 'btn-state-warning' : 'btn-state-transparent') }}"
+                                         ($idioma_dictable->cursos_count < $idioma_dictable->duracion_meses ? 'btn-state-warning' : 'btn-state-transparent') }}"
                         href="{{ route('curso.cursos', $idioma_dictable->id) }}">
                         {{ $idioma_dictable->cursos_count }} cursos
                     </x-links.secondary>
@@ -64,7 +64,6 @@
                 </x-table.column>
             </x-table.row>
         @endforeach
-
     </x-table.table>
 
     <livewire:curso.agregar-idioma-dictable :niveles="$niveles"

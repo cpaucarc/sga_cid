@@ -39,9 +39,7 @@
                             <option value="0">Todas las modalidades</option>
                         @endif
                         @foreach($modalidades as $idm => $mdl)
-                            <option value="{{ $idm }}">
-                                {{ $mdl['nombre'] }} ({{ $mdl['duracion_meses'] }} meses)
-                            </option>
+                            <option value="{{ $idm }}">{{ $mdl }}</option>
                         @endforeach
                     </x-forms.select>
                 </div>

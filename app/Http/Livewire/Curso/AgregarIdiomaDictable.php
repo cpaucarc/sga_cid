@@ -22,11 +22,9 @@ class AgregarIdiomaDictable extends Component
 
     public function mount($niveles, $idiomas, $modalidades)
     {
-        Log::info('Pre', ['niveles' => $niveles, 'idiomas' => $idiomas, 'modalidades' => $modalidades]);
         $this->niveles = $niveles;
         $this->idiomas = $idiomas;
         $this->modalidades = $modalidades;
-        Log::info('Post', ['niveles' => $this->niveles, 'idiomas' => $this->idiomas, 'modalidades' => $this->modalidades]);
     }
 
     public function render()
