@@ -21,12 +21,20 @@
         @apply w-6 h-6 flex-shrink-0;
     }
 
+    .icon-7 {
+        @apply w-7 h-7 flex-shrink-0;
+    }
+
     .icon-8 {
         @apply w-8 h-8 flex-shrink-0;
     }
 
     .icon-12 {
         @apply w-12 h-12 flex-shrink-0 ;
+    }
+
+    .avatar {
+        @apply rounded-full object-cover grid place-items-center;
     }
 
 
