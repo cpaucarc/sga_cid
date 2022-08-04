@@ -12,4 +12,14 @@ class Docente extends Model
     protected $table = 'docentes';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class);
+    }
+
+    public function idiomas()
+    {
+        return $this->belongsToMany(Idioma::class,'docente_idiomas');
+    }
 }
