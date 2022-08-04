@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+
+use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\MatriculaController;
+
 use App\Http\Controllers\ProgramacionController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,8 +43,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('pago', 'pago')->name('programacion.pago');
     });
 
-Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function (){
-    Route::get('prematricula', 'prematricula_director')->name('matriculas.prematricula.director');
-});
+    Route::prefix('docente')->controller(DocenteController::class)->group(function () {
+        Route::get('/', 'index')->name('docente.index');
+        Route::get('/registrar', 'registrar')->name('docente.registrar');
+        Route::get('/idiomas', 'idiomas')->name('docente.idiomas');
+    });
+
+   Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function (){
+       Route::get('prematricula', 'prematricula_director')->name('matriculas.prematricula.director');
+   });
 
 });
