@@ -40,8 +40,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('pago', 'pago')->name('programacion.pago');
     });
 
-Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function (){
-    Route::get('prematricula', 'prematricula_director')->name('matriculas.prematricula.director');
-});
+    Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function () {
+        Route::get('prematricula/{year?}/{month?}', 'prematricula_director')->name('matriculas.prematricula.director');
+    });
 
 });

@@ -6,14 +6,12 @@
 
         <div class="space-y-4">
 
-            <livewire:matricula.lista-prematricula-director />
-            <br>
+            <x-titulo titulo="{{'Prematrícula: ' . $titulo }}"/>
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur cum eaque eligendi iste
-                modi nemo nobis recusandae saepe sapiente. A commodi consequatur consequuntur, esse expedita sunt unde.
-                Explicabo, fugiat.
-            </p>
+            {{ $mensual }}
+
+            <livewire:matricula.lista-prematricula-director/>
+
         </div>
 
     </x-sidebar.grid>
