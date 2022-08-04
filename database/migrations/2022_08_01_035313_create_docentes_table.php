@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('docentes', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid', 45);
             $table->boolean('esta_activo')->default(true);
             $table->tinyInteger('docente_categoria_id'); // -127 ~ 127
             $table->tinyInteger('docente_condicion_id');

@@ -10,6 +10,7 @@ use App\Models\Pais;
 use App\Models\Persona;
 use App\Models\Provincia;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class RegistrarDocente extends Component
@@ -123,6 +124,7 @@ class RegistrarDocente extends Component
 
             // Registrar informacion CID
             Docente::create([
+                'uuid' => Str::uuid(),
                 'esta_activo' => true,
                 'persona_id' => $persona->id,
                 'docente_condicion_id' => $this->condicion,

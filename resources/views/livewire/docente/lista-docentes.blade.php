@@ -26,7 +26,7 @@
                     <x-table.column>
                         <x-links.secondary
                             class="{{ $docente->idiomas_count == 0 ? 'btn-state-danger' :'btn-state-transparent'}}"
-                            href="#">
+                            href="{{ route('docente.idiomas',$docente->uuid) }}">
                             {{$docente->idiomas_count}} idiomas
                         </x-links.secondary>
                     </x-table.column>
