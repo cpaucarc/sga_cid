@@ -15,13 +15,13 @@ return new class extends Migration {
         Schema::create('prematriculados', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_inscripcion');
-            $table->foreignId('persona_id')->constrained('personas')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->foreignId('curso_id')->constrained('cursos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->foreignId('prematricula_id')->constrained('prematriculas')
+            $table->foreignId('estudiante_id')->constrained('estudiantes')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId('mensual_id')->constrained('mensuales')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
         });
