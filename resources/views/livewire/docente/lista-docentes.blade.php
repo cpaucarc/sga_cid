@@ -27,7 +27,7 @@
                         <x-links.secondary
                             class="{{ $docente->idiomas_count == 0 ? 'btn-state-danger' :'btn-state-transparent'}}"
                             href="{{ route('docente.idiomas',$docente->uuid) }}">
-                            {{$docente->idiomas_count}} idiomas
+                            {{$docente->idiomas_count}} {{ $docente->idiomas_count == 1 ? "idioma" : "idiomas" }}
                         </x-links.secondary>
                     </x-table.column>
                     <x-table.column>
