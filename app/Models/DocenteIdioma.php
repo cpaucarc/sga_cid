@@ -12,4 +12,9 @@ class DocenteIdioma extends Model
     protected $table = 'docente_idiomas';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function idioma()
+    {
+        return $this->belongsTo(Idioma::class);
+    }
 }
