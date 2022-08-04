@@ -81,6 +81,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_jovenes_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 1,
                 "idioma_id" => 1
@@ -89,6 +90,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_jovenes_intermedio,
                 "requisito" => $uuid_ingles_jovenes_basico,
                 "precio_mensual" => 110,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 1,
                 "idioma_id" => 1
@@ -97,6 +99,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_jovenes_avanzado,
                 "requisito" => $uuid_ingles_jovenes_intermedio,
                 "precio_mensual" => 150,
+                'duracion_meses' => 6,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 1,
                 "idioma_id" => 1
@@ -105,6 +108,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_jovenes_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 1,
                 "idioma_id" => 2
@@ -113,6 +117,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_jovenes_intermedio,
                 "requisito" => $uuid_frances_jovenes_basico,
                 "precio_mensual" => 110,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 1,
                 "idioma_id" => 2
@@ -121,6 +126,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_jovenes_avanzado,
                 "requisito" => $uuid_frances_jovenes_intermedio,
                 "precio_mensual" => 150,
+                'duracion_meses' => 6,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 1,
                 "idioma_id" => 2
@@ -129,6 +135,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_jovenes_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 1,
                 "idioma_id" => 3
@@ -137,6 +144,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_jovenes_intermedio,
                 "requisito" => $uuid_italiano_jovenes_basico,
                 "precio_mensual" => 110,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 1,
                 "idioma_id" => 3
@@ -145,6 +153,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_jovenes_avanzado,
                 "requisito" => $uuid_italiano_jovenes_intermedio,
                 "precio_mensual" => 150,
+                'duracion_meses' => 6,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 1,
                 "idioma_id" => 3
@@ -153,6 +162,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_jovenes_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 1,
                 "idioma_id" => 4
@@ -161,6 +171,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_jovenes_intermedio,
                 "requisito" => $uuid_quechua_jovenes_basico,
                 "precio_mensual" => 110,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 1,
                 "idioma_id" => 4
@@ -169,6 +180,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_jovenes_avanzado,
                 "requisito" => $uuid_quechua_jovenes_intermedio,
                 "precio_mensual" => 150,
+                'duracion_meses' => 6,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 1,
                 "idioma_id" => 4
@@ -177,6 +189,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_jovenes_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 1,
                 "idioma_id" => 5
@@ -185,6 +198,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_jovenes_intermedio,
                 "requisito" => $uuid_aleman_jovenes_basico,
                 "precio_mensual" => 110,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 1,
                 "idioma_id" => 5
@@ -193,6 +207,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_jovenes_avanzado,
                 "requisito" => $uuid_aleman_jovenes_intermedio,
                 "precio_mensual" => 150,
+                'duracion_meses' => 6,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 1,
                 "idioma_id" => 5
@@ -201,6 +216,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_jovenes_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 1,
                 "idioma_id" => 6
@@ -209,6 +225,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_jovenes_intermedio,
                 "requisito" => $uuid_portugues_jovenes_basico,
                 "precio_mensual" => 110,
+                'duracion_meses' => 10,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 1,
                 "idioma_id" => 6
@@ -217,6 +234,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_jovenes_avanzado,
                 "requisito" => $uuid_portugues_jovenes_intermedio,
                 "precio_mensual" => 150,
+                'duracion_meses' => 6,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 1,
                 "idioma_id" => 6
@@ -225,6 +243,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_ninos_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 2,
                 "idioma_id" => 1
@@ -233,6 +252,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_ninos_intermedio,
                 "requisito" => $uuid_ingles_ninos_basico,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 2,
                 "idioma_id" => 1
@@ -241,6 +261,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_ninos_avanzado,
                 "requisito" => $uuid_ingles_ninos_intermedio,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 2,
                 "idioma_id" => 1
@@ -249,6 +270,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_ninos_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 2,
                 "idioma_id" => 2
@@ -257,6 +279,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_ninos_intermedio,
                 "requisito" => $uuid_frances_ninos_basico,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 2,
                 "idioma_id" => 2
@@ -265,6 +288,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_ninos_avanzado,
                 "requisito" => $uuid_frances_ninos_intermedio,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 2,
                 "idioma_id" => 2
@@ -273,6 +297,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_ninos_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 2,
                 "idioma_id" => 3
@@ -281,6 +306,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_ninos_intermedio,
                 "requisito" => $uuid_italiano_ninos_basico,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 2,
                 "idioma_id" => 3
@@ -289,6 +315,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_ninos_avanzado,
                 "requisito" => $uuid_italiano_ninos_intermedio,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 2,
                 "idioma_id" => 3
@@ -297,6 +324,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_ninos_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 2,
                 "idioma_id" => 4
@@ -305,6 +333,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_ninos_intermedio,
                 "requisito" => $uuid_quechua_ninos_basico,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 2,
                 "idioma_id" => 4
@@ -313,6 +342,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_ninos_avanzado,
                 "requisito" => $uuid_quechua_ninos_intermedio,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 2,
                 "idioma_id" => 4
@@ -321,6 +351,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_ninos_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 2,
                 "idioma_id" => 5
@@ -329,6 +360,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_ninos_intermedio,
                 "requisito" => $uuid_aleman_ninos_basico,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 2,
                 "idioma_id" => 5
@@ -337,6 +369,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_ninos_avanzado,
                 "requisito" => $uuid_aleman_ninos_intermedio,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 2,
                 "idioma_id" => 5
@@ -345,6 +378,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_ninos_basico,
                 "requisito" => null,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 2,
                 "idioma_id" => 6
@@ -353,6 +387,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_ninos_intermedio,
                 "requisito" => $uuid_portugues_ninos_basico,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 2,
                 "idioma_id" => 6
@@ -361,6 +396,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_ninos_avanzado,
                 "requisito" => $uuid_portugues_ninos_intermedio,
                 "precio_mensual" => 100,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 2,
                 "idioma_id" => 6
@@ -369,6 +405,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_acelerado_basico,
                 "requisito" => null,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 3,
                 "idioma_id" => 1
@@ -377,6 +414,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_acelerado_intermedio,
                 "requisito" => $uuid_ingles_acelerado_basico,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 3,
                 "idioma_id" => 1
@@ -385,6 +423,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_ingles_acelerado_avanzado,
                 "requisito" => $uuid_ingles_acelerado_intermedio,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 3,
                 "idioma_id" => 1
@@ -393,6 +432,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_acelerado_basico,
                 "requisito" => null,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 3,
                 "idioma_id" => 2
@@ -401,6 +441,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_acelerado_intermedio,
                 "requisito" => $uuid_frances_acelerado_basico,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 3,
                 "idioma_id" => 2
@@ -409,6 +450,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_frances_acelerado_avanzado,
                 "requisito" => $uuid_frances_acelerado_intermedio,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 3,
                 "idioma_id" => 2
@@ -417,6 +459,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_acelerado_basico,
                 "requisito" => null,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 3,
                 "idioma_id" => 3
@@ -425,6 +468,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_acelerado_intermedio,
                 "requisito" => $uuid_italiano_acelerado_basico,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 3,
                 "idioma_id" => 3
@@ -433,6 +477,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_italiano_acelerado_avanzado,
                 "requisito" => $uuid_italiano_acelerado_intermedio,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 3,
                 "idioma_id" => 3
@@ -441,6 +486,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_acelerado_basico,
                 "requisito" => null,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 3,
                 "idioma_id" => 4
@@ -449,6 +495,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_acelerado_intermedio,
                 "requisito" => $uuid_quechua_acelerado_basico,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 3,
                 "idioma_id" => 4
@@ -457,6 +504,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_quechua_acelerado_avanzado,
                 "requisito" => $uuid_quechua_acelerado_intermedio,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 3,
                 "idioma_id" => 4
@@ -465,6 +513,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_acelerado_basico,
                 "requisito" => null,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 3,
                 "idioma_id" => 5
@@ -473,6 +522,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_acelerado_intermedio,
                 "requisito" => $uuid_aleman_acelerado_basico,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 3,
                 "idioma_id" => 5
@@ -481,6 +531,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_aleman_acelerado_avanzado,
                 "requisito" => $uuid_aleman_acelerado_intermedio,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 3,
                 "idioma_id" => 5
@@ -489,6 +540,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_acelerado_basico,
                 "requisito" => null,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 1,
                 "modalidad_id" => 3,
                 "idioma_id" => 6
@@ -497,6 +549,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_acelerado_intermedio,
                 "requisito" => $uuid_portugues_acelerado_basico,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 2,
                 "modalidad_id" => 3,
                 "idioma_id" => 6
@@ -505,6 +558,7 @@ class IdiomaDictableSeeder extends Seeder
                 "codigo" => $uuid_portugues_acelerado_avanzado,
                 "requisito" => $uuid_portugues_acelerado_intermedio,
                 "precio_mensual" => 160,
+                'duracion_meses' => 5,
                 "idioma_nivel_id" => 3,
                 "modalidad_id" => 3,
                 "idioma_id" => 6

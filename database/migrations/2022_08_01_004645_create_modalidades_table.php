@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('modalidades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 25);
-            $table->tinyInteger('duracion_meses'); // -127 ~ 127
         });
     }
 
