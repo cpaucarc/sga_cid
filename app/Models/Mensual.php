@@ -13,5 +13,12 @@ class Mensual extends Model
     public $timestamps = false;
     protected $guarded = ['id'];
 
-    public $casts = ['fecha_inicio_clases' => 'date', 'fecha_fin_clases' => 'date'];
+    public $casts = [
+        'inicio_clases' => 'date', 'fin_clases' => 'date',
+        'inicio_matricula' => 'date', 'fin_matricula' => 'date',
+        'inicio_prematricula' => 'date', 'fin_prematricula' => 'date',
+        'inicio_pago' => 'date', 'fin_pago' => 'date',
+        'inicio_revision' => 'date', 'fin_revision' => 'date',
+        'inicio_validacion' => 'date', 'fin_validacion' => 'date'
+    ];
 }

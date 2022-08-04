@@ -14,12 +14,29 @@ return new class extends Migration {
     {
         Schema::create('mensuales', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio_clases');
-            $table->date('fecha_fin_clases');
             $table->boolean('esta_activo')->default(false);
+
+            $table->date('inicio_clases')->nullable();
+            $table->date('fin_clases')->nullable();
+
+            $table->date('inicio_prematricula')->nullable();
+            $table->date('fin_prematricula')->nullable();
+
+            $table->date('inicio_matricula')->nullable();
+            $table->date('fin_matricula')->nullable();
+
+            $table->date('inicio_pago')->nullable();
+            $table->date('fin_pago')->nullable();
+
+            $table->date('inicio_revision')->nullable();
+            $table->date('fin_revision')->nullable();
+
+            $table->date('inicio_validacion')->nullable();
+            $table->date('fin_validacion')->nullable();
+
             $table->year('anio');
-            $table->tinyInteger('clase_modalidad_id'); // -127 ~ 127
             $table->tinyInteger('mes_id');
+            $table->tinyInteger('clase_modalidad_id'); // -127 ~ 127
         });
     }
 
