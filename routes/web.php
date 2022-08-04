@@ -46,7 +46,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::prefix('docente')->controller(DocenteController::class)->group(function () {
         Route::get('/', 'index')->name('docente.index');
         Route::get('/registrar', 'registrar')->name('docente.registrar');
-        Route::get('/idiomas', 'idiomas')->name('docente.idiomas');
+        Route::get('/idiomas/{uuid}', 'idiomas')->name('docente.idiomas');
     });
 
    Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function (){
