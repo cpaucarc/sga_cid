@@ -59,21 +59,15 @@ class ListaCursos extends Component
         $cursos_generados = [];
         $codigo = substr(Str::uuid(), 0, 8);
 
-        Log::info('pre 1 req', $this->requisito ? $this->requisito->toArray() : []);
         if (!is_null($this->requisito)) { // Tiene un idioma dictable como requisito
-            Log::info('pre 2 req', $this->requisito ? $this->requisito->toArray() : []);
             if ($this->requisito_cursos != $this->requisito->duracion_meses) {
-
-                Log::info('pre 3 req', $this->requisito ? $this->requisito->toArray() : []);
                 $nombre_prequisito = $this->idioma_nombre . ' ' . $this->niveles[$this->requisito->idioma_nivel_id] . ' - ' . $this->modalidad->nombre;
                 $solucion = "<p style='font-size: 15px;'>Para solucionarlo, primero debe registrar los cursos del idioma pre-requisito.</p>";
                 $this->emit('error', 'El idioma pre-requisito "<b>' . $nombre_prequisito . '</b>" deberia tener <b>' . $this->requisito->duracion_meses . ' cursos</b> registrados, actualmente tiene <b>' . $this->requisito_cursos . ' cursos</b>.<br><br>' . $solucion);
 
-                Log::info('pre 4 req', $this->requisito ? $this->requisito->toArray() : []);
                 return;
             }
 
-            Log::info('pre 5 req', $this->requisito ? $this->requisito->toArray() : []);
             $req = Curso::where('idioma_dictable_id', $this->requisito->id)->orderBy('ciclo_id', 'desc')->first()->codigo;
         } else {
             $req = null;
