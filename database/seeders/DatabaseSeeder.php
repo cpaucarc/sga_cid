@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Docente;
+use App\Models\Estudiante;
 use App\Models\Modalidad;
+use App\Models\Persona;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -40,10 +43,13 @@ class DatabaseSeeder extends Seeder
         $this->call(DistritoSeeder::class);
 
         // Nivel 4
-        $this->call(PersonaSeeder::class);
+        $this->call(PersonaSeeder::class); // 4 personas (autoridades)
+        Persona::factory(565)->create(); // 65 docentes [5 - 70], 500 estudiantes [71 - 571]
 
         // Nivel 5
         $this->call(AutoridadSeeder::class);
+        Docente::factory(65)->create(); // 65 docentes [5 - 69], 500 estudiantes [70 - 596]
+        Estudiante::factory(500)->create(); // 65 docentes [5 - 69], 500 estudiantes [70 - 596]
         $this->call(UserSeeder::class);
 
         // Nivel 6

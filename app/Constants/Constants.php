@@ -5,6 +5,10 @@ namespace App\Constants;
 class Constants
 {
     public static $utimo_codigo_cid = "21.1.0124";
+    public static $estudiante_id = 70;
+    public static $ultimo_codigo_estudiante = "21.1.0124"; // Reinicable
+    public static $docente_id = 5;
+    public static $ultimo_codigo_docente = "22.2.024"; // Reiniciable
 
     public static function autoridad_cargos()
     {

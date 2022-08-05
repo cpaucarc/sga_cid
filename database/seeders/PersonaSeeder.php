@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Constants\Constants;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class PersonaSeeder extends Seeder
 {
@@ -16,14 +13,8 @@ class PersonaSeeder extends Seeder
      */
     public function run()
     {
-        $codigo_cid = Constants::$utimo_codigo_cid;
-        $codigo_persona_1 = explode('.', $codigo_cid)[0] . '.1.' . str_pad((intval(explode('.', $codigo_cid)[2]) + 1), 4, '0', STR_PAD_LEFT);
-        $codigo_persona_2 = explode('.', $codigo_cid)[0] . '.1.' . str_pad((intval(explode('.', $codigo_cid)[2]) + 2), 4, '0', STR_PAD_LEFT);
-        $codigo_persona_3 = explode('.', $codigo_cid)[0] . '.1.' . str_pad((intval(explode('.', $codigo_cid)[2]) + 3), 4, '0', STR_PAD_LEFT);
-        $codigo_persona_4 = explode('.', $codigo_cid)[0] . '.1.' . str_pad((intval(explode('.', $codigo_cid)[2]) + 4), 4, '0', STR_PAD_LEFT);
         $personas = [
             [
-                'codigo' => $codigo_persona_1,
                 'dni' => '18037851',
                 'apellido_paterno' => 'CABRERA',
                 'apellido_materno' => 'SALVATIERRA',
@@ -33,9 +24,9 @@ class PersonaSeeder extends Seeder
                 'fecha_nacimiento' => '1983-02-16',
                 'sexo_id' => 1,
                 'distrito_id' => 85, // Huaraz
+                'pais_id' => 177 // Perú
             ],
             [
-                'codigo' => $codigo_persona_2,
                 'dni' => '31621028',
                 'apellido_paterno' => 'SILVA',
                 'apellido_materno' => 'LINDO',
@@ -45,9 +36,9 @@ class PersonaSeeder extends Seeder
                 'fecha_nacimiento' => '1985-06-20',
                 'sexo_id' => 1,
                 'distrito_id' => 85, // Huaraz
+                'pais_id' => 177 // Perú
             ],
             [
-                'codigo' => $codigo_persona_3,
                 'dni' => '31676590',
                 'apellido_paterno' => 'ORTIZ',
                 'apellido_materno' => 'GOMEZ',
@@ -57,9 +48,9 @@ class PersonaSeeder extends Seeder
                 'fecha_nacimiento' => '1995-06-20',
                 'sexo_id' => 2,
                 'distrito_id' => 85, // Huaraz
+                'pais_id' => 177 // Perú
             ],
             [
-                'codigo' => $codigo_persona_4,
                 'dni' => '31676536',
                 'apellido_paterno' => 'NIVIN',
                 'apellido_materno' => 'VARGAS',
@@ -69,6 +60,7 @@ class PersonaSeeder extends Seeder
                 'fecha_nacimiento' => '1985-06-20',
                 'sexo_id' => 2,
                 'distrito_id' => 85, // Huaraz
+                'pais_id' => 177 // Perú
             ],
         ];
         \App\Models\Persona::insert($personas);

@@ -14,18 +14,16 @@ return new class extends Migration {
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo', 13)->unique();
             $table->string('dni', 8)->unique();
             $table->string('apellido_paterno', 35);
             $table->string('apellido_materno', 35);
-            $table->string('nombres', 35);
+            $table->string('nombres', 40);
             $table->string('celular', 11);
-            $table->string('correo', 100);
+            $table->string('correo', 100)->unique();
             $table->date('fecha_nacimiento');
             $table->tinyInteger('sexo_id'); // -127 ~ 127
-            $table->foreignId('distrito_id')->nullable()->constrained('distritos')
-                ->cascadeOnUpdate()
-                ->nullOnDelete();
+            $table->foreignId('pais_id')->nullable()->constrained('paises')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('distrito_id')->nullable()->constrained('distritos')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }
