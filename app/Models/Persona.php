@@ -11,4 +11,5 @@ class Persona extends Model
 
     protected $table = 'personas';
     protected $guarded = ['id'];
+    public $casts = ['fecha_nacimiento' => 'date'];
 }
