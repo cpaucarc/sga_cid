@@ -11,6 +11,11 @@ class DocenteController extends Controller
         return view('docente.index');
     }
 
+    public function show($uuid)
+    {
+        return view('docente.show', compact('uuid'));
+    }
+
     public function registrar()
     {
         return view('docente.formulario-registrar-docente');

@@ -17,9 +17,11 @@
             @foreach($docentes as $docente)
                 <x-table.row>
                     <x-table.column class="uppercase">{{ $docente->persona->codigo }}</x-table.column>
-                    <x-table.column
-                        class="uppercase">
-                        {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}
+                    <x-table.column class="uppercase">
+                        <x-links.secondary href="{{ route('docente.show',$docente->uuid) }}"
+                                           class="btn-state-transparent">
+                            {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}
+                        </x-links.secondary>
                     </x-table.column>
                     <x-table.column class="whitespace-nowrap">{{$docente->persona->dni}}</x-table.column>
                     <x-table.column class="whitespace-nowrap">{{$docente->persona->correo}}</x-table.column>
