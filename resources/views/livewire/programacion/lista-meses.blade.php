@@ -14,7 +14,7 @@
             @endslot
             @foreach($mensuales as $ms)
                 <x-table.row>
-                    <x-table.column class="uppercase font-semibold">
+                    <x-table.column class="font-semibold">
                         {{$meses[$ms->mes_id]}}
                     </x-table.column>
                     <x-table.column>
@@ -74,8 +74,8 @@
                             Inicio de clases
                         </x-table.column>
                         <x-table.column class="font-light">
-                            {{$datos_mes->fecha_inicio_clases->format('d')}}
-                            de {{$meses[intval($datos_mes->fecha_inicio_clases->format('m'))]}}
+                            {{$datos_mes->inicio_clases->format('d')}}
+                            de {{$meses[intval($datos_mes->inicio_clases->format('m'))]}}
                         </x-table.column>
                     </x-table.row>
                     <x-table.row>
@@ -83,8 +83,8 @@
                             Fin de clases
                         </x-table.column>
                         <x-table.column class="font-light">
-                            {{$datos_mes->fecha_fin_clases->format('d')}}
-                            de {{$meses[intval($datos_mes->fecha_fin_clases->format('m'))]}}
+                            {{$datos_mes->fin_clases->format('d')}}
+                            de {{$meses[intval($datos_mes->fin_clases->format('m'))]}}
                         </x-table.column>
                     </x-table.row>
                     <x-table.row>

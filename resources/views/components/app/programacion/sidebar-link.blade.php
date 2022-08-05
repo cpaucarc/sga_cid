@@ -1,7 +1,7 @@
 @props(['active'])
 
 @php
-    $common_clases = 'group w-full bg-transparent hover:bg-slate-400/10  py-2 px-2 space-y-2 text-sm rounded-md flex flex-col whitespace-nowrap soft-transition';
+    $common_clases = 'group w-full bg-transparent hover:bg-slate-400/10 py-2 px-2 space-y-2 text-sm rounded-md flex flex-col whitespace-nowrap soft-transition';
     $active_clases =(($active ?? false) ? 'text-blue-600' : 'text-slate-600');
 @endphp
 
@@ -15,7 +15,7 @@
                 @endif
             </div>
         </div>
-        <p class="text-xs font-light text-gray-400 hover:text-gray-600 soft-transition">
+        <p class="text-sm text-slate-600 hover:text-slate-800 soft-transition">
             @if(isset($fechas))
                 {{ $fechas }}
             @endif
