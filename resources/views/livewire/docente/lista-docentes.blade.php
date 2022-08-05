@@ -42,14 +42,14 @@
                         </x-links.secondary>
                     </x-table.column>
                     <x-table.column>
-                        <x-links.secondary
-                            class="{{ $docente->esta_activo ? 'btn-state-success' :'btn-state-danger'}}">
+                        <x-jet-secondary-button wire:click="cambiarEstado({{ $docente->id }},{{$docente->esta_activo}})"
+                                                class="{{ $docente->esta_activo ? 'btn-state-success' :'btn-state-danger'}}">
                             {{ $docente->esta_activo ? "Habilitado" : "Inhabilitado" }}
-                        </x-links.secondary>
+                        </x-jet-secondary-button>
                     </x-table.column>
                     <x-table.column>
                         <x-links.secondary class="btn-state-warning"
-                                                href="{{ route('docente.editar',$docente->uuid) }}">
+                                           href="{{ route('docente.editar',$docente->uuid) }}">
                             Editar
                         </x-links.secondary>
                     </x-table.column>

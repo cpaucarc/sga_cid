@@ -22,4 +22,11 @@ class ListaDocentes extends Component
 
         return view('livewire.docente.lista-docentes', compact('docentes'));
     }
+
+    public function cambiarEstado($id, $estado)
+    {
+        $docente = Docente::find($id);
+        $docente->esta_activo = !$estado;
+        $docente->save();
+    }
 }
