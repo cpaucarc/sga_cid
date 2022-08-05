@@ -4,5 +4,17 @@
 }
 
 .badge-primary {
-    @apply bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-md;
+    @apply bg-blue-100 text-blue-600 text-sm font-semibold px-3 py-1 rounded-md;
+}
+
+.badge-danger {
+    @apply bg-rose-100 text-rose-600 text-sm font-semibold px-3 py-1 rounded-md;
+}
+
+.badge-warning {
+    @apply bg-amber-100 text-amber-600 text-sm font-semibold px-3 py-1 rounded-md;
+}
+
+.badge-success {
+    @apply bg-lime-100 text-lime-600 text-sm font-semibold px-3 py-1 rounded-md;
 }
