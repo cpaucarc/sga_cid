@@ -21,6 +21,11 @@ class DocenteController extends Controller
         return view('docente.formulario-registrar-docente');
     }
 
+    public function editar($uuid)
+    {
+        return view('docente.formulario-editar-docente', compact('uuid'));
+    }
+
     public function idiomas($uuid)
     {
         return view('docente.formulario-agregar-idioma', compact('uuid'));

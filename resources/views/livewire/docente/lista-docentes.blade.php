@@ -48,9 +48,10 @@
                         </x-links.secondary>
                     </x-table.column>
                     <x-table.column>
-                        <x-jet-secondary-button class="btn-state-warning">
+                        <x-links.secondary class="btn-state-warning"
+                                                href="{{ route('docente.editar',$docente->uuid) }}">
                             Editar
-                        </x-jet-secondary-button>
+                        </x-links.secondary>
                     </x-table.column>
                 </x-table.row>
             @endforeach
