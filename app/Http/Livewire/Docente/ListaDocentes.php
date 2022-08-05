@@ -7,13 +7,26 @@ use Livewire\Component;
 
 class ListaDocentes extends Component
 {
+    public $esta_activo = 0;
+
     public function render()
     {
         $docentes = Docente::query()
             ->with('persona')
-            ->withCount('idiomas')
-            ->get();
+            ->withCount('idiomas');
+
+        if (!$this->esta_activo) {
+            $docentes = $docentes->where('esta_activo', true);
+        }
+        $docentes = $docentes->get();
 
         return view('livewire.docente.lista-docentes', compact('docentes'));
+    }
+
+    public function cambiarEstado($id, $estado)
+    {
+        $docente = Docente::find($id);
+        $docente->esta_activo = !$estado;
+        $docente->save();
     }
 }
