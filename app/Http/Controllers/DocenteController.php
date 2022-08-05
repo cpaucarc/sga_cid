@@ -26,7 +26,7 @@ class DocenteController extends Controller
         return view('docente.formulario-editar-docente', compact('codgio'));
     }
 
-    public function idiomas($codigo)
+    public function idioma($codigo)
     {
         return view('docente.formulario-agregar-idioma', compact('codigo'));
     }
