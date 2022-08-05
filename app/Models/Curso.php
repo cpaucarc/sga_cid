@@ -14,6 +14,11 @@ class Curso extends Model
     public $timestamps = false;
     protected $guarded = ['id'];
 
+    public function dictable()
+    {
+        return $this->belongsTo(IdiomaDictable::class, 'idioma_dictable_id', 'id');
+    }
+
     public static function nombre_completo($id)
     {
         $curso = Curso::find($id);
