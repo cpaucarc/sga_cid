@@ -65,8 +65,8 @@
             @slot('head')
                 <x-table.head>N°</x-table.head>
                 <x-table.head>Idioma</x-table.head>
-                <x-table.head class="text-right">Precio Mensual</x-table.head>
-                <x-table.head>Max. por grupo</x-table.head>
+                <x-table.head class="text-right" hide>Precio Mensual</x-table.head>
+                <x-table.head hide>Max. por grupo</x-table.head>
                 <x-table.head>Prematriculados</x-table.head>
                 <x-table.head><span class="sr-only">Acciones</span></x-table.head>
             @endslot
@@ -83,8 +83,12 @@
                             ({{ $modalidades[$curso->dictable->modalidad_id] }})
                         </p>
                     </x-table.column>
-                    <x-table.column class="text-right">S/. {{ $curso->dictable->precio_mensual }}</x-table.column>
-                    <x-table.column>{{ $curso->aforo_maximo }} estudiantes por grupo</x-table.column>
+                    <x-table.column class="text-right" hide>
+                        S/. {{ $curso->dictable->precio_mensual }}
+                    </x-table.column>
+                    <x-table.column hide>
+                        {{ $curso->aforo_maximo }} estudiantes por grupo
+                    </x-table.column>
                     <x-table.column><b>{{ $curso->prematriculados }} estudiantes</b></x-table.column>
                     <x-table.column>
                         {{--                        <x-links.secondary href="#" class="btn-state-transparent">--}}
