@@ -5,13 +5,6 @@ namespace App\Constants;
 class Constants
 {
     public static $utimo_codigo_cid = "21.1.0124";
-    //$this->codigo_cid = Constants::$utimo_codigo_cid;
-    //
-    //if (substr(strval($this->anio), 2, 2) == explode('.', $this->codigo_cid)[0])
-    //  $this->nuevo_codigo = explode('.', $this->codigo_cid)[0] . '.1.' . str_pad((intval(explode('.', $this->codigo_cid)[2]) + 1), 4, '0', STR_PAD_LEFT);
-    //else {
-    //  $this->nuevo_codigo = substr(strval($this->anio), 2, 2) . '.1.0001';
-    //}
 
     public static function autoridad_cargos()
     {
