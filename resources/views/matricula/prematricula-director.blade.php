@@ -6,11 +6,14 @@
 
         <div class="space-y-4">
 
-            <x-titulo titulo="{{'Prematrícula: ' . $titulo }}"/>
+            <x-titulo titulo="{{'Prematrícula: ' . $titulo }}">
+                @slot('items')
+                    <livewire:matricula.lista-mensuales mes="{{ $mensual->mes_id }}" year="{{ $mensual->anio }}"
+                                                        :meses="$meses"/>
+                @endslot
+            </x-titulo>
 
-            {{ $mensual }}
-
-            <livewire:matricula.lista-prematricula-director/>
+            <livewire:matricula.lista-prematricula-director :mensual="$mensual" :meses="$meses"/>
 
         </div>
 

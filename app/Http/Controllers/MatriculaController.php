@@ -37,7 +37,8 @@ class MatriculaController extends Controller
         }
 
         $titulo = Constants::meses()->where('id', $month)->first()['nombre'] . ' de ' . $year;
+        $meses = Constants::meses()->pluck('nombre', 'id')->all();
 
-        return view('matricula.prematricula-director', compact('mensual', 'titulo'));
+        return view('matricula.prematricula-director', compact('mensual', 'titulo', 'meses'));
     }
 }
