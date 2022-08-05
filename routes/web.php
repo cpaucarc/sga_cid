@@ -49,10 +49,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::prefix('docente')->controller(DocenteController::class)->group(function () {
         Route::get('/', 'index')->name('docente.index');
-        Route::get('/mostrar/{uuid}', 'show')->name('docente.show');
+        Route::get('/{codigo}/mostrar', 'show')->name('docente.show');
         Route::get('/registrar', 'registrar')->name('docente.registrar');
-        Route::get('/editar/{uuid}', 'editar')->name('docente.editar');
-        Route::get('/idiomas/{uuid}', 'idiomas')->name('docente.idiomas');
+        Route::get('/{codigo}/editar', 'editar')->name('docente.editar');
+        Route::get('/{codigo}/idioma', 'idioma')->name('docente.idioma');
     });
 
 });
