@@ -12,4 +12,8 @@ class Estudiante extends Model
     protected $table = 'estudiantes';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function persona(){
+        return $this->belongsTo(Persona::class);
+    }
 }
