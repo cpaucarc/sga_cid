@@ -1,4 +1,18 @@
 <div>
+    <x-titulo
+        titulo="Docente: {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}">
+        @slot('subtitulo')
+            <div class="rounded-md text-sm text-slate-700 flex flex-wrap gap-6 mt-2 relative">
+                <p><b>Código:</b> {{$docente->codigo}} </p>
+
+                <p><b>DNI:</b> {{$docente->persona->dni}} </p>
+
+                <p><b>Correo:</b> <a href="mailto:{{$docente->persona->correo}}"
+                                     class="hover:underline">{{$docente->persona->correo}} </a></p>
+            </div>
+        @endslot
+    </x-titulo>
+
     <div class="space-y-4">
         <x-forms.fieldset titulo="Datos personales">
             <div class="grid grid-cols-3 gap-4 mb-4">
@@ -56,9 +70,9 @@
                     <x-jet-input-error for="sexo"/>
                 </div>
 
-                <div class="col-span-3 md:col-span-1">
+                <div class="col-span-3 md:col-span-1" wire:ignore>
                     <x-jet-label for="pais" value="Pais"/>
-                    <x-forms.select class="w-full" wire:model="pais">
+                    <x-forms.select class="w-full select2" wire:model="pais">
                         <option value="0">Seleccion un pais</option>
                         @foreach($paises as $id=>$ps)
                             <option value="{{ $ps->id }}">{{  $ps->nombre }}</option>
@@ -70,7 +84,10 @@
             <div class="grid grid-cols-3 gap-4">
                 @if($pais)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="departamento" value="Departamento"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="departamento" value="Departamento"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="departamento">
                             <option value="0">Seleccion un departamento</option>
                             @foreach($departamentos as $dep)
@@ -83,7 +100,10 @@
 
                 @if($departamento)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="provincia" value="Provincia"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="provincia" value="Provincia"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="provincia">
                             <option value="0">Seleccion un departamento</option>
                             @foreach($provincias as $prov)
@@ -96,7 +116,10 @@
 
                 @if($provincia)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="distrito" value="Distrito"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="distrito" value="Distrito"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="distrito">
                             <option value="0">Seleccion un distrito</option>
                             @foreach($distritos as $dist)
@@ -155,6 +178,19 @@
                 console.log('Error', msg)
                 sweetToast(msg, 'error');
             });
+        </script>
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            document.addEventListener('livewire:load', function () {
+                $('.select2').select2();
+                $('.select2').on('change', function () {
+                    @this.
+                    set('pais', this.value);
+                });
+            })
         </script>
     @endpush
 </div>

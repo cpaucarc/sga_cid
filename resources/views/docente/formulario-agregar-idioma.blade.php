@@ -5,7 +5,7 @@
             <x-app.docente.docente-sidebar/>
         @endslot
 
-        <livewire:docente.agregar-idioma :uuid="$uuid"/>
+        <livewire:docente.agregar-idioma :codigo="$codigo"/>
 
     </x-sidebar.grid>
 </x-app-layout>

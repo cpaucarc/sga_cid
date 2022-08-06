@@ -5,7 +5,7 @@
             <x-app.docente.docente-sidebar/>
         @endslot
 
-        <livewire:docente.mostrar-docente :uuid="$uuid"/>
+        <livewire:docente.mostrar-docente :codigo="$codigo"/>
 
     </x-sidebar.grid>
 </x-app-layout>

@@ -3,11 +3,12 @@
         titulo="Docente: {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}">
         @slot('subtitulo')
             <div class="rounded-md text-sm text-slate-700 flex flex-wrap gap-6 mt-2 relative">
-                <p><b>Código:</b> {{$docente->persona->codigo}} </p>
+                <p><b>Código:</b> {{$docente->codigo}} </p>
 
                 <p><b>DNI:</b> {{$docente->persona->dni}} </p>
 
-                <p><b>Correo:</b> {{$docente->persona->correo}} </p>
+                <p><b>Correo:</b> <a href="mailto:{{$docente->persona->correo}}"
+                                     class="hover:underline">{{$docente->persona->correo}} </a></p>
             </div>
         @endslot
     </x-titulo>
@@ -15,7 +16,7 @@
         <div class="col-span-2 sticky top-20">
             <x-card>
                 <x-slot:header>
-                    <h2 class="font-bold text-zinc-600 mr-1">Lista de idomas</h2>
+                    <h2 class="font-bold text-zinc-600 mr-1">Lista de idomas ({{count($idiomas)}})</h2>
                 </x-slot:header>
                 @if(count($idiomas)>0)
                     <x-table.table>
