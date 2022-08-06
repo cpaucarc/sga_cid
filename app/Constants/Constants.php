@@ -44,8 +44,8 @@ class Constants
     public static function clase_modalidades()
     {
         return collect([
-            collect(['id' => 1, 'nombre' => 'Presencial']),
-            collect(['id' => 2, 'nombre' => 'Virtual']),
+            collect(['id' => 1, 'nombre' => 'Presenciales']),
+            collect(['id' => 2, 'nombre' => 'Virtuales']),
         ]);
     }
 
