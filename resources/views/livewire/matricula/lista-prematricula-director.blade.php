@@ -140,18 +140,18 @@
                     <div class="space-y-4">
                         <div class="space-y-2">
                             <h2 class="text-slate-700 font-bold">Datos de aforo del curso</h2>
-                            <ul class="list-disc list-inside pl-4 text-slate-800 text-sm">
+                            <ul class="list-disc list-inside pl-4 text-slate-800 text-sm space-y-1">
                                 <li>
                                     El número minimo de estudiantes para aperturar un grupo en este curso es de
                                     <b>{{ $curso_seleccionado->aforo_minimo }}</b>.
                                 </li>
                                 <li>
-                                    Un grupo de este curso puede permitir una número máximo de
-                                    <b>{{ $curso_seleccionado->aforo_maximo }}</b> estudiantes inscritos.
-                                </li>
-                                <li>
                                     Se recomienda que cada grupo de este curso, esté conformado por
                                     <b>{{ $curso_seleccionado->aforo_recomendado }}</b> estudiantes inscritos.
+                                </li>
+                                <li>
+                                    Un grupo de este curso debe estar conformado como máximo de
+                                    <b>{{ $curso_seleccionado->aforo_maximo }}</b> estudiantes inscritos.
                                 </li>
                             </ul>
                         </div>
