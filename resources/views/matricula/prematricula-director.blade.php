@@ -9,7 +9,8 @@
             <x-titulo titulo="{{'Prematrícula: ' . $titulo }}">
                 @slot('items')
                     <livewire:matricula.lista-mensuales mes="{{ $mensual->mes_id }}" year="{{ $mensual->anio }}"
-                                                        :meses="$meses"/>
+                                                        :meses="$meses"
+                                                        ruta="director.matricula.prematricula"/>
                 @endslot
             </x-titulo>
 
