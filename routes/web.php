@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CursoController;
 
+use App\Http\Controllers\DirectorMatriculaController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\MatriculaController;
 
@@ -45,6 +46,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function () {
         Route::get('prematricula/{year?}/{month?}', 'prematricula_director')->name('matriculas.prematricula.director');
+    });
+
+    Route::prefix('director')->controller(DirectorMatriculaController::class)->group(function () {
+        Route::get('programacion/{year?}/{month?}', 'programacion')->name('director.matricula.programacion');
+        Route::get('prematricula/{year?}/{month?}', 'prematricula')->name('director.matricula.prematricula');
     });
 
     Route::prefix('docente')->controller(DocenteController::class)->group(function () {
