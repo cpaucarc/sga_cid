@@ -9,14 +9,15 @@ use Livewire\Component;
 
 class ListaMeses extends Component
 {
-    public $meses, $anio_actual;
+    public $meses, $anio_actual, $clase_modalidades;
     public $open = false;
     public $datos_mes;
 
-    public function mount()
+    public function mount($meses, $year, $clase_modalidades)
     {
-        $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
-        $this->anio_actual = Carbon::now()->year;
+        $this->meses = $meses;
+        $this->anio_actual = $year;
+        $this->clase_modalidades = $clase_modalidades;
     }
 
     public function render()

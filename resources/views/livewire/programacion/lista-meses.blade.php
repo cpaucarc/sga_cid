@@ -1,50 +1,56 @@
 <div class="space-y-4">
-    <div class="flex justify-between items-center">
-        <div class="btn-state-transparent px-2.5 py-0.5 rounded text-sm">
-            Año: {{$anio_actual}} ({{$mensuales->count()}})
-        </div>
-        <x-links.primary href="{{ route('programacion.mensual.crear') }}">{{ __('Crear') }}</x-links.primary>
-    </div>
+
     @if(count($mensuales)>0)
         <x-table.table>
             @slot('head')
                 <x-table.head>Mes</x-table.head>
+                <x-table.head>Modalidad</x-table.head>
                 <x-table.head>Estado</x-table.head>
                 <x-table.head><span class="sr-only">Action</span></x-table.head>
             @endslot
             @foreach($mensuales as $ms)
                 <x-table.row>
                     <x-table.column class="font-semibold">
-                        {{$meses[$ms->mes_id]}}
+                        {{$meses[$ms->mes_id]}} de {{ $anio_actual }}
+                    </x-table.column>
+                    <x-table.column>
+                        Clase {{$clase_modalidades[$ms->clase_modalidad_id]}}
                     </x-table.column>
                     <x-table.column>
                         @if($ms->esta_activo)
                             <button type="button" class="btn btn-state-success">{{ __('Activo') }}</button>
                         @else
-                            <button type="button" wire:click="activar({{$ms->id}})"
-                                    class="btn btn-state-default">{{ __('Activar') }}</button>
+                            @if(now() < $ms->inicio_clases)
+                                <button type="button" wire:click="activar({{$ms->id}})"
+                                        class="btn btn-state-default">{{ __('Activar') }}</button>
+                            @else
+                                <p class="btn btn-state-danger">
+                                    Finalizado
+                                </p>
+                            @endif
                         @endif
                     </x-table.column>
                     <x-table.column>
-                        <button class="btn btn-state-transparent" wire:click="mostrarInfo('{{ $ms->id }}')">
-                            <svg class="icon-5" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </button>
+                        <div class="inline-flex">
+                            <button class="btn btn-state-transparent" title="Ver información básica"
+                                    wire:click="mostrarInfo('{{ $ms->id }}')">
+                                <x-icons.info class="icon-5"/>
+                            </button>
+
+                            <x-links.outline
+                                href="{{ route('director.matricula.programacion', ['year' => $ms->anio, 'month' => $ms->mes_id]) }}"
+                                title="Ver información detallada">
+                                Ver más
+                            </x-links.outline>
+                        </div>
                     </x-table.column>
                 </x-table.row>
             @endforeach
         </x-table.table>
     @else
-        <x-message-image>
-            <x-slot:title>Aún no agrega ningún mes</x-slot:title>
-            <x-slot:description>
-                Aquí se mostrará todos los meses programados para cada año.
-            </x-slot:description>
-            {{--<x-slot:image>{{ asset('images/logo_cid.svg')  }}</x-slot:image>--}}
-        </x-message-image>
+        <x-empty-state title="Aún no agrega ningún mes" wImage="3" wText="5"
+                       description="Aquí se mostrará todos los meses programados para cada año."
+                       image="{{ asset('images/calendar.svg') }}"/>
     @endif
 
     {{-- Modal de datos del mes seleccionado --}}
@@ -92,12 +98,11 @@
                             Modalidad
                         </x-table.column>
                         <x-table.column class="font-light">
-                            {{$datos_mes->clase_modalidad_id===1 ? 'Precencial' : 'Virtual'}}
+                            {{ $clase_modalidades[$datos_mes->clase_modalidad_id] }}
                         </x-table.column>
                     </x-table.row>
                 </x-table.table>
             </x-slot:content>
-            <x-slot:footer></x-slot:footer>
         </x-jet-dialog-modal>
     @endif
 </div>
