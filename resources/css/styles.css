@@ -1,20 +1,24 @@
 /* Badges */
+.badge {
+    @apply text-xs font-bold px-3 py-1 rounded-md whitespace-nowrap;
+}
+
 .badge-dark {
-    @apply bg-slate-100 text-slate-800 text-sm font-semibold px-3 py-1 rounded-md;
+    @apply badge bg-slate-100 text-slate-800;
 }
 
 .badge-primary {
-    @apply bg-blue-100 text-blue-600 text-sm font-semibold px-3 py-1 rounded-md;
+    @apply badge bg-blue-100 text-blue-600;
 }
 
 .badge-danger {
-    @apply bg-rose-100 text-rose-600 text-sm font-semibold px-3 py-1 rounded-md;
+    @apply badge bg-rose-100 text-rose-600;
 }
 
 .badge-warning {
-    @apply bg-amber-100 text-amber-600 text-sm font-semibold px-3 py-1 rounded-md;
+    @apply badge bg-amber-100 text-amber-600;
 }
 
 .badge-success {
-    @apply bg-lime-100 text-lime-600 text-sm font-semibold px-3 py-1 rounded-md;
+    @apply badge bg-lime-100 text-lime-600;
 }

@@ -48,23 +48,23 @@
     <x-table.table>
         @slot('head')
             <x-table.head>Código</x-table.head>
-            <x-table.head>Pre-requisito</x-table.head>
             <x-table.head>Idioma</x-table.head>
-            <x-table.head class="text-center">Ciclo</x-table.head>
-            <x-table.head>Max. por grupo</x-table.head>
+            <x-table.head>Aforo Mínimo</x-table.head>
+            <x-table.head>Recomendado</x-table.head>
+            <x-table.head>Máximo</x-table.head>
             <x-table.head><span class="sr-only">Acciones</span></x-table.head>
         @endslot
 
         @foreach($cursos as $curso)
             <x-table.row>
                 <x-table.column class="uppercase">{{ $curso->codigo }}</x-table.column>
-                <x-table.column class="uppercase">{{ $curso->requisito ?? '---' }}</x-table.column>
                 <x-table.column>
-                    <b>{{ $idioma_nombre }}</b> - {{ $niveles[$dictable->idioma_nivel_id] }}
-                    - {{ $modalidad->nombre }}
+                    <b>{{ $idioma_nombre }} {{ $niveles[$dictable->idioma_nivel_id] }} {{ $ciclos[$curso->ciclo_id] }}</b>
+                    - ({{ $modalidad->nombre }})
                 </x-table.column>
-                <x-table.column class="text-center"><b>{{ $ciclos[$curso->ciclo_id] }}</b></x-table.column>
-                <x-table.column>Max. {{ $curso->aforo_maximo }} estudiantes</x-table.column>
+                <x-table.column>{{ $curso->aforo_minimo }} estudiantes</x-table.column>
+                <x-table.column>{{ $curso->aforo_recomendado }} estudiantes</x-table.column>
+                <x-table.column>{{ $curso->aforo_maximo }} estudiantes</x-table.column>
                 <x-table.column>
                     <x-jet-secondary-button wire:click="editarCurso({{ $curso }})" class="btn-state-transparent">
                         Editar

@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         /* User Administrador */
         User::create([
             'name' => 'FLOYD GOMEZ',
+            'username' => 'floyd_gomez',
             'email' => 'prueba@mail.com',
             'email_verified_at' => now(),
             'password' => $password,
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
         /* User Secretaria */
         User::create([
             'name' => 'LAURA VARGAS',
+            'username' => 'laura_vargas',
             'email' => 'secretaria@mail.com',
             'email_verified_at' => now(),
             'password' => $password,
