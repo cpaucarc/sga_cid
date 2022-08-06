@@ -12,21 +12,26 @@ use Livewire\Component;
 
 class MostrarDocente extends Component
 {
-    public $uuid, $docente;
+    public $codigo, $docente, $meses;
     public $distrito, $provincia, $departamento, $pais;
     public $dedicacion, $categoria, $condicion;
 
-    public function mount($uuid)
+    public function mount($codigo)
     {
-        $this->uuid = $uuid;
+        $this->codigo = $codigo;
         $this->docente = Docente::query()
             ->with('persona')
-            ->where('uuid', $this->uuid)
+            ->where('codigo', $this->codigo)
             ->first();
+
+        $this->pais = Pais::find($this->docente->persona->pais_id);
         $this->distrito = Distrito::find($this->docente->persona->distrito_id);
-        $this->provincia = Provincia::find($this->distrito->provincia_id);
-        $this->departamento = Departamento::find($this->provincia->departamento_id);
-        $this->pais = Pais::find($this->departamento->pais_id);
+        if ($this->distrito) {
+            $this->provincia = Provincia::find($this->distrito->provincia_id);
+            $this->departamento = Departamento::find($this->provincia->departamento_id);
+        }
+
+        $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
 
         $this->dedicacion = Constants::docente_dedicacion()->pluck('nombre', 'id')->all();
         $this->categoria = Constants::docente_categorias()->pluck('nombre', 'id')->all();
@@ -37,7 +42,7 @@ class MostrarDocente extends Component
     {
         $this->docente = Docente::query()
             ->with('persona')
-            ->where('uuid', $this->uuid)
+            ->where('codigo', $this->codigo)
             ->first();
         return view('livewire.docente.mostrar-docente');
     }

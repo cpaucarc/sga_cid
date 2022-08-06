@@ -11,9 +11,9 @@ class DocenteController extends Controller
         return view('docente.index');
     }
 
-    public function show($uuid)
+    public function show($codigo)
     {
-        return view('docente.show', compact('uuid'));
+        return view('docente.show', compact('codigo'));
     }
 
     public function registrar()
@@ -21,13 +21,13 @@ class DocenteController extends Controller
         return view('docente.formulario-registrar-docente');
     }
 
-    public function editar($uuid)
+    public function editar($codigo)
     {
-        return view('docente.formulario-editar-docente', compact('uuid'));
+        return view('docente.formulario-editar-docente', compact('codigo'));
     }
 
-    public function idiomas($uuid)
+    public function idioma($codigo)
     {
-        return view('docente.formulario-agregar-idioma', compact('uuid'));
+        return view('docente.formulario-agregar-idioma', compact('codigo'));
     }
 }

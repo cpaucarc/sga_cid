@@ -60,7 +60,7 @@
                     <x-jet-label for="pais" value="Pais"/>
                     <x-forms.select class="w-full" wire:model="pais">
                         <option value="0">Seleccion un pais</option>
-                        @foreach($paises as $id=>$ps)
+                        @foreach($paises as $ps)
                             <option value="{{ $ps->id }}">{{  $ps->nombre }}</option>
                         @endforeach
                     </x-forms.select>
@@ -70,7 +70,10 @@
             <div class="grid grid-cols-3 gap-4">
                 @if($pais)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="departamento" value="Departamento"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="departamento" value="Departamento"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="departamento">
                             <option value="0">Seleccion un departamento</option>
                             @foreach($departamentos as $dep)
@@ -83,7 +86,10 @@
 
                 @if($departamento)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="provincia" value="Provincia"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="provincia" value="Provincia"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="provincia">
                             <option value="0">Seleccion un departamento</option>
                             @foreach($provincias as $prov)
@@ -96,7 +102,10 @@
 
                 @if($provincia)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="distrito" value="Distrito"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="distrito" value="Distrito"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="distrito">
                             <option value="0">Seleccion un distrito</option>
                             @foreach($distritos as $dist)

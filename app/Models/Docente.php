@@ -15,7 +15,9 @@ class Docente extends Model
 
     public function persona()
     {
-        return $this->belongsTo(Persona::class);
+        return $this->belongsTo(Persona::class)
+            ->orderBy('apellido_paterno')
+            ->orderBy('apellido_materno');
     }
 
     public function idiomas()
