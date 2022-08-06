@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Matricula;
 
 use App\Constants\Constants;
 use App\Models\Curso;
+use App\Models\Estudiante;
 use App\Models\Idioma;
 use App\Models\Mensual;
 use App\Models\Modalidad;
@@ -20,6 +21,9 @@ class ListaPrematriculaDirector extends Component
     public $modalidades = null, $modalidad = 0;
     public $ciclos = null;
 
+    public $open = false, $curso_seleccionado = null, $estudiantes = null;
+    public $tipos = null; // Tipos de estudiante
+
     public function mount(Mensual $mensual, $meses)
     {
         $this->anio = now()->year;
@@ -29,6 +33,7 @@ class ListaPrematriculaDirector extends Component
         $this->ciclos = Constants::ciclos()->pluck('nombre', 'id')->all();
         $this->mes = $this->mensual->mes_id;
 
+        $this->tipos = Constants::estudiante_tipos()->pluck('nombre', 'id')->all();
         $this->niveles = Constants::idioma_niveles()->pluck('nombre', 'id')->all();
         $this->idiomas = Idioma::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
         $this->modalidades = Modalidad::query()->orderBy('nombre')->get()->pluck('nombre', 'id')->all();
@@ -58,8 +63,22 @@ class ListaPrematriculaDirector extends Component
         return view('livewire.matricula.lista-prematricula-director', compact('cursos'));
     }
 
-    public function buscarDatos()
+    public function verEstudiantes(Curso $curso)
     {
-
+        $this->curso_seleccionado = $curso;
+        $this->estudiantes = Estudiante::query()
+            ->addSelect(['fecha_inscripcion' => Prematriculado::select('fecha_inscripcion')
+                ->whereColumn('estudiante_id', 'estudiantes.id')
+                ->where('curso_id', $this->curso_seleccionado->id)
+                ->where('mensual_id', $this->mensual->id)
+                ->take(1)
+            ])
+            ->whereIn('id', function ($query) {
+                $query->select('estudiante_id')->from('prematriculados')
+                    ->where('curso_id', $this->curso_seleccionado->id)
+                    ->where('mensual_id', $this->mensual->id);
+            })
+            ->orderBy('fecha_inscripcion', 'desc')->get();
+        $this->open = true;
     }
 }
