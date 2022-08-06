@@ -21,9 +21,9 @@ class DocenteController extends Controller
         return view('docente.formulario-registrar-docente');
     }
 
-    public function editar($codgio)
+    public function editar($codigo)
     {
-        return view('docente.formulario-editar-docente', compact('codgio'));
+        return view('docente.formulario-editar-docente', compact('codigo'));
     }
 
     public function idioma($codigo)

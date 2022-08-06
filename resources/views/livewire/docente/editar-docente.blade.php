@@ -1,4 +1,18 @@
 <div>
+    <x-titulo
+        titulo="Docente: {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}">
+        @slot('subtitulo')
+            <div class="rounded-md text-sm text-slate-700 flex flex-wrap gap-6 mt-2 relative">
+                <p><b>Código:</b> {{$docente->codigo}} </p>
+
+                <p><b>DNI:</b> {{$docente->persona->dni}} </p>
+
+                <p><b>Correo:</b> <a href="mailto:{{$docente->persona->correo}}"
+                                     class="hover:underline">{{$docente->persona->correo}} </a></p>
+            </div>
+        @endslot
+    </x-titulo>
+
     <div class="space-y-4">
         <x-forms.fieldset titulo="Datos personales">
             <div class="grid grid-cols-3 gap-4 mb-4">
@@ -70,7 +84,10 @@
             <div class="grid grid-cols-3 gap-4">
                 @if($pais)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="departamento" value="Departamento"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="departamento" value="Departamento"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="departamento">
                             <option value="0">Seleccion un departamento</option>
                             @foreach($departamentos as $dep)
@@ -83,7 +100,10 @@
 
                 @if($departamento)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="provincia" value="Provincia"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="provincia" value="Provincia"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="provincia">
                             <option value="0">Seleccion un departamento</option>
                             @foreach($provincias as $prov)
@@ -96,7 +116,10 @@
 
                 @if($provincia)
                     <div class="col-span-3 md:col-span-1">
-                        <x-jet-label for="distrito" value="Distrito"/>
+                        <div class="flex gap-x-2">
+                            <x-jet-label for="distrito" value="Distrito"/>
+                            <x-forms.optional-badge/>
+                        </div>
                         <x-forms.select class="w-full" wire:model="distrito">
                             <option value="0">Seleccion un distrito</option>
                             @foreach($distritos as $dist)
