@@ -70,9 +70,9 @@
                     <x-jet-input-error for="sexo"/>
                 </div>
 
-                <div class="col-span-3 md:col-span-1">
+                <div class="col-span-3 md:col-span-1" wire:ignore>
                     <x-jet-label for="pais" value="Pais"/>
-                    <x-forms.select class="w-full" wire:model="pais">
+                    <x-forms.select class="w-full select2" wire:model="pais">
                         <option value="0">Seleccion un pais</option>
                         @foreach($paises as $id=>$ps)
                             <option value="{{ $ps->id }}">{{  $ps->nombre }}</option>
@@ -178,6 +178,19 @@
                 console.log('Error', msg)
                 sweetToast(msg, 'error');
             });
+        </script>
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            document.addEventListener('livewire:load', function () {
+                $('.select2').select2();
+                $('.select2').on('change', function () {
+                    @this.
+                    set('pais', this.value);
+                });
+            })
         </script>
     @endpush
 </div>
