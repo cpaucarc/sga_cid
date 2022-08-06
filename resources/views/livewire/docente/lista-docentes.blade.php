@@ -6,7 +6,7 @@
     </x-titulo>
     <div class="flex items-center justify-between mb-4">
         <x-forms.search-input wire:model.debounce.500ms="search"/>
-        <x-forms.toogle wire:model="inactivo"/>
+        <x-forms.toggle id="avc" textoIzq="Solo activos" textoDer="Todos" wire:model="inactivo"/>
     </div>
     @if(count($docentes)>0)
         <x-table.table>
