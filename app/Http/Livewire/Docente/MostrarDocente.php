@@ -24,7 +24,7 @@ class MostrarDocente extends Component
             ->where('codigo', $this->codigo)
             ->first();
 
-        $this->pais = Pais::find($this->docente->pais_id);
+        $this->pais = Pais::find($this->docente->persona->pais_id);
         $this->distrito = Distrito::find($this->docente->persona->distrito_id);
         if ($this->distrito) {
             $this->provincia = Provincia::find($this->distrito->provincia_id);
