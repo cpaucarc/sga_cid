@@ -10,19 +10,17 @@ use App\Models\Pais;
 use App\Models\Persona;
 use App\Models\Provincia;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
 class RegistrarDocente extends Component
 {
-    public $anio, $codigo_cid, $nuevo_codigo, $ultimo_codigo;
+    public $anio_correlativo, $ultimo_codigo_docente_cid, $nuevo_codigo, $codigo_docente_final;
     public $apellido_paterno, $apellido_materno, $nombres, $dni;
     public $celular, $correo, $fecha_nacimiento, $sexos = null, $sexo = 1;
     public $paises = null, $pais = 0, $departamentos = null, $departamento = 0;
     public $provincias = null, $provincia = 0, $distritos = null, $distrito = 0;
     public $dedicaciones = null, $dedicacion = 1, $categorias = null, $categoria = 1;
     public $condiciones = null, $condicion = 1;
-
 
     protected $rules = [
         'apellido_paterno' => 'required|string|max:35',
@@ -34,9 +32,6 @@ class RegistrarDocente extends Component
         'fecha_nacimiento' => 'required|date|before:now',
         'sexo' => 'required|gt:0',
         'pais' => 'required|gt:0',
-        'departamento' => 'required|gt:0',
-        'provincia' => 'required|gt:0',
-        'distrito' => 'required|gt:0',
         'dedicacion' => 'required|gt:0',
         'categoria' => 'required|gt:0',
         'condicion' => 'required|gt:0',
@@ -85,22 +80,51 @@ class RegistrarDocente extends Component
 
     public function generarCodigo()
     {
-        $this->anio = now()->year;
-        $this->codigo_cid = Constants::$utimo_codigo_cid;
-        $persona = Persona::query()->select('codigo')->orderBy('codigo', 'desc')->first();
-        if ($persona) {
-            if (substr(strval($this->anio), 2, 2) == explode('.', $persona->codigo)[0])
-                $this->nuevo_codigo = explode('.', $persona->codigo)[0] . '.1.' . str_pad((intval(explode('.', $persona->codigo)[2]) + 1), 4, '0', STR_PAD_LEFT);
-            else {
-                $this->nuevo_codigo = substr(strval($this->anio), 2, 2) . '.1.0001';
+        $this->anio_correlativo = substr(strval(now()->year), 2, 2);
+        $this->ultimo_codigo_docente_cid = Constants::$ultimo_codigo_docente;
+        $lista_docentes = Docente::query()->select('codigo')->orderBy('codigo', 'desc')->get();
+        $docente = Docente::query()->whereHas('persona', function ($query) {
+            $query->where('dni', $this->dni);
+        })->first();
+
+        $codigos_docente_bd = [];
+
+        if ($lista_docentes) {
+            if ($docente) {
+                $this->codigo_docente_final = $docente->codigo;
+            } else {
+                foreach ($lista_docentes as $docente) {
+                    array_push($codigos_docente_bd, explode('-', $docente->codigo)[1]);
+                }
+
+                $lista_numeros = [];
+                $lista_anios = [];
+
+                foreach ($codigos_docente_bd as $codigo) {
+                    array_push($lista_anios, intval(explode('.', $codigo)[0]));
+                    array_push($lista_numeros, intval(explode('.', $codigo)[2]));
+                }
+                $anio_correlativo = max($lista_anios);
+                $numero_correlativo = max($lista_numeros);
+
+                if ($this->anio_correlativo == $anio_correlativo)
+                    $this->nuevo_codigo = $anio_correlativo . '.2.' . str_pad(($numero_correlativo + 1), 3, '0', STR_PAD_LEFT);
+                else {
+                    $this->nuevo_codigo = substr(strval($this->anio_correlativo), 2, 2) . '.2.001';
+                }
             }
         } else {
-            if (substr(strval($this->anio), 2, 2) == explode('.', $this->codigo_cid)[0])
-                $this->nuevo_codigo = explode('.', $this->codigo_cid)[0] . '.1.' . str_pad((intval(explode('.', $this->codigo_cid)[2]) + 1), 4, '0', STR_PAD_LEFT);
+            if ($this->anio_correlativo == explode('.', $this->ultimo_codigo_docente_cid)[0])
+                $this->nuevo_codigo = explode('.', $this->ultimo_codigo_docente_cid)[0] . '.2.' . str_pad((intval(explode('.', $this->ultimo_codigo_docente_cid)[2]) + 1), 3, '0', STR_PAD_LEFT);
             else {
-                $this->nuevo_codigo = substr(strval($this->anio), 2, 2) . '.1.0001';
+                $this->nuevo_codigo = substr(strval($this->anio_correlativo), 2, 2) . '.2.001';
             }
         }
+        $inicial_apellido_paterno = substr(strval($this->apellido_paterno), 0, 1);
+        $inicial_apellido_materno = substr(strval($this->apellido_materno), 0, 1);
+        $inicial_apellido_nombres = substr(strval($this->nombres), 0, 1);
+        $this->codigo_docente_final = $inicial_apellido_paterno . $inicial_apellido_materno . $inicial_apellido_nombres . '-' . $this->nuevo_codigo;
+        $this->emit('guardado', $this->codigo_docente_final);
     }
 
     public function registrarDocente()
@@ -109,28 +133,36 @@ class RegistrarDocente extends Component
         try {
             $this->generarCodigo();
             // Registrar persona
-            $persona = Persona::create([
-                'codigo' => $this->nuevo_codigo,
-                'dni' => $this->dni,
-                'apellido_paterno' => $this->apellido_paterno,
-                'apellido_materno' => $this->apellido_materno,
-                'nombres' => $this->nombres,
-                'celular' => $this->celular,
-                'correo' => $this->correo,
-                'fecha_nacimiento' => $this->fecha_nacimiento,
-                'distrito_id' => $this->distrito,
-                'sexo_id' => $this->sexo,
-            ]);
+            $persona = Persona::query()->where('dni', $this->dni)->first();
+            if (!$persona) {
+                $persona = Persona::create([
+                    'dni' => $this->dni,
+                    'apellido_paterno' => $this->apellido_paterno,
+                    'apellido_materno' => $this->apellido_materno,
+                    'nombres' => $this->nombres,
+                    'celular' => $this->celular,
+                    'correo' => $this->correo,
+                    'fecha_nacimiento' => $this->fecha_nacimiento,
+                    'sexo_id' => $this->sexo,
+                    'pais_id' => $this->pais,
+                    'distrito_id' => $this->distrito == 0 ? null : $this->distrito,
+                ]);
+            }
 
             // Registrar informacion CID
-            Docente::create([
-                'uuid' => Str::uuid(),
-                'esta_activo' => true,
-                'persona_id' => $persona->id,
-                'docente_condicion_id' => $this->condicion,
-                'docente_dedicacion_id' => $this->dedicacion,
-                'docente_categoria_id' => $this->categoria,
-            ]);
+            $docente = Docente::query()->whereHas('persona', function ($query) {
+                $query->where('dni', $this->dni);
+            })->first();
+            if (!$docente) {
+                Docente::create([
+                    'codigo' => $this->codigo_docente_final,
+                    'esta_activo' => true,
+                    'docente_categoria_id' => $this->categoria,
+                    'docente_condicion_id' => $this->condicion,
+                    'docente_dedicacion_id' => $this->dedicacion,
+                    'persona_id' => $persona->id,
+                ]);
+            }
             $msg = 'Docente registrado.';
             $this->emit('guardado', $msg);
             return redirect()->route('docente.index');
