@@ -12,4 +12,9 @@ class Distrito extends Model
     protected $table = 'distritos';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
+    }
 }

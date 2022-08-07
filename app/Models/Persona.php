@@ -12,4 +12,14 @@ class Persona extends Model
     protected $table = 'personas';
     protected $guarded = ['id'];
     public $casts = ['fecha_nacimiento' => 'date'];
+
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class);
+    }
+
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class);
+    }
 }

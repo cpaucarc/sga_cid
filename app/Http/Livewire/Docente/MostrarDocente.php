@@ -19,17 +19,6 @@ class MostrarDocente extends Component
     public function mount($codigo)
     {
         $this->codigo = $codigo;
-        $this->docente = Docente::query()
-            ->with('persona')
-            ->where('codigo', $this->codigo)
-            ->first();
-
-        $this->pais = Pais::find($this->docente->persona->pais_id);
-        $this->distrito = Distrito::find($this->docente->persona->distrito_id);
-        if ($this->distrito) {
-            $this->provincia = Provincia::find($this->distrito->provincia_id);
-            $this->departamento = Departamento::find($this->provincia->departamento_id);
-        }
 
         $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
 
@@ -41,9 +30,26 @@ class MostrarDocente extends Component
     public function render()
     {
         $this->docente = Docente::query()
-            ->with('persona')
+            ->with(['persona' => function ($query) {
+                $query->addSelect(['pais' => Pais::query()
+                    ->select('nombre')
+                    ->whereColumn('id', 'personas.pais_id')
+                    ->take(1)
+                ]);
+            }])
             ->where('codigo', $this->codigo)
             ->first();
+
+        $this->distrito = Distrito::query()
+            ->with(['provincia' => function ($query) {
+                $query->addSelect(['departamento' => Departamento::query()
+                    ->select('nombre')
+                    ->whereColumn('id', 'provincias.departamento_id')
+                    ->take(1)
+                ]);
+            }])
+            ->find($this->docente->persona->distrito_id);
+
         return view('livewire.docente.mostrar-docente');
     }
 

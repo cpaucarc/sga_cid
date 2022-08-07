@@ -13,7 +13,7 @@
             <h3 class="text-2xl text-black font-bold">
                 {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}
                 <span
-                    class="bg-red-100 text-red-800 text-sm font-medium ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">{{$pais->nombre}}</span>
+                    class="bg-red-100 text-red-800 text-sm font-medium ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">{{$docente->persona->pais}}</span>
             </h3>
             @if(!$docente->esta_activo)
                 <p class="text-sm flex items-center text-red-600">
@@ -105,14 +105,14 @@
                     class="group space-y-1 bg-slate-50 hover:bg-slate-400/10 soft-transition p-2 rounded cursor-pointer">
                     <h3 class="font-bold text-zinc-400 group-hover:text-zinc-600 soft-transition">Departamento</h3>
                     <p class="text-zinc-600">
-                        {{ $departamento->nombre }}
+                        {{ $distrito->provincia->departamento }}
                     </p>
                 </div>
                 <div
                     class="group space-y-1 bg-slate-50 hover:bg-slate-400/10 soft-transition p-2 rounded cursor-pointer">
                     <h3 class="font-bold text-zinc-400 group-hover:text-zinc-600 soft-transition">Provincia</h3>
                     <p class="text-zinc-600">
-                        {{ $provincia->nombre }}
+                        {{ $distrito->provincia->nombre }}
                     </p>
                 </div>
                 <div

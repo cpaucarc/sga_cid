@@ -12,4 +12,9 @@ class Provincia extends Model
     protected $table = 'provincias';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
 }
