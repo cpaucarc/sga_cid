@@ -20,7 +20,7 @@
                         @if($ms->esta_activo)
                             <button type="button" class="btn btn-state-success">{{ __('Activo') }}</button>
                         @else
-                            @if(now() < $ms->inicio_clases)
+                            @if(now() < $ms->fin_clases)
                                 <button type="button" wire:click="activar({{$ms->id}})"
                                         class="btn btn-state-default">{{ __('Activar') }}</button>
                             @else
