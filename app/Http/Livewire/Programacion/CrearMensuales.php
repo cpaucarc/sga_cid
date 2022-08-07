@@ -118,7 +118,7 @@ class CrearMensuales extends Component
                 $msg = 'Actualizado con éxito.';
             }
             $this->emit('guardado', $msg);
-            return redirect()->route('programacion.mensual.index');
+            return redirect()->route('director.matricula.programacion', ['year' => $this->anio, 'month' => $this->mes]);
         } catch (\Exception $e) {
             $this->emit('error', "Hubo un error inesperado: \n" . $e);
         }
