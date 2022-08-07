@@ -46,6 +46,9 @@
             @endforeach
         </x-table.table>
     @else
-        No hay docentes
+        <x-empty-state :w-text="5">
+            <x-slot:title>Lista de autoridades</x-slot:title>
+            <x-slot:description>No existen autoridades registrados o activos.</x-slot:description>
+        </x-empty-state>
     @endif
 </div>
