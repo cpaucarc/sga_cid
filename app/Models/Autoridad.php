@@ -12,4 +12,11 @@ class Autoridad extends Model
     protected $table = 'autoridades';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class)
+            ->orderBy('apellido_paterno')
+            ->orderBy('apellido_materno');
+    }
 }

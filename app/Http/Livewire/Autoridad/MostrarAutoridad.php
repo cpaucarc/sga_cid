@@ -1,35 +1,32 @@
 <?php
 
-namespace App\Http\Livewire\Docente;
+namespace App\Http\Livewire\Autoridad;
 
 use App\Constants\Constants;
+use App\Models\Autoridad;
 use App\Models\Departamento;
 use App\Models\Distrito;
-use App\Models\Docente;
 use App\Models\Pais;
-use App\Models\Provincia;
+use App\Models\Persona;
 use Livewire\Component;
 
-class MostrarDocente extends Component
+class MostrarAutoridad extends Component
 {
-    public $codigo, $docente, $meses;
-    public $distrito, $pais;
-    public $dedicacion, $categoria, $condicion;
+    public $dni, $persona, $autoridad, $meses;
+    public $distrito, $pais, $autoridad_cargos;
 
-    public function mount($codigo)
+    public function mount($dni)
     {
-        $this->codigo = $codigo;
+        $this->dni = $dni;
+        $this->persona = Persona::query()->where('dni', $this->dni)->first();
 
         $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
-
-        $this->dedicacion = Constants::docente_dedicacion()->pluck('nombre', 'id')->all();
-        $this->categoria = Constants::docente_categorias()->pluck('nombre', 'id')->all();
-        $this->condicion = Constants::docente_condicion()->pluck('nombre', 'id')->all();
+        $this->autoridad_cargos = Constants::autoridad_cargos()->pluck('nombre', 'id')->all();
     }
 
     public function render()
     {
-        $this->docente = Docente::query()
+        $this->autoridad = Autoridad::query()
             ->with(['persona' => function ($query) {
                 $query->addSelect(['pais' => Pais::query()
                     ->select('nombre')
@@ -37,7 +34,7 @@ class MostrarDocente extends Component
                     ->take(1)
                 ]);
             }])
-            ->where('codigo', $this->codigo)
+            ->where('persona_id',$this->persona->id)
             ->first();
 
         $this->distrito = Distrito::query()
@@ -48,15 +45,21 @@ class MostrarDocente extends Component
                     ->take(1)
                 ]);
             }])
-            ->find($this->docente->persona->distrito_id);
-
-        return view('livewire.docente.mostrar-docente');
+            ->find($this->autoridad->persona->distrito_id);
+        return view('livewire.autoridad.mostrar-autoridad');
     }
 
     public function cambiarEstado($id, $estado)
     {
-        $docente = Docente::find($id);
-        $docente->esta_activo = !$estado;
-        $docente->save();
+        $autoridad = Autoridad::find($id);
+        $autoridad->esta_activo = !$estado;
+        $autoridad->save();
+    }
+
+    public function cambiarCargo($id, $cargo_id)
+    {
+        $autoridad = Autoridad::find($id);
+        $autoridad->autoridad_cargo_id = $cargo_id;
+        $autoridad->save();
     }
 }

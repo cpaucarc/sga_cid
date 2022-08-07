@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutoridadController;
 use App\Http\Controllers\CursoController;
 
 use App\Http\Controllers\DirectorMatriculaController;
@@ -61,4 +62,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('/{codigo}/idioma', 'idioma')->name('docente.idioma');
     });
 
+    Route::prefix('autoridad')->controller(AutoridadController::class)->group(function () {
+        Route::get('/', 'index')->name('autoridad.index');
+        Route::get('/{dni}/mostrar', 'show')->name('autoridad.show');
+        Route::get('/registrar', 'registrar')->name('autoridad.registrar');
+        Route::get('/{dni}/editar', 'editar')->name('autoridad.editar');
+    });
 });
