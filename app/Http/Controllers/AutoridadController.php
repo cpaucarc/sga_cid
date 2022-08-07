@@ -10,4 +10,9 @@ class AutoridadController extends Controller
     {
         return view('autoridad.index');
     }
+
+    public function show($dni)
+    {
+        return view('autoridad.show', compact('dni'));
+    }
 }

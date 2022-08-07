@@ -21,7 +21,7 @@
                 <x-table.row>
                     <x-table.column class="whitespace-nowrap">{{$autoridad->persona->dni}}</x-table.column>
                     <x-table.column class="uppercase">
-                        <x-links.secondary href="#" class="btn-state-transparent">
+                        <x-links.secondary href="{{ route('autoridad.show',$autoridad->persona->dni) }}" class="btn-state-transparent">
                             {{$autoridad->persona->apellido_paterno}} {{$autoridad->persona->apellido_materno}} {{$autoridad->persona->nombres}}
                         </x-links.secondary>
                     </x-table.column>
