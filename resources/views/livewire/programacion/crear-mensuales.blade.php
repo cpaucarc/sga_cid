@@ -1,5 +1,5 @@
 <div>
-    <div class="space-y-6">
+    <div class="space-y-8">
 
         <x-alerta tipo="{{ $ultimo_mensual ? 'info' : 'danger' }}">
             Ultimo registro creado:
@@ -13,7 +13,7 @@
             @endslot
         </x-titulo>
 
-        <div class="space-y-4 divide-y divide-dashed divide-slate-200">
+        <div class="space-y-6 divide-y divide-dashed divide-slate-200">
             <div class="grid grid-cols-7 gap-3">
                 <p class="font-bold mt-1 text-sm text-slate-600 col-span-2">Datos Generales</p>
                 <div class="space-y-3 col-span-5">
@@ -21,19 +21,17 @@
                         <x-jet-label for="modalidad">Modalidad</x-jet-label>
                         <x-forms.select wire:model="modalidad" id="modalidad">
                             @foreach($modalidades as $ind => $mod)
-                                <option value="{{ $ind }}">Modalidad {{ $mod }}</option>
+                                <option value="{{ $ind }}">Clases {{ $mod }}</option>
                             @endforeach
                         </x-forms.select>
                     </div>
                     <div class="items-center">
                         <label class="text-sm text-slate-700" for="fecha_inicio">Clases desde</label>
-                        <input type="date" id="fecha_inicio"
-                               class="input-none w-32 text-blue-600 hover:text-blue-700"
-                               wire:model="fecha_inicio"/>
+                        <input type="date" id="fecha_inicio" wire:model="fecha_inicio"
+                               class="input-none w-32 text-blue-600 hover:text-blue-700"/>
                         <label class="text-sm text-slate-700" for="fecha_fin">hasta</label>
-                        <input type="date" id="fecha_fin"
-                               class="input-none w-32 text-blue-600 hover:text-blue-700"
-                               wire:model="fecha_fin"/>
+                        <input type="date" id="fecha_fin" wire:model="fecha_fin"
+                               class="input-none w-32 text-blue-600 hover:text-blue-700"/>
                         <div class="flex flex-col space-y-1">
                             <x-jet-input-error for="fecha_inicio"/>
                             <x-jet-input-error for="fecha_fin"/>
@@ -46,13 +44,11 @@
                 <p class="font-bold mt-1 text-sm text-slate-600 col-span-2">Pre-matrícula</p>
                 <div class="col-span-5 items-center">
                     <label class="text-sm text-slate-700" for="inicio_prematricula">Desde</label>
-                    <input type="date" id="inicio_prematricula"
-                           class="input-none w-32 text-blue-600 hover:text-blue-700"
-                           wire:model="inicio_prematricula"/>
+                    <input type="date" id="inicio_prematricula" wire:model="inicio_prematricula"
+                           class="input-none w-32 text-blue-600 hover:text-blue-700"/>
                     <label class="text-sm text-slate-700" for="fin_prematricula">hasta</label>
-                    <input type="date" id="fin_prematricula"
-                           class="input-none w-32 text-blue-600 hover:text-blue-700"
-                           wire:model="fin_prematricula"/>
+                    <input type="date" id="fin_prematricula" wire:model="fin_prematricula"
+                           class="input-none w-32 text-blue-600 hover:text-blue-700"/>
                     <div class="flex flex-col space-y-1">
                         <x-jet-input-error for="inicio_prematricula"/>
                         <x-jet-input-error for="fin_prematricula"/>
@@ -80,7 +76,7 @@
 
             <div class="grid grid-cols-7 gap-3 pt-4">
                 <p class="font-bold mt-1 text-sm text-slate-600 col-span-2">Pagos</p>
-                <div class="space-y-3 col-span-5">
+                <div class="space-y-4 col-span-5">
                     <div class="items-center">
                         <label class="text-sm text-slate-700" for="inicio_pago">Pagos desde</label>
                         <input type="date" id="inicio_pago"

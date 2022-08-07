@@ -80,7 +80,7 @@
     }
 
     .input-none {
-        @apply appearance-none text-sm border-none bg-transparent hover:bg-slate-50 border ring-0 focus:border-none focus:ring-0 soft-transition;
+        @apply appearance-none text-sm border-none bg-transparent hover:bg-slate-100 border ring-0 focus:border-none focus:ring-0 soft-transition;
     }
 
     .select {

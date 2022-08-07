@@ -31,27 +31,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 
-
     Route::prefix('idiomas')->controller(CursoController::class)->group(function () {
         Route::get('dictables', 'index')->name('curso.index');
         Route::get('cursos/{id?}', 'cursos')->name('curso.cursos');
     });
 
-    Route::prefix('programacion')->controller(ProgramacionController::class)->group(function () {
-        Route::get('mensual', 'index')->name('programacion.mensual.index');
-        Route::get('mensual/crear', 'crearMensual')->name('programacion.mensual.crear');
-        Route::get('prematricula', 'prematricula')->name('programacion.prematricula');
-        Route::get('matricula', 'matricula')->name('programacion.matricula');
-        Route::get('pago', 'pago')->name('programacion.pago');
-    });
-
-    Route::prefix('director/matriculas')->controller(MatriculaController::class)->group(function () {
-        Route::get('prematricula/{year?}/{month?}', 'prematricula_director')->name('matriculas.prematricula.director');
-    });
-
     Route::prefix('director')->controller(DirectorMatriculaController::class)->group(function () {
-        Route::get('programacion/{year?}/{month?}', 'programacion')->name('director.matricula.programacion');
-        Route::get('prematricula/{year?}/{month?}', 'prematricula')->name('director.matricula.prematricula');
+        Route::get('programacion/crear', 'crear_mensual')->name('director.matricula.programacion.crear');
+        Route::get('programacion/{year?}/{month?}', 'programacion')->name('director.matricula.programacion.index');
+        Route::get('prematricula/{year?}/{month?}', 'prematricula')->name('director.matricula.prematricula.index');
     });
 
     Route::prefix('docente')->controller(DocenteController::class)->group(function () {

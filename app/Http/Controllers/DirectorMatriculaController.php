@@ -17,7 +17,7 @@ class DirectorMatriculaController extends Controller
             $year = $mensual_actual ? $mensual_actual->anio : now()->year;
             $month = $mensual_actual?->mes_id;
 
-            return redirect()->route('director.matricula.programacion', ['year' => $year, 'month' => $month]);
+            return redirect()->route('director.matricula.programacion.index', ['year' => $year, 'month' => $month]);
         }
 
         if (is_null($month)) {
@@ -27,9 +27,14 @@ class DirectorMatriculaController extends Controller
         }
 
         $meses = Constants::meses()->pluck('nombre', 'id')->all();
-        $clase_modalidades = \App\Constants\Constants::clase_modalidades()->pluck('nombre', 'id')->all();
+        $clase_modalidades = Constants::clase_modalidades()->pluck('nombre', 'id')->all();
 
         return view('director.programacion.index', compact('mensual', 'clase_modalidades', 'meses', 'year'));
+    }
+
+    public function crear_mensual()
+    {
+        return view('director.programacion.crear');
     }
 
     public function prematricula($year = null, $month = null)
@@ -44,14 +49,14 @@ class DirectorMatriculaController extends Controller
 
             $year = $mensual_actual->anio;
             $month = $mensual_actual->mes_id;
-            return redirect()->route('director.matricula.prematricula', ['year' => $year, 'month' => $month]);
+            return redirect()->route('director.matricula.prematricula.index', ['year' => $year, 'month' => $month]);
         }
 
         // E2: Pasan solo el año -> buscar el ultimo mes registrado para ese año
         if (is_null($month)) {
             $mensual = Mensual::query()->where('anio', $year)->orderBy('mes_id', 'desc')->first();
             $month = $mensual ? $mensual->mes_id : 1;
-            return redirect()->route('director.matricula.prematricula', ['year' => $year, 'month' => $month]);
+            return redirect()->route('director.matricula.prematricula.index', ['year' => $year, 'month' => $month]);
         }
 
         // E3: Pasan ambos datos, pero no hay registros -> error 404

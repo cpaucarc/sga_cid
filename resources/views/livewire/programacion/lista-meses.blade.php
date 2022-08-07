@@ -38,7 +38,7 @@
                             </button>
 
                             <x-links.outline
-                                href="{{ route('director.matricula.programacion', ['year' => $ms->anio, 'month' => $ms->mes_id]) }}"
+                                href="{{ route('director.matricula.programacion.index', ['year' => $ms->anio, 'month' => $ms->mes_id]) }}"
                                 title="Ver información detallada">
                                 Ver más
                             </x-links.outline>

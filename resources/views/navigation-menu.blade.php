@@ -19,23 +19,13 @@
                     {{ __('Cursos') }}
                 </x-jet-nav-link>
 
-                <x-jet-nav-link href="{{ route('programacion.mensual.index') }}"
-                                :active="request()->routeIs('programacion.*')">
-                    {{ __('Programacion') }}
-                </x-jet-nav-link>
-
                 <x-jet-nav-link href="{{ route('docente.index') }}" :active="request()->routeIs('docente.*')">
                     {{ __('Docente') }}
                 </x-jet-nav-link>
 
-                <x-jet-nav-link href="{{ route('matriculas.prematricula.director') }}"
-                                :active="request()->routeIs('matriculas.*')">
-                    {{ __('Matricula') }}
-                </x-jet-nav-link>
-
-                <x-jet-nav-link href="{{ route('director.matricula.programacion') }}"
+                <x-jet-nav-link href="{{ route('director.matricula.programacion.index') }}"
                                 :active="request()->routeIs('director.matricula.*')">
-                    {{ __('Director') }}
+                    {{ __('Matrícula') }}
                 </x-jet-nav-link>
 
                 <x-jet-nav-link href="{{ route('autoridad.index') }}"
