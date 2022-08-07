@@ -123,7 +123,8 @@
                     </x-slot>
                     <x-slot name="content">
                         @foreach($autoridad_cargos as $id=>$cargo)
-                            <button class="btn btn-state-default w-full" wire:click="cambiarCargo({{ $autoridad->id }},{{ $id }})">
+                            <button class="btn btn-state-default w-full"
+                                    wire:click="cambiarCargo({{ $autoridad->id }},{{ $id }})">
                                 {{$cargo}}
                             </button>
                         @endforeach

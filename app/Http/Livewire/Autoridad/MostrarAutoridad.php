@@ -7,16 +7,19 @@ use App\Models\Autoridad;
 use App\Models\Departamento;
 use App\Models\Distrito;
 use App\Models\Pais;
+use App\Models\Persona;
 use Livewire\Component;
 
 class MostrarAutoridad extends Component
 {
-    public $dni, $autoridad, $meses;
+    public $dni, $persona, $autoridad, $meses;
     public $distrito, $pais, $autoridad_cargos;
 
     public function mount($dni)
     {
         $this->dni = $dni;
+        $this->persona = Persona::query()->where('dni', $this->dni)->first();
+
         $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
         $this->autoridad_cargos = Constants::autoridad_cargos()->pluck('nombre', 'id')->all();
     }
@@ -29,8 +32,9 @@ class MostrarAutoridad extends Component
                     ->select('nombre')
                     ->whereColumn('id', 'personas.pais_id')
                     ->take(1)
-                ])->where('dni', $this->dni);
+                ]);
             }])
+            ->where('persona_id',$this->persona->id)
             ->first();
 
         $this->distrito = Distrito::query()
