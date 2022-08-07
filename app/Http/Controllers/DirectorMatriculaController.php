@@ -44,14 +44,14 @@ class DirectorMatriculaController extends Controller
 
             $year = $mensual_actual->anio;
             $month = $mensual_actual->mes_id;
-            return redirect()->route('matriculas.prematricula.director', ['year' => $year, 'month' => $month]);
+            return redirect()->route('director.matricula.prematricula', ['year' => $year, 'month' => $month]);
         }
 
         // E2: Pasan solo el año -> buscar el ultimo mes registrado para ese año
         if (is_null($month)) {
             $mensual = Mensual::query()->where('anio', $year)->orderBy('mes_id', 'desc')->first();
             $month = $mensual ? $mensual->mes_id : 1;
-            return redirect()->route('matriculas.prematricula.director', ['year' => $year, 'month' => $month]);
+            return redirect()->route('director.matricula.prematricula', ['year' => $year, 'month' => $month]);
         }
 
         // E3: Pasan ambos datos, pero no hay registros -> error 404
@@ -63,6 +63,6 @@ class DirectorMatriculaController extends Controller
         $titulo = Constants::meses()->where('id', $month)->first()['nombre'] . ' de ' . $year;
         $meses = Constants::meses()->pluck('nombre', 'id')->all();
 
-        return view('matricula.prematricula-director', compact('mensual', 'titulo', 'meses'));
+        return view('director.prematricula.index', compact('mensual', 'titulo', 'meses'));
     }
 }
