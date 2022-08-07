@@ -3,13 +3,13 @@
 @if($mensual)
     <section class="border border-slate-300 rounded-md">
         <div class="px-4 py-4">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-x-2">
                 <h2 class="font-bold text-lg {{ $mensual->esta_activo ? 'text-blue-600' : 'text-slate-800' }}">
                     {{ $meses[$mensual->mes_id] }} de {{ $mensual->anio }}
                 </h2>
 
                 @if(!$mensual->esta_activo)
-                    <a class="text-blue-600 hover:text-blue-800 soft-transition text-sm"
+                    <a class="text-blue-600 hover:text-blue-800 soft-transition text-sm text-right"
                        href="{{ route('director.matricula.programacion') }}">
                         Ir al mes actual
                     </a>
@@ -23,6 +23,8 @@
                 de {{ $meses[intval($mensual->fin_clases->format('m'))] }}
             </p>
         </div>
+
+        <hr class="bg-slate-300">
 
         <div class="space-y-1">
             <a class="link-transparent flex flex-col px-4 py-3 group"
@@ -67,38 +69,47 @@
                     class="flex justify-between text-slate-700 group-hover:text-blue-600 group-hover:underline soft-transition">
                     <h3 class="font-semibold">Pagos</h3>
                 </div>
-                <div class="space-y-2 mt-2">
-                    <p class="text-sm text-slate-600">
+                <ol class="list-disc list-inside space-y-2 mt-2">
+                    <li class="text-sm text-slate-600">
                         @if($mensual->inicio_pago && $mensual->fin_pago)
-                            <b>Estudiantes</b><br> {{$mensual->inicio_pago->format('d')}}
-                            de {{$meses[intval($mensual->inicio_pago->format('m'))]}} -
-                            {{$mensual->fin_pago->format('d')}}
-                            de {{$meses[intval($mensual->fin_pago->format('m'))]}}
+                            <b>Estudiantes</b>
+                            <p class="block ml-5">
+                                {{$mensual->inicio_pago->format('d')}}
+                                de {{$meses[intval($mensual->inicio_pago->format('m'))]}} -
+                                {{$mensual->fin_pago->format('d')}}
+                                de {{$meses[intval($mensual->fin_pago->format('m'))]}}
+                            </p>
                         @else
                             Aun no hay fechas programadas
                         @endif
-                    </p>
-                    <p class="text-sm text-slate-600">
+                    </li>
+                    <li class="text-sm text-slate-600">
                         @if($mensual->inicio_revision && $mensual->fin_revision)
-                            <b>Revisión</b><br> {{$mensual->inicio_revision->format('d')}}
-                            de {{$meses[intval($mensual->inicio_revision->format('m'))]}} -
-                            {{$mensual->fin_revision->format('d')}}
-                            de {{$meses[intval($mensual->fin_revision->format('m'))]}}
+                            <b>Revisión</b>
+                            <p class="block ml-5">
+                                {{$mensual->inicio_revision->format('d')}}
+                                de {{$meses[intval($mensual->inicio_revision->format('m'))]}} -
+                                {{$mensual->fin_revision->format('d')}}
+                                de {{$meses[intval($mensual->fin_revision->format('m'))]}}
+                            </p>
                         @else
                             Aun no hay fechas programadas
                         @endif
-                    </p>
-                    <p class="text-sm text-slate-600">
+                    </li>
+                    <li class="text-sm text-slate-600">
                         @if($mensual->inicio_validacion && $mensual->fin_validacion)
-                            <b>Validación</b><br> {{$mensual->inicio_validacion->format('d')}}
-                            de {{$meses[intval($mensual->inicio_validacion->format('m'))]}} -
-                            {{$mensual->fin_validacion->format('d')}}
-                            de {{$meses[intval($mensual->fin_validacion->format('m'))]}}
+                            <b>Validación</b>
+                            <p class="block ml-5">
+                                {{$mensual->inicio_validacion->format('d')}}
+                                de {{$meses[intval($mensual->inicio_validacion->format('m'))]}} -
+                                {{$mensual->fin_validacion->format('d')}}
+                                de {{$meses[intval($mensual->fin_validacion->format('m'))]}}
+                            </p>
                         @else
                             Aun no hay fechas programadas
                         @endif
-                    </p>
-                </div>
+                    </li>
+                </ol>
             </a>
         </div>
     </section>
