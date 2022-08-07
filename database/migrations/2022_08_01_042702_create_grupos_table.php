@@ -14,15 +14,10 @@ return new class extends Migration {
     {
         Schema::create('grupos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mensual_id')->nullable()->constrained('mensuales')
-                ->cascadeOnUpdate()
-                ->nullOnDelete();
-            $table->foreignId('curso_id')->constrained('cursos')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreignId('docente_id')->nullable()->constrained('docentes')
-                ->cascadeOnUpdate()
-                ->nullOnDelete();
+            $table->string('nombre')->default('Grupo 1');
+            $table->foreignId('mensual_id')->nullable()->constrained('mensuales')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('curso_id')->constrained('cursos')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('docente_id')->nullable()->constrained('docentes')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
