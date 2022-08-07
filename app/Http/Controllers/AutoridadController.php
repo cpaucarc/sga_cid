@@ -20,4 +20,9 @@ class AutoridadController extends Controller
     {
         return view('autoridad.formulario-registrar-autoridad');
     }
+
+    public function editar($dni)
+    {
+        return view('autoridad.formulario-editar-autoridad', compact('dni'));
+    }
 }
