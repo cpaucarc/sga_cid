@@ -3,7 +3,7 @@ function sweetToast(mensaje, icon = 'success') {
         toast: true,
         position: 'bottom-end',
         showConfirmButton: false,
-        timer: 3500,
+        timer: 4500,
         timerProgressBar: true,
         iconColor: '#1e293b',
         customClass: {
@@ -21,7 +21,7 @@ function sweetToast(mensaje, icon = 'success') {
     })
 }
 
-function errorAlert(mensaje, titulo = null){
+function errorAlert(mensaje, titulo = null) {
     Swal.fire({
         icon: 'error',
         title: titulo,
