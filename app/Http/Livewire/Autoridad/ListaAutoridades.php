@@ -28,4 +28,11 @@ class ListaAutoridades extends Component
         $autoridades = $autoridades->get();
         return view('livewire.autoridad.lista-autoridades', compact('autoridades'));
     }
+
+    public function cambiarEstado($id, $estado)
+    {
+        $autoridad = Autoridad::find($id);
+        $autoridad->esta_activo = !$estado;
+        $autoridad->save();
+    }
 }
