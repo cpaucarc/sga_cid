@@ -65,5 +65,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::prefix('autoridad')->controller(AutoridadController::class)->group(function () {
         Route::get('/', 'index')->name('autoridad.index');
         Route::get('/{dni}/mostrar', 'show')->name('autoridad.show');
+        Route::get('/registrar', 'registrar')->name('autoridad.registrar');
     });
 });

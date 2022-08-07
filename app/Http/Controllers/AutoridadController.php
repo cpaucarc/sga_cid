@@ -15,4 +15,9 @@ class AutoridadController extends Controller
     {
         return view('autoridad.show', compact('dni'));
     }
+
+    public function registrar()
+    {
+        return view('autoridad.formulario-registrar-autoridad');
+    }
 }
