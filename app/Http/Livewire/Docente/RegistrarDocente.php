@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class RegistrarDocente extends Component
 {
-    public $anio_correlativo, $ultimo_codigo_docente_cid, $nuevo_codigo, $codigo_docente_final;
+    public $anio_correlativo, $ultimo_codigo_docente_cid, $nuevo_codigo_numerico, $codigo_docente_final;
     public $apellido_paterno, $apellido_materno, $nombres, $dni;
     public $celular, $correo, $fecha_nacimiento, $sexos = null, $sexo = 1;
     public $paises = null, $pais = 0, $departamentos = null, $departamento = 0;
@@ -90,9 +90,7 @@ class RegistrarDocente extends Component
         $codigos_docente_bd = [];
 
         if ($lista_docentes) {
-            if ($docente) {
-                $this->codigo_docente_final = $docente->codigo;
-            } else {
+            if (!$docente) {
                 foreach ($lista_docentes as $docente) {
                     array_push($codigos_docente_bd, explode('-', $docente->codigo)[1]);
                 }
@@ -108,22 +106,22 @@ class RegistrarDocente extends Component
                 $numero_correlativo = max($lista_numeros);
 
                 if ($this->anio_correlativo == $anio_correlativo)
-                    $this->nuevo_codigo = $anio_correlativo . '.2.' . str_pad(($numero_correlativo + 1), 3, '0', STR_PAD_LEFT);
+                    $this->nuevo_codigo_numerico = $anio_correlativo . '.2.' . str_pad(($numero_correlativo + 1), 3, '0', STR_PAD_LEFT);
                 else {
-                    $this->nuevo_codigo = substr(strval($this->anio_correlativo), 2, 2) . '.2.001';
+                    $this->nuevo_codigo_numerico = $this->anio_correlativo . '.2.001';
                 }
             }
         } else {
             if ($this->anio_correlativo == explode('.', $this->ultimo_codigo_docente_cid)[0])
-                $this->nuevo_codigo = explode('.', $this->ultimo_codigo_docente_cid)[0] . '.2.' . str_pad((intval(explode('.', $this->ultimo_codigo_docente_cid)[2]) + 1), 3, '0', STR_PAD_LEFT);
+                $this->nuevo_codigo_numerico = explode('.', $this->ultimo_codigo_docente_cid)[0] . '.2.' . str_pad((intval(explode('.', $this->ultimo_codigo_docente_cid)[2]) + 1), 3, '0', STR_PAD_LEFT);
             else {
-                $this->nuevo_codigo = substr(strval($this->anio_correlativo), 2, 2) . '.2.001';
+                $this->nuevo_codigo_numerico = $this->anio_correlativo . '.2.001';
             }
         }
         $inicial_apellido_paterno = substr(strval($this->apellido_paterno), 0, 1);
         $inicial_apellido_materno = substr(strval($this->apellido_materno), 0, 1);
         $inicial_apellido_nombres = substr(strval($this->nombres), 0, 1);
-        $this->codigo_docente_final = $inicial_apellido_paterno . $inicial_apellido_materno . $inicial_apellido_nombres . '-' . $this->nuevo_codigo;
+        $this->codigo_docente_final = $inicial_apellido_paterno . $inicial_apellido_materno . $inicial_apellido_nombres . '-' . $this->nuevo_codigo_numerico;
         $this->emit('guardado', $this->codigo_docente_final);
     }
 
@@ -162,8 +160,10 @@ class RegistrarDocente extends Component
                     'docente_dedicacion_id' => $this->dedicacion,
                     'persona_id' => $persona->id,
                 ]);
+                $msg = 'Docente registrado correctamente.';
+            } else {
+                $msg = 'Docente ya existe en registro.';
             }
-            $msg = 'Docente registrado.';
             $this->emit('guardado', $msg);
             return redirect()->route('docente.index');
         } catch (\Exception $e) {
