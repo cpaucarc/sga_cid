@@ -27,6 +27,11 @@
                                 :active="request()->routeIs('director.matricula.*')">
                     {{ __('Matrícula') }}
                 </x-jet-nav-link>
+
+                <x-jet-nav-link href="{{ route('autoridad.index') }}"
+                                :active="request()->routeIs('autoridad.*')">
+                    {{ __('Autoridad') }}
+                </x-jet-nav-link>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
