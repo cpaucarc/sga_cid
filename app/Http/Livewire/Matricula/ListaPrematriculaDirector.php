@@ -10,6 +10,7 @@ use App\Models\Mensual;
 use App\Models\Modalidad;
 use App\Models\Prematriculado;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class ListaPrematriculaDirector extends Component
@@ -23,6 +24,8 @@ class ListaPrematriculaDirector extends Component
 
     public $open = false, $curso_seleccionado = null, $estudiantes = null;
     public $tipos = null; // Tipos de estudiante
+
+    public $listeners = ['crearGrupos'];
 
     public function mount(Mensual $mensual, $meses)
     {
@@ -80,5 +83,17 @@ class ListaPrematriculaDirector extends Component
             })
             ->orderBy('fecha_inscripcion', 'desc')->get();
         $this->open = true;
+    }
+
+    public function crearGrupos($curso_id, $cantidad = 1)
+    {
+        $prematriculados = Prematriculado::where('mensual_id', $this->mensual->id)->where('curso_id', $curso_id)->get();
+
+
+
+        Log::info('prematriculados', $prematriculados->toArray());
+        Log::info('mensual', ['mensual' => $this->mensual->mes_id]);
+        Log::info('curso-grupos', ['curso' => $curso_id, 'cantidad' => $cantidad]);
+        $this->emit('creado', 'Se crearon ' . $cantidad . ' grupos para este curso satisfactoriamente.');
     }
 }
