@@ -3,14 +3,14 @@
 @if($mensual)
     <section class="border border-slate-300 rounded-md">
         <div class="px-4 py-4">
-            <div class="flex items-center justify-between gap-x-2">
+            <div class="space-y-1">
                 <h2 class="font-bold text-lg {{ $mensual->esta_activo ? 'text-blue-600' : 'text-slate-800' }}">
                     {{ $meses[$mensual->mes_id] }} de {{ $mensual->anio }}
                 </h2>
 
                 @if(!$mensual->esta_activo)
                     <a class="text-blue-600 hover:text-blue-800 soft-transition text-sm text-right"
-                       href="{{ route('director.matricula.programacion') }}">
+                       href="{{ route('director.matricula.programacion.index') }}">
                         Ir al mes actual
                     </a>
                 @endif
@@ -28,7 +28,7 @@
 
         <div class="space-y-1">
             <a class="link-transparent flex flex-col px-4 py-3 group"
-               href="{{ route('director.matricula.prematricula', ['year' => $mensual->anio, 'month' => $mensual->mes_id]) }}">
+               href="{{ route('director.matricula.prematricula.index', ['year' => $mensual->anio, 'month' => $mensual->mes_id]) }}">
                 <div
                     class="flex justify-between text-slate-700 group-hover:text-blue-600 group-hover:underline soft-transition">
                     <h3 class="font-semibold">Pre-matrícula</h3>
