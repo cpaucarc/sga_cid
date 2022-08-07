@@ -11,7 +11,7 @@ class AgregarIdioma extends Component
 {
     public $codigo, $docente;
     public $idiomas = null, $idioma_selected;
-    public $docente_idiomas;
+    public $docente_idiomas, $idiomas_actuales;
 
     public function mount($codigo)
     {
@@ -24,9 +24,13 @@ class AgregarIdioma extends Component
 
     public function render()
     {
-        $callback = DocenteIdioma::query()->with('idioma:id,codigo,nombre')->where('docente_id', $this->docente->id);
+        $callback = DocenteIdioma::query()
+            ->with('idioma:id,codigo,nombre')
+            ->where('docente_id', $this->docente->id);
+
         $this->docente_idiomas = $callback->get();
         $this->idiomas_actuales = $callback->pluck('idioma_id');
+
         $this->idiomas = Idioma::query()
             ->whereNotIn('id', $this->idiomas_actuales)
             ->orderBy('nombre')
