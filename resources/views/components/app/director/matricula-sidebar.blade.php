@@ -12,7 +12,7 @@
 
     <x-sidebar.link href="{{ route('director.matricula.prematricula') }}"
                     :active="request()->routeIs('director.matricula.prematricula')">
-        Prematricula
+        Pre-matrícula
     </x-sidebar.link>
 
 </x-sidebar.group>
