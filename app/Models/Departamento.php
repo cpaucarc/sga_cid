@@ -12,4 +12,9 @@ class Departamento extends Model
     protected $table = 'departamentos';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class);
+    }
 }
