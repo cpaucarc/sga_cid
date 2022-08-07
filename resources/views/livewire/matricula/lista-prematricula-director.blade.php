@@ -70,18 +70,17 @@
             @foreach($cursos as $i => $curso)
                 @php
                     $grupos = \App\Lib\MatriculaUtil::calcularGrupos($curso->prematriculados, $curso->aforo_minimo, $curso->aforo_recomendado, $curso->aforo_maximo);
+                    $curso_nombre = $idiomas[$curso->dictable->idioma_id] . ' ' . $niveles[$curso->dictable->idioma_nivel_id];
+                    $curso_ciclo = $ciclos[$curso->ciclo_id];
+                    $curso_mod = $modalidades[$curso->dictable->modalidad_id];
                 @endphp
 
                 <x-table.row>
                     <x-table.column>{{ $i + 1 }}</x-table.column>
                     <x-table.column class="whitespace-nowrap">
-                        <p>
-                            <span class="font-semibold">
-                                {{ $idiomas[$curso->dictable->idioma_id] }} {{ $niveles[$curso->dictable->idioma_nivel_id] }}
-                            </span>
-                            <span class="font-black mr-1">{{ $ciclos[$curso->ciclo_id] }}</span>
-                            ({{ $modalidades[$curso->dictable->modalidad_id] }})
-                        </p>
+                        <span class="font-semibold">{{ $curso_nombre }}</span>
+                        <span class="font-black mr-1">{{ $curso_ciclo }}</span>
+                        ({{ $curso_mod }})
                     </x-table.column>
                     <x-table.column class="text-right whitespace-nowrap" hide>
                         S/. {{ $curso->dictable->precio_mensual }}
@@ -106,10 +105,12 @@
 
                                 <x-slot name="content">
                                     <div class="w-40">
-                                        <x-buttons.dropdown-button>
+                                        <x-buttons.dropdown-button
+                                            onclick="crearNGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }})">
                                             Generar&nbsp;<b>N</b>&nbsp;grupos
                                         </x-buttons.dropdown-button>
-                                        <x-buttons.dropdown-button>
+                                        <x-buttons.dropdown-button
+                                            onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }})">
                                             Generar&nbsp;<b>{{ $grupos }}</b>&nbsp;grupos
                                         </x-buttons.dropdown-button>
                                         <div class="border-t border-gray-100"></div>
@@ -195,4 +196,54 @@
     @else
         No hay ninguna información
     @endif
+
+    @push('js')
+        <script>
+            Livewire.on('creado', msg => {
+                console.log('Creado', msg)
+                sweetToast(msg, 'success');
+            });
+
+            function crearGrupos(curso, curso_id, grupos) {
+                Swal.fire({
+                    icon: 'question',
+                    html: `Se va a aperturar ${grupos} grupo(s) para el curso <b>${curso}</b> ¿Esta seguro?`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: `Si, crear ${grupos} grupo(s)`,
+                    confirmButtonColor: '#3b82f6'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.livewire.emit('crearGrupos', curso_id, grupos);
+                    }
+                })
+            }
+
+            function crearNGrupos(curso, curso_id, grupos) {
+                Swal.fire({
+                    icon: 'question',
+                    html: `¿Cuantos grupos desea aperturar para el curso <b>${curso}</b>? <br><br> <b>Recomendado:</b> ${grupos} grupo(s)`,
+                    input: 'number',
+                    inputAttributes: {
+                        value: grupos,
+                        min: 0,
+                        placeholder: 'Ingrese la cantidad de grupos a crear...'
+                    },
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Crear grupos',
+                    confirmButtonColor: '#3b82f6',
+                    preConfirm: (cantidad) => {
+                        if (cantidad.length === 0 || parseInt(cantidad) < 0) {
+                            Swal.showValidationMessage(`Debe ingresar un valor mayor o igual a 1`)
+                        }
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.livewire.emit('crearGrupos', curso_id, parseInt(result.value));
+                    }
+                })
+            }
+        </script>
+    @endpush
 </div>
