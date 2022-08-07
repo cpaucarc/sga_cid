@@ -36,7 +36,7 @@
 
         @if(isset($actions))
             <div class="flex flex-wrap justify-center gap-2">
-                $actions
+                {{ $actions }}
             </div>
         @endif
     </div>
