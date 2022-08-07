@@ -21,13 +21,12 @@ class EditarDocente extends Component
     public $dedicaciones = null, $dedicacion = 1, $categorias = null, $categoria = 1;
     public $condiciones = null, $condicion = 1;
 
-    public $distrito_docente, $provincia_docente, $departamento_docente, $pais_docente;
+    public $distrito_docente, $provincia_docente, $departamento_docente;
 
     protected $rules = [
         'apellido_paterno' => 'required|string|max:35',
         'apellido_materno' => 'required|string|max:35',
         'nombres' => 'required|string|max:35',
-        'dni' => 'required|string|min:8|max:8',
         'correo' => 'required',
         'celular' => 'required|string|min:9|max:11',
         'fecha_nacimiento' => 'required|date|before:now',
@@ -58,9 +57,8 @@ class EditarDocente extends Component
         $this->sexo = $this->docente->persona->sexo_id;
 
 
-        $this->pais_docente = Pais::find($this->docente->persona->pais_id);
         $this->paises = Pais::query()->select('id', 'nombre')->orderBy('nombre')->get();
-        $this->pais = $this->pais_docente->id;
+        $this->pais = Pais::find($this->docente->persona->pais_id)->id;
 
         $this->departamentos = Departamento::query()->select('id', 'nombre')
             ->where('pais_id', $this->pais)->orderBy('nombre')->get();
