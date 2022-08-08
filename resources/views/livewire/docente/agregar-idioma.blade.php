@@ -14,35 +14,43 @@
     </x-titulo>
     <div class="grid grid-cols-6 gap-12 items-start">
         <div class="col-span-2 sticky top-20">
-            <x-card>
-                <x-slot:header>
-                    <h2 class="font-bold text-zinc-600 mr-1">Lista de idomas ({{count($idiomas)}})</h2>
-                </x-slot:header>
-                @if(count($idiomas)>0)
-                    <x-table.table>
+            @if(count($idiomas)>0)
+                <article class="p-4 border border-zinc-300 rounded-xl">
+                    <div class="flex items-center">
+                        <img
+                            src="{{ asset('images/online_world_bro.svg') }}"
+                            alt="Mark Mead"
+                            class="w-16 h-16 rounded-full"
+                        />
+
+                        <div class="ml-3">
+                            <h5 class="text-lg font-medium text-gray-800">Lista de idiomas <span
+                                    class="text-xs">({{count($idiomas)}})</span>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 space-y-2">
+
                         @foreach($idiomas as $idioma)
-                            <x-table.row>
-                                <x-table.column>
-                                    <x-forms.checkbox wire:model="idioma_selected"
-                                                      wire:loading.attr="disabled"
-                                                      value="{{ $idioma->id }}"/>
-                                </x-table.column>
-                                <x-table.column class="text-left">
+                            <div
+                                class="block flex items-center h-full p-4 border border-zinc-300 rounded-lg hover:border-pink-300">
+                                <x-forms.checkbox wire:model="idioma_selected"
+                                                  wire:loading.attr="disabled"
+                                                  value="{{ $idioma->id }}"/>
+                                <p class="font-medium text-gray-600">
                                     {{ $idioma->nombre }}
-                                </x-table.column>
-                            </x-table.row>
+                                </p>
+                            </div>
                         @endforeach
-                    </x-table.table>
-                @else
-                    <x-message-image>
-                        <x-slot:title>Genial</x-slot:title>
-                        <x-slot:description>
-                            Todos los idiomas han sido agregados al docente.
-                        </x-slot:description>
-                        {{--<x-slot:image>{{ asset('images/logo_cid.svg')  }}</x-slot:image>--}}
-                    </x-message-image>
-                @endif
-            </x-card>
+                    </div>
+                </article>
+            @else
+                <x-empty-state title="¡No hay idiomas!"
+                               description="Todos los idiomas disponibles han sido agregados al docente."
+                               image="{{ asset('images/online_world_bro.svg') }}" w-text="5">
+                </x-empty-state>
+            @endif
         </div>
 
         <div class="col-span-4">
@@ -69,13 +77,10 @@
                     @endforeach
                 </x-table.table>
             @else
-                <x-message-image>
-                    <x-slot:title>No agregado</x-slot:title>
-                    <x-slot:description>
-                        Aún no se ha agredo ningun idioma al docente
-                    </x-slot:description>
-                    {{--<x-slot:image>{{ asset('images/logo_cid.svg')  }}</x-slot:image>--}}
-                </x-message-image>
+                <x-empty-state title="¡No hay diomas del docente!"
+                               description="Aún no ha agregado ningún idioma al docente. Seleccione cada una de los idiomas que el docente enseña en el Centro de Idiomas de la Unasam."
+                               image="{{ asset('images/learning_languages_bro.svg') }}">
+                </x-empty-state>
             @endif
         </div>
     </div>
