@@ -12,4 +12,6 @@ class Prematriculado extends Model
     protected $table = 'prematriculados';
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    protected $dates = ['fecha_inscripcion'];
 }
