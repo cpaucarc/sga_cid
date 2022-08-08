@@ -14,7 +14,8 @@ return new class extends Migration {
     {
         Schema::create('prematriculados', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inscripcion');
+            $table->dateTime('fecha_inscripcion');
+            $table->boolean('esta_matriculado')->default(false);
             $table->foreignId('curso_id')->constrained('cursos')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
