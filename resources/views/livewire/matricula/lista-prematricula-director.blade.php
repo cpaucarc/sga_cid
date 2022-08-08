@@ -56,12 +56,13 @@
                 </x-forms.select>
             </div>
         </div>
-
+        <x-dd>
+            {{$cursos}}
+        </x-dd>
         <x-table.table>
             @slot('head')
                 <x-table.head>N°</x-table.head>
                 <x-table.head>Idioma</x-table.head>
-                <x-table.head class="text-right" hide>Mensual</x-table.head>
                 <x-table.head>Prematriculados</x-table.head>
                 <x-table.head>Grupos</x-table.head>
                 <x-table.head><span class="sr-only">Acciones</span></x-table.head>
@@ -82,48 +83,56 @@
                         <span class="font-black mr-1">{{ $curso_ciclo }}</span>
                         ({{ $curso_mod }})
                     </x-table.column>
-                    <x-table.column class="text-right whitespace-nowrap" hide>
-                        S/. {{ $curso->dictable->precio_mensual }}
-                    </x-table.column>
                     <x-table.column class="whitespace-nowrap">
                         <button wire:click="verEstudiantes({{ $curso }})"
-                                class="{{ $curso->prematriculados == 0 ? 'text-rose-600' : 'font-semibold' }}">
-                            {{ $curso->prematriculados }} estudiantes
+                                class="{{ $curso->prematriculados == 0 ? 'text-rose-600' : '' }}">
+                            <span class="font-semibold">{{ $curso->prematriculados }} estudiantes</span>
+                            @if($grupos > 0 && $curso->sin_matricular > 0)
+                                ({{ $curso->sin_matricular }} sin matricula)
+                            @endif
                         </button>
                     </x-table.column>
                     <x-table.column class="whitespace-nowrap">
-                        <p class="{{ $grupos == 0 ? 'text-rose-600' : 'font-semibold' }}">{{ $grupos }} grupos</p>
+                        <p class="{{ $grupos == 0 ? 'text-rose-600' : 'font-semibold' }}">{{ $grupos }} grupo(s)</p>
                     </x-table.column>
                     <x-table.column class="flex justify-end">
-                        @if($grupos > 0)
-                            <x-jet-dropdown align="right" width="60">
-                                <x-slot name="trigger">
-                                    <button class="px-2 text-slate-500 hover:text-slate-800 soft-transition">
-                                        <x-icons.dots-vertical class="icon-5"/>
-                                    </button>
-                                </x-slot>
-
-                                <x-slot name="content">
-                                    <div class="w-40">
-                                        <x-buttons.dropdown-button
-                                            onclick="crearNGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }})">
-                                            Generar&nbsp;<b>N</b>&nbsp;grupos
-                                        </x-buttons.dropdown-button>
-                                        <x-buttons.dropdown-button
-                                            onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }})">
-                                            Generar&nbsp;<b>{{ $grupos }}</b>&nbsp;grupos
-                                        </x-buttons.dropdown-button>
-                                        <div class="border-t border-gray-100"></div>
-                                        <x-jet-dropdown-link href="#">
-                                            Ver más datos
-                                        </x-jet-dropdown-link>
-                                    </div>
-                                </x-slot>
-                            </x-jet-dropdown>
+                        @if($grupos > 0 && $curso->sin_matricular == 0)
+                            <a href="#" class="badge-success" title="Todos los estudiantes ya fueron matriculados ">
+                                Completado
+                            </a>
                         @else
-                            <p class="badge-danger" title="Este curso no tiene suficientes estudiantes incritos">
-                                No aperturable
-                            </p>
+                            @if($grupos > 0)
+                                <x-jet-dropdown align="right" width="60">
+                                    <x-slot name="trigger">
+                                        <button class="badge-dark">
+                                            Crear grupos
+                                        </button>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <div class="w-40">
+                                            <x-buttons.dropdown-button
+                                                onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $curso->aforo_recomendado }}, {{ $curso->aforo_maximo }}, {{ $grupos }})">
+                                                Crear&nbsp;<b>{{ $grupos }}</b>&nbsp;grupo(s)
+                                            </x-buttons.dropdown-button>
+                                            <x-buttons.dropdown-button>
+                                                Personalizar grupos
+                                            </x-buttons.dropdown-button>
+                                            <x-buttons.dropdown-button>
+                                                Matricular restantes
+                                            </x-buttons.dropdown-button>
+                                            <div class="border-t border-gray-100"></div>
+                                            <x-jet-dropdown-link href="#">
+                                                Ver más datos
+                                            </x-jet-dropdown-link>
+                                        </div>
+                                    </x-slot>
+                                </x-jet-dropdown>
+                            @else
+                                <p class="badge-danger" title="Este curso no tiene suficientes estudiantes incritos">
+                                    No aperturable
+                                </p>
+                            @endif
                         @endif
                     </x-table.column>
                 </x-table.row>
@@ -139,6 +148,42 @@
                 <x-slot name="content">
 
                     <div class="space-y-4">
+                        <div class="space-y-2">
+                            <h2 class="text-slate-700 font-bold">
+                                Estudiantes inscritos: <span class="font-black">{{ count($estudiantes) }}</span>
+                            </h2>
+
+                            <x-table.table>
+                                @slot('head')
+                                    <x-table.head>N°</x-table.head>
+                                    <x-table.head>Nombre</x-table.head>
+                                    <x-table.head>Tipo</x-table.head>
+                                    <x-table.head>Estado</x-table.head>
+                                    <x-table.head>Inscripción</x-table.head>
+                                @endslot
+
+                                @foreach($estudiantes as $j => $estudiante)
+                                    <x-table.row>
+                                        <x-table.column>{{ $j + 1 }}</x-table.column>
+                                        <x-table.column>
+                                            {{ $estudiante->persona->apellido_paterno }} {{ $estudiante->persona->apellido_materno }} {{ $estudiante->persona->nombres }}
+                                        </x-table.column>
+                                        <x-table.column>
+                                            {{ $tipos[$estudiante->tipo_estudiante_id] }}
+                                        </x-table.column>
+                                        <x-table.column>
+                                            <p class="{{ $estudiante->esta_matriculado ? 'badge-success' : 'badge-danger' }}">
+                                                {{ $estudiante->esta_matriculado ? 'Matriculado' : 'Sin matricula' }}
+                                            </p>
+                                        </x-table.column>
+                                        <x-table.column>
+                                            {{ \Carbon\Carbon::parse($estudiante->fecha_inscripcion)->format('h:m a  d-m-Y') }}
+                                        </x-table.column>
+                                    </x-table.row>
+                                @endforeach
+                            </x-table.table>
+                        </div>
+
                         <div class="space-y-2">
                             <h2 class="text-slate-700 font-bold">Datos de aforo del curso</h2>
                             <ul class="list-disc list-inside pl-4 text-slate-800 text-sm space-y-1">
@@ -156,38 +201,6 @@
                                 </li>
                             </ul>
                         </div>
-
-                        <div class="space-y-2">
-                            <h2 class="text-slate-700 font-bold">Estudiantes inscritos: <span
-                                    class="font-black">{{ count($estudiantes) }}</span></h2>
-                            <x-table.table>
-                                @slot('head')
-                                    <x-table.head>N°</x-table.head>
-                                    <x-table.head>Código</x-table.head>
-                                    <x-table.head>Nombre</x-table.head>
-                                    <x-table.head>Tipo</x-table.head>
-                                    <x-table.head>Inscripción</x-table.head>
-                                @endslot
-
-                                @foreach($estudiantes as $j => $estudiante)
-                                    <x-table.row>
-                                        <x-table.column>{{ $j + 1 }}</x-table.column>
-                                        <x-table.column>
-                                            {{ $estudiante->codigo }}
-                                        </x-table.column>
-                                        <x-table.column>
-                                            {{ $estudiante->persona->apellido_paterno }} {{ $estudiante->persona->apellido_materno }} {{ $estudiante->persona->nombres }}
-                                        </x-table.column>
-                                        <x-table.column>
-                                            {{ $tipos[$estudiante->tipo_estudiante_id] }}
-                                        </x-table.column>
-                                        <x-table.column>
-                                            {{ $estudiante->fecha_inscripcion }}
-                                        </x-table.column>
-                                    </x-table.row>
-                                @endforeach
-                            </x-table.table>
-                        </div>
                     </div>
                 </x-slot>
             </x-jet-dialog-modal>
@@ -204,7 +217,7 @@
                 sweetToast(msg, 'success');
             });
 
-            function crearGrupos(curso, curso_id, grupos) {
+            function crearGrupos(curso, curso_id, recomendado, maximo, grupos) {
                 Swal.fire({
                     icon: 'question',
                     html: `Se va a aperturar ${grupos} grupo(s) para el curso <b>${curso}</b> ¿Esta seguro?`,
@@ -214,12 +227,12 @@
                     confirmButtonColor: '#3b82f6'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.livewire.emit('crearGrupos', curso_id, grupos);
+                        window.livewire.emit('crearGrupos', curso_id, recomendado, maximo, grupos);
                     }
                 })
             }
 
-            function crearNGrupos(curso, curso_id, grupos) {
+            function crearNGrupos(curso, curso_id, recomendado, maximo, grupos) {
                 Swal.fire({
                     icon: 'question',
                     html: `¿Cuantos grupos desea aperturar para el curso <b>${curso}</b>? <br><br> <b>Recomendado:</b> ${grupos} grupo(s)`,
@@ -227,6 +240,7 @@
                     inputAttributes: {
                         value: grupos,
                         min: 0,
+                        step: 1,
                         placeholder: 'Ingrese la cantidad de grupos a crear...'
                     },
                     showCancelButton: true,
@@ -234,13 +248,13 @@
                     confirmButtonText: 'Crear grupos',
                     confirmButtonColor: '#3b82f6',
                     preConfirm: (cantidad) => {
-                        if (cantidad.length === 0 || parseInt(cantidad) < 0) {
+                        if (cantidad.length === 0 || parseInt(cantidad) <= 0) {
                             Swal.showValidationMessage(`Debe ingresar un valor mayor o igual a 1`)
                         }
                     },
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.livewire.emit('crearGrupos', curso_id, parseInt(result.value));
+                        window.livewire.emit('crearGrupos', curso_id, recomendado, maximo, parseInt(result.value));
                     }
                 })
             }
