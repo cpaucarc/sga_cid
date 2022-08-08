@@ -17,6 +17,7 @@ use Livewire\Component;
 
 class ListaPrematriculaDirector extends Component
 {
+    public $ver_solo_aperturables = true;
     public $anio = 0, $meses = null, $mes = 0;
     public $mensual = null;
     public $niveles = null, $nivel = 0;
@@ -27,7 +28,7 @@ class ListaPrematriculaDirector extends Component
     public $open = false, $curso_seleccionado = null, $estudiantes = null;
     public $tipos = null; // Tipos de estudiante
 
-    public $listeners = ['crearGrupos'];
+    public $listeners = ['crearGrupo', 'render'];
 
     public function mount(Mensual $mensual, $meses)
     {
@@ -105,62 +106,9 @@ class ListaPrematriculaDirector extends Component
     }
 
     // Crear la cantidad de grupos sugeridos
-    public function crearGrupos($curso_id, $recomendado, $maximo, $cant_grupos = 1)
+    public function crearGrupo($curso_nombre, $curso_id, $idioma_id)
     {
-        // Consultar si ya existen grupos creados, para este mes y este curso
-        $grupos = Grupo::query()
-            ->where('mensual_id', $this->mensual->id)
-            ->where('curso_id', $curso_id)
-            ->limit($cant_grupos)->pluck('id')->toArray();
-
-        // Crear los grupos establecidos
-        $grupos_faltantes = $cant_grupos - count($grupos);
-        if ($grupos_faltantes > 0) {
-            for ($i = 1; $i <= $grupos_faltantes; $i++) {
-                $grupo_id = Grupo::create([
-                    'nombre' => 'Grupo ' . $i,
-                    'mensual_id' => $this->mensual->id,
-                    'curso_id' => $curso_id,
-                    'docente_id' => null
-                ])->id;
-                $grupos[] = $grupo_id;
-            }
-        }
-
-        $prematriculados = Prematriculado::query()
-            ->where('mensual_id', $this->mensual->id)
-            ->where('esta_matriculado', false)
-            ->where('curso_id', $curso_id)->pluck('estudiante_id')->toArray();
-        // Insertar los estudiantes prematriculados a matriculados, usando el aforo recomendado
-        $matriculados = [];
-        $grupo_index = -1;
-        foreach ($prematriculados as $i => $prematriculado) {
-
-            if ($i % $recomendado == 0) {
-                $grupo_index++;
-            }
-
-            $matriculados[] = [
-                'fecha_inscripcion' => now(),
-                'estudiante_id' => $prematriculado,
-                'grupo_id' => $grupos[$grupo_index]
-            ];
-        }
-
-        // Insertamos los datos en la matriculados
-        if (count($matriculados) > 0) {
-            Matriculado::query()->insert($matriculados);
-        }
-
-        // Asignamos la columna 'esta_matriculado' a true en la tabla de los prematriculados
-        if (count($prematriculados) > 0) {
-            Prematriculado::query()
-                ->where('mensual_id', $this->mensual->id)
-                ->where('curso_id', $curso_id)
-                ->whereIn('estudiante_id', $prematriculados)->update(['esta_matriculado' => true]);
-        }
-
-        $mensaje = $grupos == 1 ? 'Se aperturó 1 grupo' : 'Se aperturaron ' . $cant_grupos . ' grupos';
-        $this->emit('creado', $mensaje . ' para este curso correctamente.');
+        Log::info('enviando', [$curso_nombre, $curso_id, $idioma_id]);
+        $this->emitTo('matricula.crear-grupo', 'abrirModal', $curso_nombre, $curso_id, $idioma_id, $this->mensual->id);
     }
 }

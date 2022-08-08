@@ -1,7 +1,7 @@
 @props(['id' => null, 'maxWidth' => null])
 
 <x-jet-modal :id="$id" :maxWidth="$maxWidth" {{ $attributes }}>
-    @if(isset($footer))
+    @if(isset($title))
         <div class="text-lg border-b border-slate-200/70 px-6 py-3">
             {{ $title }}
         </div>
