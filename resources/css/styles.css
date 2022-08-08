@@ -1,6 +1,6 @@
 /* Badges */
 .badge {
-    @apply text-xs font-bold px-3 py-1 rounded-md whitespace-nowrap;
+    @apply inline-flex text-xs font-semibold px-3 py-1 rounded-md whitespace-nowrap;
 }
 
 .badge-dark {
@@ -20,5 +20,5 @@
 }
 
 .badge-success {
-    @apply badge bg-lime-100 text-lime-600;
+    @apply badge bg-green-100 text-green-600;
 }
