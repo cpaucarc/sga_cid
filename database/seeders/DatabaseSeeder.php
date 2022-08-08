@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
 
 
         // Nivel 2
+        $this->call(CodigoSeeder::class);
         $this->call(CursoSeeder::class);
         $this->call(IdiomaDictableRequisitoSeeder::class);
         $this->call(ProvinciaSeeder::class);
