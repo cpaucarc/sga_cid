@@ -1,7 +1,7 @@
 <div>
     <div class="space-y-4">
         <x-forms.fieldset titulo="Datos personales">
-            <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="grid grid-cols-3 gap-8 mb-4">
                 <div class="col-span-3 md:col-span-1">
                     <x-jet-label for="apellido_paterno" value="Apellido Paterno"/>
                     <x-jet-input wire:model="apellido_paterno" type="text" class="w-full"/>
@@ -20,9 +20,9 @@
                     <x-jet-input-error for="nombres"/>
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="grid grid-cols-3 gap-8 mb-4">
                 <div class="col-span-3 md:col-span-1">
-                    <x-jet-label for="dni" value="Dni"/>
+                    <x-jet-label for="dni" value="DNI"/>
                     <x-jet-input wire:model="dni" type="number" class="w-full"/>
                     <x-jet-input-error for="dni"/>
                 </div>
@@ -39,7 +39,7 @@
                     <x-jet-input-error for="celular"/>
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="grid grid-cols-3 gap-8 mb-4">
                 <div class="col-span-3 md:col-span-1">
                     <x-jet-label for="fecha_nacimiento" value="Fecha de Nacimiento"/>
                     <x-jet-input wire:model="fecha_nacimiento" type="date" class="w-full"/>
@@ -67,15 +67,12 @@
                     <x-jet-input-error for="pais"/>
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-4">
-                @if($pais)
+            <div class="grid grid-cols-3 gap-8">
+                @if($pais && count($departamentos))
                     <div class="col-span-3 md:col-span-1">
-                        <div class="flex gap-x-2">
-                            <x-jet-label for="departamento" value="Departamento"/>
-                            <x-forms.optional-badge/>
-                        </div>
+                        <x-jet-label for="departamento" value="Departamento"/>
                         <x-forms.select class="w-full" wire:model="departamento">
-                            <option value="0">Seleccion un departamento</option>
+                            <option value="0">Seleccione un departamento</option>
                             @foreach($departamentos as $dep)
                                 <option value="{{ $dep->id }}">{{  $dep->nombre }}</option>
                             @endforeach
@@ -86,12 +83,9 @@
 
                 @if($departamento)
                     <div class="col-span-3 md:col-span-1">
-                        <div class="flex gap-x-2">
-                            <x-jet-label for="provincia" value="Provincia"/>
-                            <x-forms.optional-badge/>
-                        </div>
+                        <x-jet-label for="provincia" value="Provincia"/>
                         <x-forms.select class="w-full" wire:model="provincia">
-                            <option value="0">Seleccion un departamento</option>
+                            <option value="0">Seleccione una provincia</option>
                             @foreach($provincias as $prov)
                                 <option value="{{ $prov->id }}">{{  $prov->nombre }}</option>
                             @endforeach
@@ -102,12 +96,9 @@
 
                 @if($provincia)
                     <div class="col-span-3 md:col-span-1">
-                        <div class="flex gap-x-2">
-                            <x-jet-label for="distrito" value="Distrito"/>
-                            <x-forms.optional-badge/>
-                        </div>
+                        <x-jet-label for="distrito" value="Distrito"/>
                         <x-forms.select class="w-full" wire:model="distrito">
-                            <option value="0">Seleccion un distrito</option>
+                            <option value="0">Seleccione un distrito</option>
                             @foreach($distritos as $dist)
                                 <option value="{{ $dist->id }}">{{  $dist->nombre }}</option>
                             @endforeach
@@ -117,8 +108,9 @@
                 @endif
             </div>
         </x-forms.fieldset>
+
         <x-forms.fieldset titulo="Cargo de la Autoridad">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-3 gap-8">
                 <div class="col-span-3 md:col-span-1">
                     <x-jet-label for="cargo" value="Cargo"/>
                     <x-forms.select class="w-full" wire:model="cargo">
@@ -153,8 +145,7 @@
             document.addEventListener('livewire:load', function () {
                 $('.select2').select2();
                 $('.select2').on('change', function () {
-                    @this.
-                    set('pais', this.value);
+                @this.set('pais', this.value);
                 });
             })
         </script>

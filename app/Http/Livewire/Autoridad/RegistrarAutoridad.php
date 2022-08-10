@@ -16,7 +16,7 @@ class RegistrarAutoridad extends Component
 {
     public $apellido_paterno, $apellido_materno, $nombres, $dni;
     public $celular, $correo, $fecha_nacimiento, $sexos = null, $sexo = 1;
-    public $paises = null, $pais = 0, $departamentos = null, $departamento = 0;
+    public $paises = null, $pais = 177, $departamentos = null, $departamento = 0;
     public $provincias = null, $provincia = 0, $distritos = null, $distrito = 0;
     public $autoridad_cargos = null, $cargo = 0;
 
@@ -24,8 +24,8 @@ class RegistrarAutoridad extends Component
         'apellido_paterno' => 'required|string|max:35',
         'apellido_materno' => 'required|string|max:35',
         'nombres' => 'required|string|max:35',
-        'dni' => 'required|string|min:8|max:8',
-        'correo' => 'required',
+        'dni' => 'required|string|min:8|max:8|unique:personas,dni',
+        'correo' => 'required|email',
         'celular' => 'required|string|min:9|max:11',
         'fecha_nacimiento' => 'required|date|before:now',
         'sexo' => 'required|gt:0',
@@ -39,8 +39,9 @@ class RegistrarAutoridad extends Component
         $this->sexos = Constants::sexos()->pluck('nombre', 'id')->all();
         $this->paises = Pais::query()->select('id', 'nombre')->orderBy('nombre')->get();
 
-        $this->departamentos = collect();
-        $this->provincias = collect();
+        $this->departamentos = Departamento::query()->where('pais_id', $this->pais)->orderBy('nombre')->get();
+        $this->departamento = 2;
+        $this->provincias = Provincia::query()->where('departamento_id', $this->departamento)->orderBy('nombre')->get();
         $this->distritos = collect();
 
         $this->autoridad_cargos = Constants::autoridad_cargos()->pluck('nombre', 'id')->all();
@@ -56,6 +57,10 @@ class RegistrarAutoridad extends Component
         $this->departamentos = Departamento::query()->select('id', 'nombre')
             ->where('pais_id', $this->pais)->orderBy('nombre')->get();
         $this->departamento = 0;
+        $this->provincias = null;
+        $this->provincia = 0;
+        $this->distritos = null;
+        $this->distrito = 0;
     }
 
     public function updatedDepartamento()
@@ -63,6 +68,8 @@ class RegistrarAutoridad extends Component
         $this->provincias = Provincia::query()->select('id', 'nombre')
             ->where('departamento_id', $this->departamento)->orderBy('nombre')->get();
         $this->provincia = 0;
+        $this->distritos = null;
+        $this->distrito = 0;
     }
 
     public function updatedProvincia()
@@ -75,6 +82,15 @@ class RegistrarAutoridad extends Component
     public function registrarAutoridad()
     {
         $this->validate();
+
+        if ($this->pais == 177) {
+            $this->validate([
+                'departamento' => 'required|gt:0',
+                'provincia' => 'required|gt:0',
+                'distrito' => 'required|gt:0',
+            ]);
+        }
+
         try {
             // Registrar persona
             $persona = Persona::query()->where('dni', $this->dni)->first();

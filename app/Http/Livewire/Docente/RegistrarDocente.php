@@ -17,7 +17,7 @@ class RegistrarDocente extends Component
     public $anio_correlativo, $ultimo_codigo_docente_cid, $nuevo_codigo_numerico, $codigo_docente_final;
     public $apellido_paterno, $apellido_materno, $nombres, $dni;
     public $celular, $correo, $fecha_nacimiento, $sexos = null, $sexo = 1;
-    public $paises = null, $pais = 0, $departamentos = null, $departamento = 0;
+    public $paises = null, $pais = 177, $departamentos = null, $departamento = 0;
     public $provincias = null, $provincia = 0, $distritos = null, $distrito = 0;
     public $dedicaciones = null, $dedicacion = 1, $categorias = null, $categoria = 1;
     public $condiciones = null, $condicion = 1;
@@ -26,8 +26,8 @@ class RegistrarDocente extends Component
         'apellido_paterno' => 'required|string|max:35',
         'apellido_materno' => 'required|string|max:35',
         'nombres' => 'required|string|max:35',
-        'dni' => 'required|string|min:8|max:8',
-        'correo' => 'required',
+        'dni' => 'required|string|min:8|max:8|unique:personas,dni',
+        'correo' => 'required|email|unique:personas,correo',
         'celular' => 'required|string|min:9|max:11',
         'fecha_nacimiento' => 'required|date|before:now',
         'sexo' => 'required|gt:0',
@@ -43,8 +43,9 @@ class RegistrarDocente extends Component
         $this->sexos = Constants::sexos()->pluck('nombre', 'id')->all();
         $this->paises = Pais::query()->select('id', 'nombre')->orderBy('nombre')->get();
 
-        $this->departamentos = collect();
-        $this->provincias = collect();
+        $this->departamentos = Departamento::query()->where('pais_id', $this->pais)->orderBy('nombre')->get();
+        $this->departamento = 2;
+        $this->provincias = Provincia::query()->where('departamento_id', $this->departamento)->orderBy('nombre')->get();
         $this->distritos = collect();
 
         $this->dedicaciones = Constants::docente_dedicacion()->pluck('nombre', 'id')->all();
@@ -62,6 +63,10 @@ class RegistrarDocente extends Component
         $this->departamentos = Departamento::query()->select('id', 'nombre')
             ->where('pais_id', $this->pais)->orderBy('nombre')->get();
         $this->departamento = 0;
+        $this->provincias = null;
+        $this->provincia = 0;
+        $this->distritos = null;
+        $this->distrito = 0;
     }
 
     public function updatedDepartamento()
@@ -69,6 +74,8 @@ class RegistrarDocente extends Component
         $this->provincias = Provincia::query()->select('id', 'nombre')
             ->where('departamento_id', $this->departamento)->orderBy('nombre')->get();
         $this->provincia = 0;
+        $this->distritos = null;
+        $this->distrito = 0;
     }
 
     public function updatedProvincia()
@@ -128,11 +135,20 @@ class RegistrarDocente extends Component
     public function registrarDocente()
     {
         $this->validate();
+
+        if ($this->pais == 177) {
+            $this->validate([
+                'departamento' => 'required|gt:0',
+                'provincia' => 'required|gt:0',
+                'distrito' => 'required|gt:0',
+            ]);
+        }
+
         try {
             $this->generarCodigo();
             // Registrar persona
-            $persona = Persona::query()->where('dni', $this->dni)->first();
-            if (!$persona) {
+            $existe_persona = Persona::query()->where('dni', $this->dni)->exists();
+            if (!$existe_persona) {
                 $persona = Persona::create([
                     'dni' => $this->dni,
                     'apellido_paterno' => $this->apellido_paterno,
@@ -153,7 +169,7 @@ class RegistrarDocente extends Component
             })->first();
             if (!$docente) {
                 Docente::create([
-                    'codigo' => $this->codigo_docente_final,
+                    'codigo' => strtoupper($this->codigo_docente_final),
                     'esta_activo' => true,
                     'docente_categoria_id' => $this->categoria,
                     'docente_condicion_id' => $this->condicion,

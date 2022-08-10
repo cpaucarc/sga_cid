@@ -26,7 +26,7 @@ class EditarAutoridad extends Component
         'apellido_paterno' => 'required|string|max:35',
         'apellido_materno' => 'required|string|max:35',
         'nombres' => 'required|string|max:35',
-        'correo' => 'required',
+        'correo' => 'required|email',
         'celular' => 'required|string|min:9|max:11',
         'fecha_nacimiento' => 'required|date|before:now',
         'sexo' => 'required|gt:0',
@@ -98,7 +98,9 @@ class EditarAutoridad extends Component
         $this->departamentos = Departamento::query()->select('id', 'nombre')
             ->where('pais_id', $this->pais)->orderBy('nombre')->get();
         $this->departamento = 0;
+        $this->provincias = null;
         $this->provincia = 0;
+        $this->distritos = null;
         $this->distrito = 0;
     }
 
@@ -107,6 +109,7 @@ class EditarAutoridad extends Component
         $this->provincias = Provincia::query()->select('id', 'nombre')
             ->where('departamento_id', $this->departamento)->orderBy('nombre')->get();
         $this->provincia = 0;
+        $this->distritos = null;
         $this->distrito = 0;
     }
 
@@ -120,6 +123,15 @@ class EditarAutoridad extends Component
     public function actualizarAutoridad()
     {
         $this->validate();
+
+        if ($this->pais == 177) {
+            $this->validate([
+                'departamento' => 'required|gt:0',
+                'provincia' => 'required|gt:0',
+                'distrito' => 'required|gt:0',
+            ]);
+        }
+
         try {
             $this->autoridad->persona->update([
                 'apellido_paterno' => $this->apellido_paterno,
