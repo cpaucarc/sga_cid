@@ -1,13 +1,15 @@
-<div>
+<div class="space-y-4">
     <x-titulo titulo="Docentes del Centro de Idiomas">
         @slot('items')
             <x-links.primary href="{{ route('docente.registrar') }}">{{ __('Registrar Docente') }}</x-links.primary>
         @endslot
     </x-titulo>
+
     <div class="flex items-center justify-between mb-4">
         <x-forms.search-input wire:model.debounce.500ms="search"/>
         <x-forms.toggle id="avc" textoIzq="Solo activos" textoDer="Todos" wire:model="inactivo"/>
     </div>
+
     @if(count($docentes)>0)
         <x-table.table>
             @slot('head')
@@ -23,31 +25,32 @@
                     <x-table.column class="whitespace-nowrap">{{$docente->persona->dni}}</x-table.column>
                     <x-table.column class="whitespace-nowrap">{{ $docente->codigo }}</x-table.column>
                     <x-table.column class="uppercase">
-                        <x-links.secondary href="{{ route('docente.show',$docente->codigo) }}"
-                                           class="btn-state-transparent">
+                        <x-links.secondary href="{{ route('docente.show',$docente->codigo) }}">
                             {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}
                         </x-links.secondary>
                     </x-table.column>
                     <x-table.column>
-                        <x-links.secondary
-                            class="{{ $docente->idiomas_count == 0 ? 'btn-state-danger' :'btn-state-default'}}"
-                            href="{{ route('docente.idioma',$docente->codigo) }}">
+                        <x-links.secondary href="{{ route('docente.idioma',$docente->codigo) }}"
+                                           color="{{ $docente->idiomas_count == 0 ? 'danger' : 'primary'}}">
                             {{$docente->idiomas_count}} {{ $docente->idiomas_count == 1 ? "idioma" : "idiomas" }}
                         </x-links.secondary>
                     </x-table.column>
                     <x-table.column>
-                        <x-jet-secondary-button wire:click="cambiarEstado({{ $docente->id }},{{$docente->esta_activo}})"
-                                                class="{{ $docente->esta_activo ? 'btn-state-default' :'btn-state-danger'}}">
-                            {{ $docente->esta_activo ? "Activo" : "Inactivo" }}
-                        </x-jet-secondary-button>
+                        <div class="flex items-center gap-x-1">
+                            <p class="{{ $docente->esta_activo ? 'text-gray-3' : 'text-rose-3'}}">
+                                {{ $docente->esta_activo ? "Activo" : "Inactivo" }}
+                            </p>
+                            <x-jet-secondary-button
+                                title="Cambiar estado a {{ $docente->esta_activo ? 'Inactivo' : 'Activo' }}"
+                                wire:click="cambiarEstado({{ $docente->id }},{{$docente->esta_activo}})">
+                                <x-icons.refresh class="icon-4" stroke="2"/>
+                            </x-jet-secondary-button>
+                        </div>
                     </x-table.column>
                     <x-table.column>
-                        <x-links.secondary class="btn-state-warning"
-                                           href="{{ route('docente.editar',$docente->codigo) }}">
-                            <svg class="icon-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                            </svg>
+                        <x-links.secondary href="{{ route('docente.editar',$docente->codigo) }}">
+                            <x-icons.edit class="icon-5"/>
+                            Editar
                         </x-links.secondary>
                     </x-table.column>
                 </x-table.row>

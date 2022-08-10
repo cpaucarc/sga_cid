@@ -49,16 +49,14 @@
                     {{ $idioma_dictable->duracion_meses }} meses
                 </x-table.column>
                 <x-table.column>
-                    <x-links.secondary
-                        class="{{ $idioma_dictable->cursos_count == 0 ? 'btn-state-danger' :
-                                         ($idioma_dictable->cursos_count < $idioma_dictable->duracion_meses ? 'btn-state-warning' : 'btn-state-transparent') }}"
-                        href="{{ route('curso.cursos', $idioma_dictable->id) }}">
-                        {{ $idioma_dictable->cursos_count }} cursos
+                    <x-links.secondary href="{{ route('curso.cursos', $idioma_dictable->id) }}"
+                                       color="{{ $idioma_dictable->cursos_count == 0 ? 'danger' : 'primary'}}">
+                        {{ $idioma_dictable->cursos_count }} {{ $idioma_dictable->cursos_count == 1 ? "curso" : "cursos" }}
                     </x-links.secondary>
                 </x-table.column>
                 <x-table.column>
-                    <x-jet-secondary-button wire:click="editarDictable({{ $idioma_dictable }})"
-                                            class="btn-state-transparent">
+                    <x-jet-secondary-button wire:click="editarDictable({{ $idioma_dictable }})">
+                        <x-icons.edit class="icon-5"/>
                         Editar
                     </x-jet-secondary-button>
                 </x-table.column>

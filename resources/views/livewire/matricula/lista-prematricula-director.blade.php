@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-6">
     @if($mensual)
         <div class="px-8 pb-6">
             <div class="flex justify-center">
@@ -19,13 +19,13 @@
                     @endif
                 @endif
             </div>
-            <div class="flex items-center justify-between text-sm text-slate-800">
+            <div class="flex items-center justify-between text-sm text-gray-4">
                 <span class="flex-shrink-0 ml-1 mr-3">
                     {{ $mensual->inicio_prematricula->format('d, M Y') }}
                 </span>
-                <div class="w-2 h-2 rounded-full bg-slate-400"></div>
-                <hr class="border border-slate-400 border-dashed flex-1">
-                <div class="w-2 h-2 rounded-full bg-slate-400"></div>
+                <div class="w-2 h-2 rounded-full bg-gray-2"></div>
+                <hr class="border-gray-2 border-dashed flex-1">
+                <div class="w-2 h-2 rounded-full bg-gray-2"></div>
                 <span class="flex-shrink-0 mr-1 ml-3">
                     {{ $mensual->fin_prematricula->format('d, M Y') }}
                 </span>
@@ -92,7 +92,7 @@
                             </x-table.column>
                             <x-table.column class="whitespace-nowrap">
                                 <button wire:click="verEstudiantes({{ $curso }})"
-                                        class="{{ $curso->prematriculados == 0 ? 'text-rose-600' : '' }}">
+                                        class="{{ $curso->prematriculados == 0 ? 'text-rose-3' : '' }}">
                                     <span class="font-semibold">{{ $curso->prematriculados }} estudiantes</span>
                                     @if($grupos > 0 && $curso->sin_matricular > 0)
                                         ({{ $curso->sin_matricular }} sin matricula)
@@ -100,11 +100,11 @@
                                 </button>
                             </x-table.column>
                             <x-table.column
-                                class="whitespace-nowrap {{ $grupos == 0 ? 'text-rose-600' : 'font-semibold' }}">
+                                class="whitespace-nowrap {{ $grupos == 0 ? 'text-rose-3' : 'font-semibold' }}">
                                 {{ $grupos }} grupo(s)
                             </x-table.column>
                             <x-table.column
-                                class="whitespace-nowrap {{ $curso->grupos_aperturados == 0 ? 'text-rose-600' : '' }}">
+                                class="whitespace-nowrap {{ $curso->grupos_aperturados == 0 ? 'text-rose-3' : '' }}">
                                 {{ $curso->grupos_aperturados }} grupo(s)
                             </x-table.column>
                             <x-table.column class="flex justify-end">
@@ -114,10 +114,10 @@
                                         No aperturable
                                     </p>
                                 @else
-                                    <button class="badge-primary"
-                                            onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }}, {{ $curso->grupos_aperturados }}, {{ $curso->dictable->idioma_id }})">
+                                    <x-jet-secondary-button class="badge-primary"
+                                                            onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }}, {{ $curso->grupos_aperturados }}, {{ $curso->dictable->idioma_id }})">
                                         Crear grupo
-                                    </button>
+                                    </x-jet-secondary-button>
                                 @endif
                             </x-table.column>
                         </x-table.row>
@@ -132,41 +132,32 @@
                         </x-table.column>
                         <x-table.column class="whitespace-nowrap">
                             <button wire:click="verEstudiantes({{ $curso }})"
-                                    class="{{ $curso->prematriculados == 0 ? 'text-rose-600' : '' }}">
+                                    class="{{ $curso->prematriculados == 0 ? 'text-rose-3' : '' }}">
                                 <span class="font-semibold">{{ $curso->prematriculados }} estudiantes</span>
                                 @if($grupos > 0 && $curso->sin_matricular > 0)
                                     ({{ $curso->sin_matricular }} sin matricula)
                                 @endif
                             </button>
                         </x-table.column>
-                        <x-table.column class="whitespace-nowrap">
-                            <p class="{{ $grupos == 0 ? 'text-rose-600' : 'font-semibold' }}">Recomendado: {{ $grupos }}
-                                grupo(s)</p>
-                            <p>Aperturado: {{ $curso->grupos_aperturados }} grupo(s)</p>
+                        <x-table.column
+                            class="whitespace-nowrap {{ $grupos == 0 ? 'text-rose-3' : 'font-semibold' }}">
+                            {{ $grupos }} grupo(s)
+                        </x-table.column>
+                        <x-table.column
+                            class="whitespace-nowrap {{ $curso->grupos_aperturados == 0 ? 'text-rose-3' : '' }}">
+                            {{ $curso->grupos_aperturados }} grupo(s)
                         </x-table.column>
                         <x-table.column class="flex justify-end">
-                            @if($grupos == 0)
-                                <p class="badge-danger" title="Este curso no tiene suficientes estudiantes incritos">
+                            @if($grupos === 0)
+                                <p class="badge-danger"
+                                   title="Este curso no tiene suficientes estudiantes incritos">
                                     No aperturable
                                 </p>
                             @else
-                                @if($curso->sin_matricular == 0)
-                                    <a href="#" class="badge-success"
-                                       title="Todos los estudiantes ya fueron matriculados ">
-                                        Completado
-                                    </a>
-                                @else
-                                    @if($curso->sin_matricular == $curso->prematriculados)
-                                        <button class="badge-primary"
-                                                onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $curso->aforo_recomendado }}, {{ $curso->aforo_maximo }}, {{ $grupos }}, {{ $curso->grupos_aperturados }})">
-                                            Crear&nbsp;<b>{{ $grupos }}</b>&nbsp;grupo(s)
-                                        </button>
-                                    @else
-                                        <button class="badge-dark">
-                                            Matricular restantes
-                                        </button>
-                                    @endif
-                                @endif
+                                <x-jet-secondary-button class="badge-primary"
+                                                        onclick="crearGrupos('{{ $curso_nombre .' '. $curso_ciclo .' ('. $curso_mod .')'}}', {{$curso->id}}, {{ $grupos }}, {{ $curso->grupos_aperturados }}, {{ $curso->dictable->idioma_id }})">
+                                    Crear grupo
+                                </x-jet-secondary-button>
                             @endif
                         </x-table.column>
                     </x-table.row>
@@ -179,16 +170,15 @@
 
         {{-- Lista de Prematriculados por curso --}}
         @if($curso_seleccionado)
-            <x-jet-dialog-modal wire:model="open" maxWidth="4xl">
+            <x-jet-dialog-modal wire:model="open_modal_lista_prematriculados" maxWidth="4xl">
                 <x-slot name="title">
-                    <h1 class="font-bold text-slate-700">Lista de Pre-matriculados</h1>
+                    <h1 class="font-bold text-gray-4">Lista de Pre-matriculados</h1>
                 </x-slot>
 
                 <x-slot name="content">
-
                     <div class="space-y-4">
                         <div class="space-y-2">
-                            <h2 class="text-slate-700 font-bold">
+                            <h2 class="text-gray-4 font-bold">
                                 Estudiantes inscritos: <span class="font-black">{{ count($estudiantes) }}</span>
                             </h2>
 
@@ -224,8 +214,8 @@
                         </div>
 
                         <div class="space-y-2">
-                            <h2 class="text-slate-700 font-bold">Datos de aforo del curso</h2>
-                            <ul class="list-disc list-inside pl-4 text-slate-800 text-sm space-y-1">
+                            <h2 class="text-gray-4 font-bold">Datos de aforo del curso</h2>
+                            <ul class="list-disc list-inside pl-4 text-gray-4 text-sm space-y-1">
                                 <li>
                                     El número minimo de estudiantes para aperturar un grupo en este curso es de
                                     <b>{{ $curso_seleccionado->aforo_minimo }}</b>.

@@ -3,13 +3,12 @@
     <x-titulo
         titulo="Idioma: {{ $idioma_nombre }} {{ $niveles[$dictable->idioma_nivel_id] }} - {{ $modalidad->nombre }}">
         @slot('subtitulo')
-            <div class="rounded-md text-sm text-slate-700 flex flex-wrap gap-6 mt-2 relative">
+            <div class="text-sm text-gray-3 flex flex-wrap gap-6 mt-2 items-center relative">
                 @if(!is_null($requisito))
-                    <a href="{{ route('curso.cursos', $requisito->id) }}"
-                       class="text-blue-600 hover:text-blue-700 hover:underline soft-transition">
+                    <x-links.secondary href="{{ route('curso.cursos', $requisito->id) }}">
                         <b>Pre-requisito:</b> {{ $idioma_nombre . ' ' .  $niveles[$requisito->idioma_nivel_id] . ' - ' . $modalidad->nombre }}
                         ({{ $requisito_cursos }} cursos)
-                    </a>
+                    </x-links.secondary>
                 @else
                     <p><b>Pre-requisito:</b> Ninguno</p>
                 @endif
@@ -32,14 +31,14 @@
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-x-4">
                 @if(count($cursos) == 0)
-                    <x-jet-secondary-button onclick="crearAutomaticamente()" class="btn-state-danger">
+                    <x-jet-button onclick="crearAutomaticamente()">
                         Generar cursos (automatico)
-                    </x-jet-secondary-button>
+                    </x-jet-button>
                 @endif
 
-                <x-jet-secondary-button wire:click="agregarCurso" class="btn-state-default">
+                <x-jet-button wire:click="agregarCurso">
                     Agregar curso (manual)
-                </x-jet-secondary-button>
+                </x-jet-button>
             </div>
             <br>
         </div>

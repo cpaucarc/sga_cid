@@ -2,7 +2,7 @@
     <x-titulo
         titulo="Docente: {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}">
         @slot('subtitulo')
-            <div class="rounded-md text-sm text-slate-700 flex flex-wrap gap-6 mt-2 relative">
+            <div class="rounded text-sm text-gray-3 flex flex-wrap gap-6 mt-2 relative">
                 <p><b>Código:</b> {{$docente->codigo}} </p>
 
                 <p><b>DNI:</b> {{$docente->persona->dni}} </p>
@@ -15,7 +15,7 @@
     <div class="grid grid-cols-6 gap-12 items-start">
         <div class="col-span-2 sticky top-20">
             @if(count($idiomas)>0)
-                <article class="p-4 border border-zinc-300 rounded-xl">
+                <article class="p-4 border border-gray-1 rounded-lg">
                     <div class="flex items-center">
                         <img
                             src="{{ asset('images/online_world_bro.svg') }}"
@@ -24,7 +24,7 @@
                         />
 
                         <div class="ml-3">
-                            <h5 class="text-lg font-medium text-gray-800">Lista de idiomas <span
+                            <h5 class="text-lg font-medium text-gray-3">Lista de idiomas <span
                                     class="text-xs">({{count($idiomas)}})</span>
                             </h5>
                         </div>
@@ -34,11 +34,11 @@
 
                         @foreach($idiomas as $idioma)
                             <div
-                                class="block flex items-center h-full p-4 border border-zinc-300 rounded-lg hover:border-pink-300">
+                                class="block flex items-center h-full p-4 border border-gray-2 rounded-lg hover:border-blue-3 hover:shadow group">
                                 <x-forms.checkbox wire:model="idioma_selected"
                                                   wire:loading.attr="disabled"
                                                   value="{{ $idioma->id }}"/>
-                                <p class="font-medium text-gray-600">
+                                <p class="font-medium text-gray-3 group-hover:text-blue-3">
                                     {{ $idioma->nombre }}
                                 </p>
                             </div>

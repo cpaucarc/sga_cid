@@ -5,43 +5,42 @@
             @slot('head')
                 <x-table.head>Mes</x-table.head>
                 <x-table.head>Modalidad</x-table.head>
-                <x-table.head>Estado</x-table.head>
+                <x-table.head class="text-center">Estado</x-table.head>
                 <x-table.head><span class="sr-only">Action</span></x-table.head>
             @endslot
             @foreach($mensuales as $ms)
                 <x-table.row>
-                    <x-table.column class="font-semibold">
+                    <x-table.column class="{{ $ms->esta_activo ? 'font-semibold' : '' }}">
                         {{$meses[$ms->mes_id]}} de {{ $anio_actual }}
                     </x-table.column>
                     <x-table.column>
                         Clase {{$clase_modalidades[$ms->clase_modalidad_id]}}
                     </x-table.column>
-                    <x-table.column>
+                    <x-table.column class="text-center">
                         @if($ms->esta_activo)
-                            <button type="button" class="btn btn-state-success">{{ __('Activo') }}</button>
+                            <p class="text-green-3 font-semibold">Activo</p>
                         @else
                             @if(now() < $ms->fin_clases)
-                                <button type="button" wire:click="activar({{$ms->id}})"
-                                        class="btn btn-state-default">{{ __('Activar') }}</button>
+                                <x-jet-secondary-button type="button" wire:click="activar({{$ms->id}})">
+                                    {{ __('Activar') }}
+                                </x-jet-secondary-button>
                             @else
-                                <p class="btn btn-state-danger">
-                                    Finalizado
-                                </p>
+                                <p class="text-rose-3">Finalizado</p>
                             @endif
                         @endif
                     </x-table.column>
                     <x-table.column>
-                        <div class="inline-flex">
-                            <button class="btn btn-state-transparent" title="Ver información básica"
-                                    wire:click="mostrarInfo('{{ $ms->id }}')">
+                        <div class="inline-flex gap-x-2">
+                            <x-jet-secondary-button title="Ver información básica"
+                                                    wire:click="mostrarInfo('{{ $ms->id }}')">
                                 <x-icons.info class="icon-5"/>
-                            </button>
+                            </x-jet-secondary-button>
 
-                            <x-links.outline
+                            <x-links.secondary
                                 href="{{ route('director.matricula.programacion.index', ['year' => $ms->anio, 'month' => $ms->mes_id]) }}"
                                 title="Ver información detallada">
                                 Ver más
-                            </x-links.outline>
+                            </x-links.secondary>
                         </div>
                     </x-table.column>
                 </x-table.row>

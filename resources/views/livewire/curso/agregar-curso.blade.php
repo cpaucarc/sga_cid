@@ -1,7 +1,7 @@
 <div>
     <x-jet-dialog-modal wire:model="open" maxWidth="3xl">
         <x-slot name="title">
-            <h1 class="font-bold text-slate-700">{{ $titulo }}</h1>
+            <h1 class="font-bold">{{ $titulo }}</h1>
         </x-slot>
 
         <x-slot name="content">
@@ -47,7 +47,7 @@
             </x-forms.fieldset>
             <br>
             <x-forms.fieldset titulo="Información del curso">
-                <div class="space-y-4 text-slate-800 text-sm">
+                <div class="space-y-5 text-gray-4 text-sm">
                     <p>
                         <span class="font-bold">Código del curso:</span>
                         <span class="uppercase">{{ $codigo }}</span>
@@ -62,7 +62,7 @@
                             <x-jet-input id="aforo_minimo" type="number" min="0" class="w-full"
                                          wire:model.defer="aforo_minimo"/>
                             <label for="aforo_minimo"
-                                   class="absolute text-sm text-slate-600 top-[26px] left-9">estudiantes</label>
+                                   class="absolute text-sm text-gray-3 top-[33px] left-10">estudiantes</label>
                             <x-jet-input-error for="aforo_minimo"/>
                         </div>
                         <div class="col-span-6 md:col-span-2 relative">
@@ -70,7 +70,7 @@
                             <x-jet-input id="aforo_recomendado" type="number" min="0" class="w-full"
                                          wire:model.defer="aforo_recomendado"/>
                             <label for="aforo_recomendado"
-                                   class="absolute text-sm text-slate-600 top-[26px] left-9">estudiantes</label>
+                                   class="absolute text-sm text-gray-3 top-[33px] left-10">estudiantes</label>
                             <x-jet-input-error for="aforo_recomendado"/>
                         </div>
                         <div class="col-span-6 md:col-span-2 relative">
@@ -78,13 +78,11 @@
                             <x-jet-input id="aforo_maximo" type="number" min="0" class="w-full"
                                          wire:model.defer="aforo_maximo"/>
                             <label for="aforo_maximo"
-                                   class="absolute text-sm text-slate-600 top-[26px] left-9">estudiantes</label>
+                                   class="absolute text-sm text-gray-3 top-[33px] left-10">estudiantes</label>
                             <x-jet-input-error for="aforo_maximo"/>
                         </div>
                     </div>
                 </div>
-
-
             </x-forms.fieldset>
 
         </x-slot>
