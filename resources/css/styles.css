@@ -4,21 +4,21 @@
 }
 
 .badge-dark {
-    @apply badge bg-slate-100 text-slate-800;
+    @apply badge bg-gray-1 text-gray-3;
 }
 
 .badge-primary {
-    @apply badge bg-blue-100 text-blue-600;
+    @apply badge bg-blue-3/10 text-blue-3;
 }
 
 .badge-danger {
-    @apply badge bg-rose-100 text-rose-600;
+    @apply badge bg-rose-3/10 text-rose-3;
 }
 
 .badge-warning {
-    @apply badge bg-amber-100 text-amber-600;
+    @apply badge bg-amber-3/10 text-amber-3;
 }
 
 .badge-success {
-    @apply badge bg-green-100 text-green-600;
+    @apply badge bg-green-3/10 text-green-4;
 }
