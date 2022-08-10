@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Autoridad;
 
+use App\Constants\Constants;
 use App\Models\Autoridad;
 use Livewire\Component;
 
@@ -9,6 +10,12 @@ class ListaAutoridades extends Component
 {
     public $inactivo = 0;
     public $search;
+    public $cargos = [];
+
+    public function mount()
+    {
+        $this->cargos = Constants::autoridad_cargos()->pluck('nombre', 'id')->all();
+    }
 
     public function render()
     {
