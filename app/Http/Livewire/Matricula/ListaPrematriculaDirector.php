@@ -25,7 +25,7 @@ class ListaPrematriculaDirector extends Component
     public $modalidades = null, $modalidad = 0;
     public $ciclos = null;
 
-    public $open = false, $curso_seleccionado = null, $estudiantes = null;
+    public $open_modal_lista_prematriculados = false, $curso_seleccionado = null, $estudiantes = null;
     public $tipos = null; // Tipos de estudiante
 
     public $listeners = ['crearGrupo', 'render'];
@@ -102,7 +102,7 @@ class ListaPrematriculaDirector extends Component
                     ->where('mensual_id', $this->mensual->id);
             })
             ->orderBy('fecha_inscripcion', 'desc')->get();
-        $this->open = true;
+        $this->open_modal_lista_prematriculados = true;
     }
 
     // Crear la cantidad de grupos sugeridos

@@ -1,5 +1,5 @@
 <div>
-    <x-jet-dialog-modal wire:model="open" maxWidth="xl">
+    <x-jet-dialog-modal wire:model="open_modal_crear_grupo" maxWidth="xl">
         <x-slot name="title">
             <h1 class="font-bold text-slate-700">Crear nuevo grupo para {{ $curso_nombre }} </h1>
         </x-slot>

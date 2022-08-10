@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class CrearGrupo extends Component
 {
-    public $open = false;
+    public $open_modal_crear_grupo = false;
     public $curso_nombre = "Ninguno", $curso_id = 0, $mensual_id = 0, $docentes = null, $docente = 0;
     public $grupo_nombre;
 
@@ -41,7 +41,7 @@ class CrearGrupo extends Component
             ->where('curso_id', $curso_id)->where('mensual_id', $mensual_id)->orderBy('nombre', 'desc')->first();
         $this->grupo_nombre = "Grupo " . (is_null($ultimo_grupo) ? "1" : (intval(explode(' ', $ultimo_grupo->nombre)[1]) + 1));
 
-        $this->open = true;
+        $this->open_modal_crear_grupo = true;
     }
 
     public function crearNuevoGrupo()
@@ -52,10 +52,10 @@ class CrearGrupo extends Component
             'curso_id' => $this->curso_id,
             'docente_id' => $this->docente == 0 ? null : $this->docente
         ]);
-        
+
         $this->reset('docente');
         $this->emit('creado', 'Se aperturó un nuevo grupo para ' . $this->curso_nombre);
         $this->emitTo('matricula.lista-prematricula-director', 'render');
-        $this->open = false;
+        $this->open_modal_crear_grupo = false;
     }
 }
