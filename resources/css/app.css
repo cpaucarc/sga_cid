@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "scrollbar.css";
 @import "styles.css";
 @import "sweetalert_colored.css";
@@ -46,45 +46,58 @@
 
     /* Botones */
     .btn {
-        @apply px-3 py-1.5 inline-flex items-center font-semibold whitespace-nowrap soft-transition rounded-md text-sm border;
+        @apply px-3 py-1.5 inline-flex gap-x-1 items-center font-medium whitespace-nowrap soft-transition rounded text-sm border;
+    }
+
+    .btn-secondary {
+        @apply px-3 py-1.5 inline-flex gap-x-1 items-center font-medium whitespace-nowrap soft-transition rounded text-sm;
     }
 
     /* Los estilos btn-state- debe usarse con los botones/links tipo secondary */
     .btn-state-danger {
-        @apply bg-transparent hover:bg-rose-100 border-transparent text-rose-500 hover:text-rose-700 soft-transition;
+        @apply bg-transparent hover:bg-rose-3/10 border-transparent text-rose-3 hover:text-rose-4 soft-transition;
     }
 
     .btn-state-success {
-        @apply bg-transparent hover:bg-green-100 border-transparent text-green-500 hover:text-green-700 soft-transition;
+        @apply bg-transparent hover:bg-green-3/10 border-transparent text-green-3 hover:text-green-4 soft-transition;
     }
 
     .btn-state-warning {
-        @apply bg-transparent hover:bg-amber-100 border-transparent text-amber-500 hover:text-amber-700 soft-transition;
+        @apply bg-transparent hover:bg-amber-3/10 border-transparent text-amber-3 hover:text-amber-4 soft-transition;
     }
 
     .btn-state-default {
-        @apply bg-transparent hover:bg-blue-100 border-transparent text-blue-500 hover:text-blue-700 soft-transition;
+        @apply bg-transparent hover:bg-blue-3/10 border-transparent text-blue-3 hover:text-blue-4 soft-transition;
     }
 
     .btn-state-transparent {
-        @apply bg-transparent border-transparent text-blue-500 hover:text-blue-700 soft-transition;
+        @apply bg-transparent border-transparent text-blue-3 hover:text-blue-4 soft-transition;
+    }
+
+    /* Links */
+    .link-secondary {
+        @apply py-1.5 inline-flex gap-x-1 items-center font-medium whitespace-nowrap soft-transition rounded text-sm hover:underline underline-offset-2;
     }
 
     .link-transparent {
-        @apply bg-transparent hover:bg-slate-100 soft-transition rounded-md;
+        @apply bg-transparent hover:bg-gray-1/30 soft-transition rounded hover:underline underline-offset-2;
     }
 
     /* Inputs */
+    .form {
+        @apply py-1.5 text-sm rounded text-gray-3 font-medium focus:text-gray-4 bg-gray-1/50 focus:bg-white border border-transparent focus:border-blue-3 focus:ring-blue-3 soft-transition disabled:bg-gray-1/30 disabled:cursor-not-allowed disabled:font-medium disabled:text-gray-2;
+    }
+
     .input {
-        @apply px-2 py-1.5 text-sm rounded-md;
+        @apply form px-3 placeholder:text-gray-2 out-of-range:border-rose-3;
     }
 
     .input-none {
-        @apply appearance-none text-sm border-none bg-transparent hover:bg-slate-100 border ring-0 focus:border-none focus:ring-0 soft-transition;
+        @apply appearance-none rounded text-sm border bg-gray-1/20 border-transparent hover:bg-gray-1/50 border ring-0 focus:ring-0 focus:border-transparent soft-transition;
     }
 
     .select {
-        @apply pl-2 pr-8 py-1.5 text-sm rounded-md soft-transition bg-white border border-slate-300 text-slate-700 focus:text-slate-900 focus:bg-white focus:border-blue-600 focus:ring-blue-600;
+        @apply pl-3 pr-9 form cursor-pointer;
     }
 }
 
