@@ -1,3 +1,3 @@
-<span {{ $attributes->merge(['class' => 'text-xs inline-flex rounded-lg text-zinc-500'])}}>
-    (<span class="text-rose-600 font-bold">*</span> Opcional)
+<span {{ $attributes->merge(['class' => 'text-xs inline-flex rounded-lg text-gray-2'])}}>
+    (<span class="text-rose-3 font-bold">*</span>&nbsp;Opcional)
 </span>

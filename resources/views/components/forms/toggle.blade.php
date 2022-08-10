@@ -2,8 +2,8 @@
 
 @php
     $id = $id ?? 'default-toggle';
-    $common_clases = "w-10 h-5 bg-slate-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600";
-    $span_clases ="text-sm font-medium text-slate-600";
+    $common_clases = "w-9 h-5 bg-gray-2 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-2 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-3";
+    $span_clases ="text-sm font-medium text-gray-3";
 @endphp
 
 <div class="inline-flex items-center">

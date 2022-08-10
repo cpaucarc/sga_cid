@@ -13,7 +13,7 @@
     $widthText = $widths[$wText ?? '3'];
 @endphp
 
-<div class="grid place-items-center px-5 py-4 border border-slate-300 rounded-md">
+<div class="grid place-items-center px-5 py-5 border border-gray-1 rounded">
     <div class="flex flex-col gap-y-2 items-center justify-center">
         @if(isset($image))
             <img class="{{ $widthImage }}" src="{{ $image }}" alt="Imagen correspondiente">
@@ -22,12 +22,12 @@
         @if(isset($title) or isset($description))
             <div class="{{ $widthText }} text-center">
                 @if(isset($title))
-                    <h2 class="font-bold text-slate-800 leading-tight">
+                    <h2 class="font-bold text-gray-4 leading-tight">
                         {{ $title }}
                     </h2>
                 @endif
                 @if(isset($description))
-                    <h3 class="text-slate-600 text-sm mt-1 leading-tight">
+                    <h3 class="text-gray-3 text-sm mt-1 leading-tight">
                         {{ $description }}
                     </h3>
                 @endif

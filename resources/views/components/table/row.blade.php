@@ -1,3 +1,3 @@
-<tr class="bg-transparent hover:bg-slate-100/50 text-slate-600 hover:text-slate-800 soft-transition">
+<tr class="bg-white hover:bg-gray-1/20 text-gray-3 hover:text-gray-4 soft-transition group relative">
     {{ $slot }}
 </tr>
