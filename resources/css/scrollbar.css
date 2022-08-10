@@ -6,20 +6,24 @@
 
 ::-webkit-scrollbar-thumb:horizontal {
     border-radius: 0; /* 10px */
+    transition: all 300ms;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #FFFFFF;
+    background: #FDFEFF;
+    transition: all 300ms;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #e5e7eb;
-    border-radius: 0; /* 5px */
+    background: #F0F0F3;
+    border-radius: 2px; /* 5px */
+    transition: all 300ms;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #d1d5db;
+    background: #E5E7EB;
+    transition: all 300ms;
 }
