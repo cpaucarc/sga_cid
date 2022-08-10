@@ -28,7 +28,7 @@ class CrearMensuales extends Component
 
     public function mount()
     {
-        $this->ultimo_mensual = Mensual::query()->orderBy('id', 'desc')->first();
+        $this->ultimo_mensual = Mensual::query()->orderBy('anio', 'desc')->orderBy('mes_id', 'desc')->first();
         $this->meses = Constants::meses()->pluck('nombre', 'id')->all();
         $this->modalidades = Constants::clase_modalidades()->pluck('nombre', 'id')->all();
         $this->modalidad = Constants::clase_modalidades()->first()['id'];
@@ -67,7 +67,7 @@ class CrearMensuales extends Component
     public function updatedFechaInicio()
     {
         $this->fecha_fin = Carbon::parse($this->fecha_inicio)->endOfMonth()->format('Y-m-d');
-        $this->mes = $this->meses[Carbon::parse($this->fecha_inicio)->month];
+        $this->mes = Carbon::parse($this->fecha_inicio)->month;
     }
 
     public function crear()
