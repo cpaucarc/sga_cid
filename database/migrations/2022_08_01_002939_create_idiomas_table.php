@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::create('idiomas', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 3);
+            $table->string('codigo_pais', 3);
             $table->string('nombre', 20);
         });
     }

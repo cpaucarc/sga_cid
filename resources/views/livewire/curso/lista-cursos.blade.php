@@ -65,7 +65,8 @@
                 <x-table.column>{{ $curso->aforo_recomendado }} estudiantes</x-table.column>
                 <x-table.column>{{ $curso->aforo_maximo }} estudiantes</x-table.column>
                 <x-table.column>
-                    <x-jet-secondary-button wire:click="editarCurso({{ $curso }})" class="btn-state-transparent">
+                    <x-jet-secondary-button wire:click="editarCurso({{ $curso }})">
+                        <x-icons.edit class="icon-5"/>
                         Editar
                     </x-jet-secondary-button>
                 </x-table.column>

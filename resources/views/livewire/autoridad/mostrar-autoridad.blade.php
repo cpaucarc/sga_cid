@@ -5,10 +5,10 @@
                 <x-icons.dni class="icon-5 mr-1"/>
                 DNI {{ $autoridad->persona->dni }}
             </h4>
-            <h3 class="text-xl text-gray-4 font-bold uppercase">
+            <h3 class="text-xl inline-flex gap-x-2 items-center text-gray-4 font-bold uppercase">
                 {{$autoridad->persona->apellido_paterno}} {{$autoridad->persona->apellido_materno}} {{$autoridad->persona->nombres}}
-                <span
-                    class="bg-rose-3/10 text-rose-3 text-sm font-medium ml-2 px-2.5 py-1 rounded">{{$autoridad->persona->pais}}</span>
+                <img class="h-5 rounded" src="https://countryflagsapi.com/png/{{ $autoridad->persona->pais->abrev }}"
+                     alt="Bandera" title="{{ $autoridad->persona->pais->nombre }}">
             </h3>
             <h4 class="flex items-center text-sm text-gray-3 font-semibold ">
                 <x-icons.person class="icon-5 mr-1"/>
@@ -46,7 +46,7 @@
 
     <div class="grid grid-cols-6 gap-6 pt-6">
         <div class="col-span-2 space-y-6">
-            <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+            <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                 <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition">Fecha de Nacimiento</h3>
                 <p class="text-gray-3">
                     {{ $autoridad->persona->fecha_nacimiento->format('d') }}
@@ -54,13 +54,13 @@
                     del {{$autoridad->persona->fecha_nacimiento->format('Y')}}
                 </p>
             </div>
-            <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+            <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                 <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition">Género</h3>
                 <p class="text-gray-3">
                     {{ $autoridad->persona->sexo_id === 1 ? 'Femenino':'Masculino' }}
                 </p>
             </div>
-            <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+            <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                 <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition">Celular</h3>
                 <p class="text-gray-3">
                     {{ $autoridad->persona->celular }}
@@ -69,19 +69,19 @@
         </div>
         @if($distrito)
             <div class="col-span-2 space-y-6">
-                <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+                <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                     <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition">Departamento</h3>
                     <p class="text-gray-3">
                         {{ $distrito->provincia->departamento }}
                     </p>
                 </div>
-                <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+                <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                     <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition">Provincia</h3>
                     <p class="text-gray-3">
                         {{ $distrito->provincia->nombre }}
                     </p>
                 </div>
-                <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+                <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                     <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition">Distrito</h3>
                     <p class="text-gray-3">
                         {{ $distrito->nombre }}
@@ -91,7 +91,7 @@
         @endif
 
         <div class="col-span-2 space-y-6">
-            <div class="group bg-gray-1/10 hover:bg-gray-1/25 hover:shadow soft-transition p-3 rounded">
+            <div class="group bg-gray-1/10 hover:bg-gray-1/30 hover:shadow soft-transition p-3 rounded">
                 <h3 class="font-bold text-gray-3 group-hover:text-gray-4 soft-transition mb-2">Cargo</h3>
                 <x-jet-dropdown align="right" width="64">
                     <x-slot name="trigger">

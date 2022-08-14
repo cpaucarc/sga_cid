@@ -25,7 +25,7 @@ class AgregarIdioma extends Component
     public function render()
     {
         $callback = DocenteIdioma::query()
-            ->with('idioma:id,codigo,nombre')
+            ->with('idioma:id,codigo,codigo_pais,nombre')
             ->where('docente_id', $this->docente->id);
 
         $this->docente_idiomas = $callback->get();
@@ -34,7 +34,7 @@ class AgregarIdioma extends Component
         $this->idiomas = Idioma::query()
             ->whereNotIn('id', $this->idiomas_actuales)
             ->orderBy('nombre')
-            ->get(['id', 'nombre']);
+            ->get(['id', 'nombre', 'codigo_pais']);
         return view('livewire.docente.agregar-idioma');
     }
 

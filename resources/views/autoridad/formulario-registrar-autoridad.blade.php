@@ -1,11 +1,7 @@
 <x-app-layout>
-    <x-sidebar.grid>
 
-        @slot('sidebar')
-            <x-app.autoridad.autoridad-sidebar/>
-        @endslot
+    <x-titulo titulo="Registro de nueva autoridad"/>
 
-        <livewire:autoridad.registrar-autoridad/>
+    <livewire:autoridad.registrar-autoridad/>
 
-    </x-sidebar.grid>
 </x-app-layout>

@@ -18,26 +18,32 @@ class IdiomaSeeder extends Seeder
         $idiomas = [
             [
                 'codigo' => 'ENG', //ISO 639-2
-                'nombre' => 'Ingles',
+                'codigo_pais' => 'USA',
+                'nombre' => 'Inglés',
             ],
             [
                 'codigo' => 'FRA',
+                'codigo_pais' => 'FRA',
                 'nombre' => 'Francés',
             ],
             [
                 'codigo' => 'ITA',
+                'codigo_pais' => 'ITA',
                 'nombre' => 'Italiano',
             ],
             [
                 'codigo' => 'QUE',
+                'codigo_pais' => 'PER',
                 'nombre' => 'Quechua',
             ],
             [
                 'codigo' => 'DEU',
+                'codigo_pais' => 'DUE',
                 'nombre' => 'Alemán',
             ],
             [
                 'codigo' => 'POR',
+                'codigo_pais' => 'BRA',
                 'nombre' => 'Portugués',
             ],
         ];

@@ -1,6 +1,11 @@
-<div>
-    <x-titulo
-        titulo="Docente: {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}">
+<div class="space-y-6">
+    <x-titulo>
+        @slot('titulo')
+            Docente:
+            <span class="uppercase">
+                {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}
+            </span>
+        @endslot
         @slot('subtitulo')
             <div class="rounded text-sm text-gray-3 flex flex-wrap gap-6 mt-2 relative">
                 <p><b>Código:</b> {{$docente->codigo}} </p>
@@ -12,6 +17,7 @@
             </div>
         @endslot
     </x-titulo>
+
     <div class="grid grid-cols-6 gap-12 items-start">
         <div class="col-span-2 sticky top-20">
             @if(count($idiomas)>0)
@@ -24,8 +30,8 @@
                         />
 
                         <div class="ml-3">
-                            <h5 class="text-lg font-medium text-gray-3">Lista de idiomas <span
-                                    class="text-xs">({{count($idiomas)}})</span>
+                            <h5 class="text-lg font-medium text-gray-3">
+                                Lista de idiomas <span class="text-xs">({{count($idiomas)}})</span>
                             </h5>
                         </div>
                     </div>
@@ -33,15 +39,14 @@
                     <div class="mt-4 space-y-2">
 
                         @foreach($idiomas as $idioma)
-                            <div
-                                class="block flex items-center h-full p-4 border border-gray-2 rounded-lg hover:border-blue-3 hover:shadow group">
-                                <x-forms.checkbox wire:model="idioma_selected"
-                                                  wire:loading.attr="disabled"
+                            <label
+                                class="flex gap-x-2 items-center p-3 border border-gray-1 rounded-md bg-white hover:bg-gray-1/30 group cursor-pointer font-medium text-gray-3/90 hover:text-gray-4 soft-transition">
+                                <x-forms.checkbox wire:model="idioma_selected" wire:loading.attr="disabled"
                                                   value="{{ $idioma->id }}"/>
-                                <p class="font-medium text-gray-3 group-hover:text-blue-3">
-                                    {{ $idioma->nombre }}
-                                </p>
-                            </div>
+                                <img src="https://countryflagsapi.com/svg/{{ $idioma->codigo_pais }}"
+                                     class="h-6 rounded" alt="Bandera">
+                                {{ $idioma->nombre }}
+                            </label>
                         @endforeach
                     </div>
                 </article>
@@ -66,19 +71,25 @@
                         <x-table.row>
                             <x-table.column class="uppercase">{{($i+1)}}</x-table.column>
                             <x-table.column class="uppercase">{{$docid->idioma->codigo}}</x-table.column>
-                            <x-table.column class="uppercase">{{$docid->idioma->nombre}}</x-table.column>
+                            <x-table.column class="uppercase">
+                                <div class="flex items-center gap-x-2">
+                                    <img src="https://countryflagsapi.com/svg/{{ $docid->idioma->codigo_pais }}"
+                                         class="h-5 rounded-sm" alt="Bandera">
+                                    {{$docid->idioma->nombre}}
+                                </div>
+                            </x-table.column>
                             <x-table.column>
-                                <x-jet-secondary-button wire:click="eliminarIdioma({{$docid->id}})"
-                                                        class="btn-state-danger">
-                                    Eliminar
+                                <x-jet-secondary-button wire:click="eliminarIdioma({{$docid->id}})">
+                                    <x-icons.delete class="icon-5" stroke="1.75"/>
+                                    Quitar
                                 </x-jet-secondary-button>
                             </x-table.column>
                         </x-table.row>
                     @endforeach
                 </x-table.table>
             @else
-                <x-empty-state title="¡No hay diomas del docente!"
-                               description="Aún no ha agregado ningún idioma al docente. Seleccione cada una de los idiomas que el docente enseña en el Centro de Idiomas de la Unasam."
+                <x-empty-state wImage="3" wText="4" title="El docente no tiene asignado ningún idioma"
+                               description="Aún no ha agregado ningún idioma al docente. Seleccione cada uno de los idiomas que el docente enseña en el Centro de Idiomas de la Unasam."
                                image="{{ asset('images/learning_languages_bro.svg') }}">
                 </x-empty-state>
             @endif

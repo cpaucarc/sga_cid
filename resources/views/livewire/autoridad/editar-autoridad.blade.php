@@ -1,4 +1,4 @@
-<div>
+<div class="space-y-6">
     <x-titulo
         titulo="Docente: {{$autoridad->persona->apellido_paterno}} {{$autoridad->persona->apellido_materno}} {{$autoridad->persona->nombres}}">
         @slot('subtitulo')
@@ -34,7 +34,7 @@
             </div>
             <div class="grid grid-cols-3 gap-8 mb-4">
                 <div class="col-span-3 md:col-span-1">
-                    <x-jet-label for="dni" value="Dni"/>
+                    <x-jet-label for="dni" value="DNI"/>
                     <x-jet-input wire:model="dni" type="number" class="w-full" disabled="true"/>
                     <x-jet-input-error for="dni"/>
                 </div>

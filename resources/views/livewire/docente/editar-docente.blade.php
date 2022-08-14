@@ -1,4 +1,4 @@
-<div>
+<div class="space-y-6">
     <x-titulo
         titulo="Docente: {{$docente->persona->apellido_paterno}} {{$docente->persona->apellido_materno}} {{$docente->persona->nombres}}">
         @slot('subtitulo')
@@ -122,6 +122,7 @@
                 @endif
             </div>
         </x-forms.fieldset>
+
         <x-forms.fieldset titulo="Información del CID">
             <div class="grid grid-cols-3 gap-8">
                 <div class="col-span-3 md:col-span-1">
@@ -155,10 +156,12 @@
                 </div>
             </div>
         </x-forms.fieldset>
+
         <div class="w-full flex justify-end">
             <x-buttons.save target="actualizarDocente"/>
         </div>
     </div>
+
     @push('js')
         <script>
             Livewire.on('guardado', msg => {

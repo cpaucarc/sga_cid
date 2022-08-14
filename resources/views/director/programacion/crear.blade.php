@@ -1,20 +1,9 @@
 <x-app-layout>
-    <x-sidebar.grid>
 
-        @slot('sidebar')
-            <x-app.director.matricula-sidebar/>
-        @endslot
+    <div class="max-w-2xl mx-auto">
 
-        <div class="grid grid-cols-9 gap-4">
-            <div class="col-span-6">
-                <livewire:programacion.crear-mensuales/>
-            </div>
+        <livewire:programacion.crear-mensuales/>
 
-            <div class="col-span-3">
-                {{--                    <x-app.director.mensual-info :mensual="$mensual" :meses="$meses"--}}
-                {{--                                                 :clase_modalidades="$clase_modalidades"/>--}}
-            </div>
-        </div>
+    </div>
 
-    </x-sidebar.grid>
 </x-app-layout>

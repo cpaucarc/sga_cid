@@ -30,13 +30,7 @@ class MostrarDocente extends Component
     public function render()
     {
         $this->docente = Docente::query()
-            ->with(['persona' => function ($query) {
-                $query->addSelect(['pais' => Pais::query()
-                    ->select('nombre')
-                    ->whereColumn('id', 'personas.pais_id')
-                    ->take(1)
-                ]);
-            }])
+            ->with('persona', 'persona.pais')
             ->where('codigo', $this->codigo)
             ->first();
 

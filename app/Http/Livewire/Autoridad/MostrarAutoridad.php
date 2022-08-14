@@ -27,14 +27,8 @@ class MostrarAutoridad extends Component
     public function render()
     {
         $this->autoridad = Autoridad::query()
-            ->with(['persona' => function ($query) {
-                $query->addSelect(['pais' => Pais::query()
-                    ->select('nombre')
-                    ->whereColumn('id', 'personas.pais_id')
-                    ->take(1)
-                ]);
-            }])
-            ->where('persona_id',$this->persona->id)
+            ->with('persona', 'persona.pais')
+            ->where('persona_id', $this->persona->id)
             ->first();
 
         $this->distrito = Distrito::query()

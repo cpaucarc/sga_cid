@@ -1,11 +1,7 @@
 <x-app-layout>
-    <x-sidebar.grid>
 
-        @slot('sidebar')
-            <x-app.docente.docente-sidebar/>
-        @endslot
+    <x-titulo titulo="Registro de nuevo docente"/>
 
-        <livewire:docente.registrar-docente/>
+    <livewire:docente.registrar-docente/>
 
-    </x-sidebar.grid>
 </x-app-layout>
