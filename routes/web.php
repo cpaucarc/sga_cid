@@ -31,29 +31,29 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 
-    Route::prefix('idiomas')->controller(CursoController::class)->group(function () {
-        Route::get('dictables', 'index')->name('curso.index');
-        Route::get('cursos/{id?}', 'cursos')->name('curso.cursos');
+    Route::prefix('idiomas')->controller(CursoController::class)->name('curso.')->group(function () {
+        Route::get('dictables', 'index')->name('index');
+        Route::get('cursos/{id?}', 'cursos')->name('cursos');
     });
 
-    Route::prefix('director')->controller(DirectorMatriculaController::class)->group(function () {
-        Route::get('programacion/crear', 'crear_mensual')->name('director.matricula.programacion.crear');
-        Route::get('programacion/{year?}/{month?}', 'programacion')->name('director.matricula.programacion.index');
-        Route::get('prematricula/{year?}/{month?}', 'prematricula')->name('director.matricula.prematricula.index');
+    Route::prefix('director')->controller(DirectorMatriculaController::class)->name('director.matricula.')->group(function () {
+        Route::get('programacion/crear', 'crear_mensual')->name('programacion.crear');
+        Route::get('programacion/{year?}/{month?}', 'programacion')->name('programacion.index')->whereNumber('year')->whereNumber('month');
+        Route::get('prematricula/{year?}/{month?}', 'prematricula')->name('prematricula.index')->whereNumber('year')->whereNumber('month');
     });
 
-    Route::prefix('docente')->controller(DocenteController::class)->group(function () {
-        Route::get('/', 'index')->name('docente.index');
-        Route::get('/{codigo}/mostrar', 'show')->name('docente.show');
-        Route::get('/registrar', 'registrar')->name('docente.registrar');
-        Route::get('/{codigo}/editar', 'editar')->name('docente.editar');
-        Route::get('/{codigo}/idioma', 'idioma')->name('docente.idioma');
+    Route::prefix('docente')->controller(DocenteController::class)->name('docente.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{codigo}/mostrar', 'show')->name('show');
+        Route::get('/registrar', 'registrar')->name('registrar');
+        Route::get('/{codigo}/editar', 'editar')->name('editar');
+        Route::get('/{codigo}/idioma', 'idioma')->name('idioma');
     });
 
-    Route::prefix('autoridad')->controller(AutoridadController::class)->group(function () {
-        Route::get('/', 'index')->name('autoridad.index');
-        Route::get('/{dni}/mostrar', 'show')->name('autoridad.show');
-        Route::get('/registrar', 'registrar')->name('autoridad.registrar');
-        Route::get('/{dni}/editar', 'editar')->name('autoridad.editar');
+    Route::prefix('autoridad')->controller(AutoridadController::class)->name('autoridad.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{dni}/mostrar', 'show')->name('show')->whereNumber('dni');
+        Route::get('/registrar', 'registrar')->name('registrar');
+        Route::get('/{dni}/editar', 'editar')->name('editar')->whereNumber('dni');
     });
 });

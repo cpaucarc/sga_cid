@@ -36,6 +36,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+//        Limitaciones globales
+/*        Si desea que un parámetro de ruta esté siempre limitado por una expresión regular determinada,
+        puede utilizar el comando pattern método . Debe definir estos patrones en el cuadro boot método
+        de su App\Providers\RouteServiceProvider clase:*/
+        Route::pattern('id', '[0-9]+');
     }
 
     /**
